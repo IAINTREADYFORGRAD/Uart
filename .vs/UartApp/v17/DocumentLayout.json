@@ -1,0 +1,54 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\NOOBIE\\UartApp\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{00041B3C-EEBA-48AC-B1AF-14231D3E6DAC}|UartApp\\UartApp.csproj|c:\\noobie\\uartapp\\uartapp\\uart.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{00041B3C-EEBA-48AC-B1AF-14231D3E6DAC}|UartApp\\UartApp.csproj|solutionrelative:uartapp\\uart.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{00041B3C-EEBA-48AC-B1AF-14231D3E6DAC}|UartApp\\UartApp.csproj|c:\\noobie\\uartapp\\uartapp\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{00041B3C-EEBA-48AC-B1AF-14231D3E6DAC}|UartApp\\UartApp.csproj|solutionrelative:uartapp\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Uart.cs",
+              "DocumentMoniker": "C:\\NOOBIE\\UartApp\\UartApp\\Uart.cs",
+              "RelativeDocumentMoniker": "UartApp\\Uart.cs",
+              "ToolTip": "C:\\NOOBIE\\UartApp\\UartApp\\Uart.cs",
+              "RelativeToolTip": "UartApp\\Uart.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAAqAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-10T16:54:17.183Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\NOOBIE\\UartApp\\UartApp\\Program.cs",
+              "RelativeDocumentMoniker": "UartApp\\Program.cs",
+              "ToolTip": "C:\\NOOBIE\\UartApp\\UartApp\\Program.cs",
+              "RelativeToolTip": "UartApp\\Program.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABkAAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-10T16:52:47.138Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
