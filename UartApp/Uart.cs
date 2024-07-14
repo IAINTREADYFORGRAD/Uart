@@ -53,7 +53,7 @@ namespace Uart_Console_App
             Console.WriteLine("Close port: " + port_name);
         }
 
-        public string ReadLines()
+        private string Read()
         {
             try
             {
@@ -81,11 +81,18 @@ namespace Uart_Console_App
             return "";
         }
 
-        public void Send(string s)
+        public void Receive ()
+        {
+            string Msg = serial_port.Receive();
+            Console.WriteLine($"Receive: {Msg}");
+
+        }
+
+        public void Send(string Msg)
         {
             try
             {
-                serial_port.Write(s);
+                serial_port.Write($"Send: {Msg}");
             }
             catch (Exception e)
             {
