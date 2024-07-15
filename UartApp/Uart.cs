@@ -14,7 +14,7 @@ namespace Uart_Console_App
 
         private string serial_buffer = "";
 
-        public Uart() { }
+        //public Uart() { }
 
         public Uart(string PortName, int BaudRate)
         {
@@ -53,7 +53,7 @@ namespace Uart_Console_App
             Console.WriteLine("Close port: " + port_name);
         }
 
-        private string Read()
+        private string InternalRead ()
         {
             try
             {
@@ -83,7 +83,7 @@ namespace Uart_Console_App
 
         public void Receive ()
         {
-            string Msg = serial_port.Receive();
+            string Msg = InternalRead();
             Console.WriteLine($"Receive: {Msg}");
 
         }
