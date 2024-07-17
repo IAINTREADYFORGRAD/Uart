@@ -8,9 +8,12 @@ namespace Uart_Console_App
 {
     public class Uart
     {
+        // ?: declare serial_port as nullable
+        // compilation error: Non-nullable field 'serial_port' must contain a non-null value when exiting constructor. 
+        // private SerialPort? serial_port;
         private SerialPort serial_port;
-        private string port_name = "COM4";
-        private int baud_rate = 9600;
+        private string port_name;
+        private int baud_rate;
 
         private string serial_buffer = "";
 
@@ -20,11 +23,11 @@ namespace Uart_Console_App
         {
             port_name = PortName;
             baud_rate = BaudRate;
+            serial_port = new SerialPort(port_name, baud_rate);
         }
 
         public void OpenSerial()
         {
-            serial_port = new SerialPort(port_name, baud_rate);
 
             try
             {

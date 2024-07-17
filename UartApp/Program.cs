@@ -23,9 +23,18 @@ namespace Uart_Console_App
             //    Thread.Sleep(1000);
             //}
 
-            Thread SendThread = new Thread (() => Com3.Send("Msg From Com3"));
-            Thread ReceiveThread = new Thread(() => Com4.Receive());
+            // () => Com3.Send("Msg From Com3"): create a lambda expression
+            // this lambda expression is passed to the Thread constructor
+            // (): lambda expression takes no parameters
+            // =>: separates the parameter list from the body of the lambda expression
+            // When SendThread.Start() is called later in the program, the thread starts executing the lambda expression
+            //Thread SendThread = new Thread (() => Com3.Send("Msg From Com3"));
+            //Thread ReceiveThread = new Thread(() => Com4.Receive());
 
+            //SendThread.Start();
+            //ReceiveThread.Start();
+            //Com3.Send("Msg From Com3");
+            //Com4.Receive();
 
             Com3.CloseSerial();
             Com4.CloseSerial();

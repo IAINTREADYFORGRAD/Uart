@@ -23,3 +23,12 @@ C:\NOOBIE\UartApp\UartApp\obj\Debug\net8.0\refint\UartApp.dll
 C:\NOOBIE\UartApp\UartApp\obj\Debug\net8.0\UartApp.pdb
 C:\NOOBIE\UartApp\UartApp\obj\Debug\net8.0\UartApp.genruntimeconfig.cache
 C:\NOOBIE\UartApp\UartApp\obj\Debug\net8.0\ref\UartApp.dll
+C:\NOOBIE\UartApp\UartApp\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\NOOBIE\UartApp\UartApp\bin\Debug\net8.0\Microsoft.Extensions.Logging.Abstractions.dll
+C:\NOOBIE\UartApp\UartApp\bin\Debug\net8.0\RJCP.Core.Environment.dll
+C:\NOOBIE\UartApp\UartApp\bin\Debug\net8.0\RJCP.Core.SysCompat.dll
+C:\NOOBIE\UartApp\UartApp\bin\Debug\net8.0\RJCP.Diagnostics.Trace.dll
+C:\NOOBIE\UartApp\UartApp\bin\Debug\net8.0\RJCP.IO.Buffer.dll
+C:\NOOBIE\UartApp\UartApp\bin\Debug\net8.0\RJCP.IO.Device.dll
+C:\NOOBIE\UartApp\UartApp\bin\Debug\net8.0\RJCP.SerialPortStream.dll
+C:\NOOBIE\UartApp\UartApp\bin\Debug\net8.0\de\RJCP.Core.Environment.resources.dll
