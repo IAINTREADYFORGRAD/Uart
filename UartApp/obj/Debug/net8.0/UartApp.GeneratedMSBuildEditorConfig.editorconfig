@@ -8,6 +8,6 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = UartApp
-build_property.ProjectDir = C:\NOOBIE\UartApp\UartApp\
+build_property.ProjectDir = D:\Noobie\UartApp\UartApp\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 

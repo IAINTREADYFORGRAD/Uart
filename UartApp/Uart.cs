@@ -107,5 +107,15 @@ namespace Uart_Console_App
         {
             serial_port.DiscardInBuffer();
         }
+
+        public void RtsEnable ()
+        {
+            serial_port.RtsEnable = true;
+        }
+
+        public void RtsDisable()
+        {
+            serial_port.RtsEnable = false;
+        }
     }
 }
