@@ -8,23 +8,26 @@ namespace Uart_Console_App
 {
     public class Uart
     {
+        // ?: declare serial_port as nullable
+        // compilation error: Non-nullable field 'serial_port' must contain a non-null value when exiting constructor. 
+        // private SerialPort? serial_port;
         private SerialPort serial_port;
-        private string port_name = "COM4";
-        private int baud_rate = 9600;
+        private string port_name;
+        private int baud_rate;
 
         private string serial_buffer = "";
 
-        public Uart() { }
+        //public Uart() { }
 
         public Uart(string PortName, int BaudRate)
         {
             port_name = PortName;
             baud_rate = BaudRate;
+            serial_port = new SerialPort(port_name, baud_rate);
         }
 
         public void OpenSerial()
         {
-            serial_port = new SerialPort(port_name, baud_rate);
 
             try
             {
@@ -53,7 +56,7 @@ namespace Uart_Console_App
             Console.WriteLine("Close port: " + port_name);
         }
 
-        private string Read()
+        private string InternalRead ()
         {
             try
             {
@@ -83,7 +86,7 @@ namespace Uart_Console_App
 
         public void Receive ()
         {
-            string Msg = serial_port.Receive();
+            string Msg = InternalRead();
             Console.WriteLine($"Receive: {Msg}");
 
         }
@@ -103,6 +106,16 @@ namespace Uart_Console_App
         public void ClearBuffer()
         {
             serial_port.DiscardInBuffer();
+        }
+
+        public void RtsEnable ()
+        {
+            serial_port.RtsEnable = true;
+        }
+
+        public void RtsDisable()
+        {
+            serial_port.RtsEnable = false;
         }
     }
 }

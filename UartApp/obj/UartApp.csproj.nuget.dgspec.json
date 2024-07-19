@@ -1,24 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\NOOBIE\\UartApp\\UartApp\\UartApp.csproj": {}
+    "D:\\Noobie\\UartApp\\UartApp\\UartApp.csproj": {}
   },
   "projects": {
-    "C:\\NOOBIE\\UartApp\\UartApp\\UartApp.csproj": {
+    "D:\\Noobie\\UartApp\\UartApp\\UartApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\NOOBIE\\UartApp\\UartApp\\UartApp.csproj",
+        "projectUniqueName": "D:\\Noobie\\UartApp\\UartApp\\UartApp.csproj",
         "projectName": "UartApp",
-        "projectPath": "C:\\NOOBIE\\UartApp\\UartApp\\UartApp.csproj",
-        "packagesPath": "C:\\Users\\w2000\\.nuget\\packages\\",
-        "outputPath": "C:\\NOOBIE\\UartApp\\UartApp\\obj\\",
+        "projectPath": "D:\\Noobie\\UartApp\\UartApp\\UartApp.csproj",
+        "packagesPath": "C:\\Users\\evelyn.lin\\.nuget\\packages\\",
+        "outputPath": "D:\\Noobie\\UartApp\\UartApp\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\w2000\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\evelyn.lin\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -49,6 +45,10 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
+            "RJCP.SerialPortStream": {
+              "target": "Package",
+              "version": "[3.0.1, )"
+            },
             "System.IO.Ports": {
               "target": "Package",
               "version": "[8.0.0, )"
@@ -70,7 +70,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.302/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.300/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
