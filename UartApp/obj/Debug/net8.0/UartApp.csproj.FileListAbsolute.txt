@@ -66,3 +66,4 @@ D:\Noobie\UartApp\UartApp\obj\Debug\net8.0\refint\UartApp.dll
 D:\Noobie\UartApp\UartApp\obj\Debug\net8.0\UartApp.pdb
 D:\Noobie\UartApp\UartApp\obj\Debug\net8.0\UartApp.genruntimeconfig.cache
 D:\Noobie\UartApp\UartApp\obj\Debug\net8.0\ref\UartApp.dll
+C:\NOOBIE\UartApp\UartApp\obj\Debug\net8.0\UartApp.csproj.ResolveComReference.cache

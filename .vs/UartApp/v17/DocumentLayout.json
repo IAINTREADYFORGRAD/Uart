@@ -1,9 +1,8 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "D:\\Noobie\\UartApp\\",
+  "WorkspaceRootPath": "C:\\NOOBIE\\UartApp\\",
   "Documents": [
     {
-<<<<<<< HEAD
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\NOOBIE\\UartApp\\UartApp\\NewTest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:UartApp\\NewTest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -14,18 +13,10 @@
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\NOOBIE\\UartApp\\UartApp\\Program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:UartApp\\Program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-=======
-      "AbsoluteMoniker": "D:0:0:{00041B3C-EEBA-48AC-B1AF-14231D3E6DAC}|UartApp\\UartApp.csproj|d:\\noobie\\uartapp\\uartapp\\newtest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{00041B3C-EEBA-48AC-B1AF-14231D3E6DAC}|UartApp\\UartApp.csproj|solutionrelative:uartapp\\newtest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{00041B3C-EEBA-48AC-B1AF-14231D3E6DAC}|UartApp\\UartApp.csproj|d:\\noobie\\uartapp\\uartapp\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{00041B3C-EEBA-48AC-B1AF-14231D3E6DAC}|UartApp\\UartApp.csproj|solutionrelative:uartapp\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{00041B3C-EEBA-48AC-B1AF-14231D3E6DAC}|UartApp\\UartApp.csproj|d:\\noobie\\uartapp\\uartapp\\uart.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{00041B3C-EEBA-48AC-B1AF-14231D3E6DAC}|UartApp\\UartApp.csproj|solutionrelative:uartapp\\uart.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
->>>>>>> cf203859df6555a8ee7d080f5f3c2c88b9af8d6f
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\NOOBIE\\UartApp\\README.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:README.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}"
     }
   ],
   "DocumentGroupContainers": [
@@ -35,18 +26,30 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "README.md",
+              "DocumentMoniker": "C:\\NOOBIE\\UartApp\\README.md",
+              "RelativeDocumentMoniker": "README.md",
+              "ToolTip": "C:\\NOOBIE\\UartApp\\README.md",
+              "RelativeToolTip": "README.md",
+              "ViewState": "AQIAAAEAAAAAAAAAAAAkwA4AAABMAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001818|",
+              "WhenOpened": "2024-07-20T16:39:33.522Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "NewTest.cs",
-<<<<<<< HEAD
               "DocumentMoniker": "C:\\NOOBIE\\UartApp\\UartApp\\NewTest.cs",
               "RelativeDocumentMoniker": "UartApp\\NewTest.cs",
               "ToolTip": "C:\\NOOBIE\\UartApp\\UartApp\\NewTest.cs",
               "RelativeToolTip": "UartApp\\NewTest.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAAVAAAA",
+              "ViewState": "AQIAAEIAAAAAAAAAAAAAAEcAAAAKAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-07-18T17:35:38.864Z",
               "EditorCaption": ""
@@ -59,56 +62,23 @@
               "RelativeDocumentMoniker": "UartApp\\Uart.cs",
               "ToolTip": "C:\\NOOBIE\\UartApp\\UartApp\\Uart.cs",
               "RelativeToolTip": "UartApp\\Uart.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAMAAAA",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAAADMAAAAfAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-17T15:44:38.614Z"
-=======
-              "DocumentMoniker": "D:\\Noobie\\UartApp\\UartApp\\NewTest.cs",
-              "RelativeDocumentMoniker": "UartApp\\NewTest.cs",
-              "ToolTip": "D:\\Noobie\\UartApp\\UartApp\\NewTest.cs",
-              "RelativeToolTip": "UartApp\\NewTest.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAAjAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-18T10:15:56.35Z",
+              "WhenOpened": "2024-07-17T15:44:38.614Z",
               "EditorCaption": ""
->>>>>>> cf203859df6555a8ee7d080f5f3c2c88b9af8d6f
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-<<<<<<< HEAD
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\NOOBIE\\UartApp\\UartApp\\Program.cs",
               "RelativeDocumentMoniker": "UartApp\\Program.cs",
               "ToolTip": "C:\\NOOBIE\\UartApp\\UartApp\\Program.cs",
               "RelativeToolTip": "UartApp\\Program.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAB4AAAAOAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAJAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-17T15:37:20.625Z"
-=======
-              "Title": "Uart.cs",
-              "DocumentMoniker": "D:\\Noobie\\UartApp\\UartApp\\Uart.cs",
-              "RelativeDocumentMoniker": "UartApp\\Uart.cs",
-              "ToolTip": "D:\\Noobie\\UartApp\\UartApp\\Uart.cs",
-              "RelativeToolTip": "UartApp\\Uart.cs",
-              "ViewState": "AQIAAF4AAAAAAAAAAAAAwG4AAAAdAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-18T09:51:43.447Z",
+              "WhenOpened": "2024-07-17T15:37:20.625Z",
               "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Program.cs",
-              "DocumentMoniker": "D:\\Noobie\\UartApp\\UartApp\\Program.cs",
-              "RelativeDocumentMoniker": "UartApp\\Program.cs",
-              "ToolTip": "D:\\Noobie\\UartApp\\UartApp\\Program.cs",
-              "RelativeToolTip": "UartApp\\Program.cs",
-              "ViewState": "AQIAAAMAAAAAAAAAAAAAAAcAAAAaAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-18T09:50:45.928Z",
-              "EditorCaption": ""
->>>>>>> cf203859df6555a8ee7d080f5f3c2c88b9af8d6f
             }
           ]
         }
