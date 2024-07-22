@@ -14,6 +14,7 @@ namespace UartApp
     {
 
         static SerialPort serialPort;
+        private bool PollingContinue;
 
         public enum RcvType {
             Polling = 0,
@@ -37,6 +38,8 @@ namespace UartApp
             serialPort.DataBits = 8;
             serialPort.StopBits = StopBits.One;
             serialPort.Handshake = (Handshake)handshake;
+            serialPort.ReadTimeout = 2000; // unit: milliseconds
+            serialPort.WriteTimeout = 2000;
 
             UartStart();
         }
@@ -48,7 +51,6 @@ namespace UartApp
                 PollingStart ();
             } else if (Type == RcvType.Interrupt)
             {
-                Console.WriteLine("press 'esc' to quit");
                 ReceiveEventCreate ();
             }
         }
@@ -93,7 +95,10 @@ namespace UartApp
 
         private void PollingStart()
         {
+            ConsoleReadStart();
+            PollingContinue = true;
             Thread readThread = new Thread(Polling);
+            readThread.Start();
         }
 
         //
@@ -128,13 +133,18 @@ namespace UartApp
         private void Polling()
         {
             Console.WriteLine("press 'esc' to quit");
+            
 
-            while (true)
+            while (PollingContinue)
             {
+                Console.WriteLine("138");
                 try
                 {
+                    Console.WriteLine("141");
                     string message = serialPort.ReadLine();
+                    Console.WriteLine("143");
                     Console.WriteLine(serialPort.PortName + "　polling received: " + message);
+                    Console.WriteLine("145");
                 }
                 catch (TimeoutException)
                 {
@@ -143,28 +153,29 @@ namespace UartApp
                 {
                     Console.WriteLine("polling error: " + e.Message);
                 }
-
-                if (IsPollingStop())
-                {
-                    break;
-                }
             }
 
         }
 
-        private bool IsPollingStop()
+        private void ConsoleReadStart ()
+        { 
+            Thread consoleThread = new Thread(ConsoleRead);
+            consoleThread.Start();       
+        }
+
+        private void ConsoleRead ()
         {
             var key = Console.ReadKey(true);
             if (key.Key == ConsoleKey.Escape)
             {
-                return true;
+                PollingContinue = false;
             }
-
-            return false;
         }
 
+        public void UartSned ()
+        {
 
-
+        }
     }
 
     class Program
