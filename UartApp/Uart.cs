@@ -3,119 +3,112 @@ using System.Collections.Generic;
 using System.Text;
 using System.IO.Ports;
 using System.Threading;
+using System.Runtime.InteropServices;
 
-namespace Uart_Console_App
+
+namespace UartApp
 {
+
+
     public class Uart
     {
-        // ?: declare serial_port as nullable
-        // compilation error: Non-nullable field 'serial_port' must contain a non-null value when exiting constructor. 
-        // private SerialPort? serial_port;
-        private SerialPort serial_port;
-        private string port_name;
-        private int baud_rate;
 
-        private string serial_buffer = "";
+        static SerialPort serialPort;
 
-        //public Uart() { }
 
-        public Uart(string PortName, int BaudRate)
+        public Uart(string name, Handshake handshake)
         {
-            port_name = PortName;
-            baud_rate = BaudRate;
-            serial_port = new SerialPort(port_name, baud_rate);
+            serialPort = new SerialPort();
+
+            UartInit(name, handshake);
+            UartStart();
+            UartWrite();
+            UartDestroy();
         }
 
-        public void OpenSerial()
+        public void UartInit(string name, Handshake handshake)
         {
 
-            try
+            serialPort.PortName = name;
+            serialPort.BaudRate = 9600;
+            serialPort.Parity = Parity.None;
+            serialPort.DataBits = 8;
+            serialPort.StopBits = StopBits.One;
+            serialPort.Handshake = (Handshake)handshake;
+            serialPort.ReadTimeout = 2000; // unit: milliseconds
+            serialPort.WriteTimeout = 2000;
+            serialPort.DataReceived += new SerialDataReceivedEventHandler(UartRead);
+        }
+
+        private void UartStart()
+        {
+
+            if (serialPort == null)
             {
-                serial_port.Open();
-                if (!serial_port.IsOpen)
+                Console.WriteLine("Uart has not been created");
+                return;
+            }
+
+            serialPort.Open();
+
+            Console.WriteLine(serialPort.PortName + " is open");
+        }
+
+        public void UartDestroy()
+        {
+            if (serialPort == null)
+            {
+                return;
+            }
+
+            serialPort.Close();
+
+            Console.WriteLine(serialPort.PortName + " is closed");
+        }
+
+        //
+        // interrupt mothed
+        //
+        // 1. Data Arrival: When data arrives at the serial port, it triggers the DataReceived event.
+        // 2. Event Handling: The DataReceived event handler (DataReceivedHandler1) is executed.
+        //                    This execution is handled by a thread from the system's thread pool.
+        // 3. Thread Pool: a collection of threads managed by the .NET runtime.
+        //                 It provides threads to handle various tasks, including IO operations, timer callbacks, and event handling.
+        //                 Using the thread pool avoids the overhead of creating and destroying threads manually.
+        //
+        private void UartRead(object sender, SerialDataReceivedEventArgs e)
+        {
+            SerialPort sp = (SerialPort)sender;
+
+            //
+            // ReadExisting(): reads all the immediately available bytes in the serial port input buffer
+            //
+            string data = sp.ReadExisting();
+
+            Console.WriteLine(serialPort.PortName + " received: " + data);
+        }
+
+        private void UartWrite()
+        {
+            string msg = "";
+            
+
+            while (true)
+            {
+                var key = Console.ReadKey(true);
+                if (key.Key == ConsoleKey.Escape)
                 {
-                    Console.WriteLine("Fail to open " + port_name);
-                    return;
+                    break;
                 }
-                else
+
+                msg = Console.ReadLine();
+                if (!string.IsNullOrEmpty(msg))
                 {
-                    Console.WriteLine("Success to open " + port_name);
+                    serialPort.WriteLine(msg);
                 }
             }
-            catch (Exception e)
-            {
-                serial_port.Dispose();
-                Console.WriteLine(e.Message);
-            }
-        }
-
-        public void CloseSerial()
-        {
-            serial_buffer = "";
-            serial_port.Dispose();
-            Console.WriteLine("Close port: " + port_name);
-        }
-
-        private string InternalRead ()
-        {
-            try
-            {
-                string s = serial_port.ReadExisting();
-                string buffer = "";
-                foreach (char c in s)
-                {
-                    buffer += c;
-                    if (c == '\n')
-                    {
-                        serial_buffer += buffer;
-                        buffer = "";
-                    }
-                }
-                string ret = serial_buffer;
-                serial_buffer = buffer;
-                if (ret.Length > 0 && ret[ret.Length - 1] == '\n')
-                    return ret;
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.Message);
-                return "";
-            }
-            return "";
-        }
-
-        public void Receive ()
-        {
-            string Msg = InternalRead();
-            Console.WriteLine($"Receive: {Msg}");
-
-        }
-
-        public void Send(string Msg)
-        {
-            try
-            {
-                serial_port.Write($"Send: {Msg}");
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.Message);
-            }
-        }
-
-        public void ClearBuffer()
-        {
-            serial_port.DiscardInBuffer();
-        }
-
-        public void RtsEnable ()
-        {
-            serial_port.RtsEnable = true;
-        }
-
-        public void RtsDisable()
-        {
-            serial_port.RtsEnable = false;
         }
     }
 }
+
+

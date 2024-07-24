@@ -1,1 +1,9 @@
-delegate type: 
+1. var:
+   (1) determined by the compiler at compile-time
+       e.g., var number = 5;             the type of 'number' is inferred as int
+             var text = "Hello";         the type of 'text' is inferred as string
+             var list = new List<int>(); the type of 'list' is inferred as List<int>
+             
+   (2) Implicitly-typed variables must be initialized
+       e.g., x var key
+             o var key = 0
