@@ -1,4 +1,5 @@
-1. var:
+1. var
+
    (1) determined by the compiler at compile-time
        e.g., var number = 5;             the type of 'number' is inferred as int
              var text = "Hello";         the type of 'text' is inferred as string
@@ -7,3 +8,73 @@
    (2) Implicitly-typed variables must be initialized
        e.g., x var key
              o var key = 0
+
+2. async
+   
+    (1) 將一個方法使用 async 進行修飾，這意味著你告訴 Compiler
+        A. 我要在這個方法內進行一個非同步的任務
+        B. 而且我需要在這個方法內等待某個非同步任務完成後，繼續進行之後的任務
+
+    (2) 如果今天沒有 async 關鍵字，你就必須要自己把任務做成一個一個的 Callback，
+        並且把這些任務放到Task裡，然後不停的寫 ContinueWith
+
+    (3) https://blog.opasschang.com/understand-csharp-asyn/
+
+3. await
+
+    (1) async 裡面，一定要寫 await
+
+    (2) 有了 await，Compiler 才知道非同步的斷點在哪裡，才有辦法幫你生成狀態機
+
+4. unit
+
+    (1) nanosecond: 1/1 000 000 000
+    (2) microsecond: 1/1 000 000
+
+5. thread vs task
+
+    (1) thread
+        
+        A. 手動 create, start, wait, close, and the communication between threads
+
+        B. no return value
+
+    (2) task
+
+        A. 
+
+        B. has return value
+
+        C. use thread from thread pool
+
+        (3) https://blog.csdn.net/qq_42504097/article/details/132026576
+
+6. thread vs thread pool
+
+    (1) main process 必須等 threads 都結束後才會關閉
+
+    (2) threadpool 當 main process 關閉後才結束
+
+7. arrow function =>
+
+    (1) 
+
+8. CancellationToken
+
+    (1) Cancel: Signals a cancellation request.
+
+    (2) CancelAfter: Schedules a cancellation request after a specified delay
+
+    (3) Dispose: Releases the resources used by the CancellationTokenSource
+
+9. async
+
+    (1) marks method as asynchronous
+
+10. await
+
+    (1) used inside an async method to pause its execution until the awaited task completes
+
+    (2) returns the result of the awaited task or continues execution once the task is complete
+
+    (3) await allows other tasks to run while waiting for the asynchronous operation to complete,

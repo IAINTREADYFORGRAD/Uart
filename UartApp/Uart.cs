@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.IO.Ports;
 using System.Threading;
+using System.Threading.Tasks;
 using System.Runtime.InteropServices;
 
 
@@ -15,15 +16,10 @@ namespace UartApp
 
         static SerialPort serialPort;
 
-
         public Uart(string name, Handshake handshake)
         {
             serialPort = new SerialPort();
-
             UartInit(name, handshake);
-            UartStart();
-            UartWrite();
-            UartDestroy();
         }
 
         public void UartInit(string name, Handshake handshake)
@@ -38,9 +34,11 @@ namespace UartApp
             serialPort.ReadTimeout = 2000; // unit: milliseconds
             serialPort.WriteTimeout = 2000;
             serialPort.DataReceived += new SerialDataReceivedEventHandler(UartRead);
+
+            serialPort.RtsEnable = true;
         }
 
-        private void UartStart()
+        public void UartStart()
         {
 
             if (serialPort == null)
@@ -88,23 +86,103 @@ namespace UartApp
             Console.WriteLine(serialPort.PortName + " received: " + data);
         }
 
-        private void UartWrite()
+        public async Task UartWrite(string msg)
         {
-            string msg = "";
-            
-
-            while (true)
+            if (!await CtsWait())
             {
-                var key = Console.ReadKey(true);
-                if (key.Key == ConsoleKey.Escape)
-                {
-                    break;
-                }
+                serialPort.WriteLine(msg);
+            }
+            else
+            {
+                Console.WriteLine(serialPort.PortName + " CTS timeout and failed to send msg");
+            }
 
-                msg = Console.ReadLine();
-                if (!string.IsNullOrEmpty(msg))
+        }
+
+        private async Task<bool> CtsWait ()
+        {
+            if (serialPort.CtsHolding)
+            {
+                return false;
+            }
+
+            Console.Write(serialPort.PortName + " CTS is dropped");
+
+            return await CtsTimeOut();
+        }
+
+        public void RtsEnable ()
+        {
+            serialPort.RtsEnable = true;
+            Console.WriteLine(serialPort.PortName + " rts is enabled");
+        }
+
+        public void RtsDisable ()
+        {
+            serialPort.RtsEnable = false;
+            Console.WriteLine(serialPort.PortName + " rts is disabled");
+        }
+
+        public void DtrEnable() // Data Terminal Ready
+        {
+            serialPort.DtrEnable = true;
+            Console.WriteLine(serialPort.PortName + " dtr is enabled");
+        }
+
+        public void DtrDisable() // Data Set Ready
+        {
+            serialPort.DtrEnable = false;
+            Console.WriteLine(serialPort.PortName + " dtr is disabled");
+        }
+
+        //
+        // Task<bool>: produce a boolean result
+        // async: could be await
+        //
+        private async Task<bool> CtsTimeOut ()
+        {
+            //
+            // CancellationTokenSource
+            //   1. used to create a CancellationToken and to signal that the operation should be canceled
+            //   2. signal cancellation by calling its Cancel method.
+            //      set the IsCancellationRequested property of the associated CancellationToken to true.
+            //   3. token will automatically cancel after the specified timeout duration
+            //   4. implements the IDisposable interface,
+            //      which means it has a Dispose method that needs to be called to clean up resources properly
+            // using
+            //   1. ensure that the resources are properly disposed of when they are no longer needed
+            //   2. using statement ensures that the Dispose method is called on the CancellationTokenSource (cts)
+            //      when the code block is exited, whether it exits normally or due to an exception.
+            //   3. here is to ensure 'cts.Dispose()' is called as soon as the code block is exited
+            //
+
+            TimeSpan timeout = TimeSpan.FromSeconds(5); 
+
+            using (var cts = new CancellationTokenSource(timeout))
+            {
+                try
                 {
-                    serialPort.WriteLine(msg);
+                    //
+                    // starts a new task to run the specified code asynchronously
+                    // 
+                    await Task.Run(() =>
+                    {
+                        while (!serialPort.CtsHolding)
+                        {
+                            Console.Write(".");
+                            if (cts.Token.IsCancellationRequested)
+                            {
+                                cts.Token.ThrowIfCancellationRequested();
+                            }
+                            Thread.Sleep(1000); // Check every 100 ms
+                        }
+                    }, cts.Token);
+
+                    return false;
+                }
+                catch (OperationCanceledException)
+                {
+                    return true; // Timeout occurred
                 }
             }
         }

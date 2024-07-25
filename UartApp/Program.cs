@@ -3,26 +3,73 @@ using System.Collections.Generic;
 using System.Text;
 using System.IO.Ports;
 using System.Threading;
+using System.Threading.Tasks;
 using System.Runtime.InteropServices;
 
 namespace UartApp
 {
 
-    class Program1
+    class Program
     {
         
-        static void Main(string[] args)
+        static async Task Main(string[] args)
         {
             if (args.Length != 1)
             {
-                Console.WriteLine("Usage: UartApp <COM port name>");
                 return;
             }
 
             string comPortName = args[0];
 
-            Uart comPort = new Uart(comPortName, Handshake.None);
-        }
+            Uart comPort = new Uart(comPortName, Handshake.RequestToSend);
+            comPort.UartStart();
 
+
+            while (true)
+            {
+
+                var key = Console.ReadKey(true);
+                var scanCode = key.Key;
+
+                switch (scanCode)
+                {
+                    case ConsoleKey.Escape:
+
+                        comPort.UartDestroy();
+
+                        return;
+
+                    case ConsoleKey.F1:
+
+                        comPort.RtsEnable();
+
+                        break;
+
+                    case ConsoleKey.F2:
+
+                        comPort.RtsDisable();
+
+                        break;
+
+                    case ConsoleKey.F3:
+
+                        comPort.DtrEnable();
+
+                        break;
+
+                    case ConsoleKey.F4:
+
+                        comPort.DtrDisable();
+
+                        break;
+                }
+
+                string msg = Console.ReadLine();
+                if (!string.IsNullOrEmpty (msg)) {
+                    await comPort.UartWrite(msg);
+                }
+            }
+
+        }
     }
 }
