@@ -60,6 +60,9 @@ namespace UartApp
             }
 
             serialPort.Close();
+            serialPort.PinChanged -= CtsMonitorHandler;
+            serialPort.PinChanged -= DstMonitorHandler;
+
 
             Console.WriteLine(serialPort.PortName + " is closed");
         }
@@ -113,12 +116,26 @@ namespace UartApp
 
         public void RtsEnable ()
         {
+            if (serialPort.Handshake == Handshake.RequestToSend ||
+                serialPort.Handshake == Handshake.RequestToSendXOnXOff)
+            {
+                Console.WriteLine("Handshake.RequestToSend does not allow manual control of the RTS");
+                return;
+            }
+
             serialPort.RtsEnable = true;
             Console.WriteLine(serialPort.PortName + " rts is enabled");
         }
 
         public void RtsDisable ()
         {
+            if (serialPort.Handshake == Handshake.RequestToSend ||
+                serialPort.Handshake == Handshake.RequestToSendXOnXOff)
+            {
+                Console.WriteLine("Handshake.RequestToSend does not allow manual control of the RTS");
+                return;
+            }
+
             serialPort.RtsEnable = false;
             Console.WriteLine(serialPort.PortName + " rts is disabled");
         }
@@ -185,6 +202,38 @@ namespace UartApp
                     return true; // Timeout occurred
                 }
             }
+        }
+
+        private void CtsMonitorHandler(object sender, SerialPinChangedEventArgs e)
+        {
+            SerialPort sp = (SerialPort) sender;
+
+            if (e.EventType == SerialPinChange.CtsChanged)
+            {
+                bool cts = sp.CtsHolding;
+                Console.WriteLine(serialPort.PortName + " CTS changed to: " + (cts ? "High" : "Low"));
+            }
+        }
+
+        public void CtsMonitor ()
+        {
+            serialPort.PinChanged += new SerialPinChangedEventHandler (CtsMonitorHandler);
+        }
+
+        private void DstMonitorHandler(object sender, SerialPinChangedEventArgs e)
+        {
+            SerialPort sp = (SerialPort)sender;
+
+            if (e.EventType == SerialPinChange.DsrChanged)
+            {
+                bool dsr = sp.DsrHolding;
+                Console.WriteLine(serialPort.PortName + " Dst changed to: " + (dsr ? "High" : "Low"));
+            }
+        }
+
+        public void DsrMonitor()
+        {
+            serialPort.PinChanged += new SerialPinChangedEventHandler(DstMonitorHandler);
         }
     }
 }

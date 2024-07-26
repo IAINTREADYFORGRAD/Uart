@@ -21,8 +21,10 @@ namespace UartApp
 
             string comPortName = args[0];
 
-            Uart comPort = new Uart(comPortName, Handshake.RequestToSend);
+            Uart comPort = new Uart(comPortName, Handshake.None);
             comPort.UartStart();
+            comPort.CtsMonitor();
+            comPort.DsrMonitor();
 
 
             while (true)
