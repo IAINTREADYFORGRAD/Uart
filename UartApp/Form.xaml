@@ -1,0 +1,30 @@
+< Window x: Class = "UartApp.MainWindow"
+        xmlns = "http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns: x = "http://schemas.microsoft.com/winfx/2006/xaml"
+        Title = "UART Tester" Height = "450" Width = "800" >
+    < Grid >
+        < Grid.RowDefinitions >
+            < RowDefinition Height = "Auto" />
+            < RowDefinition Height = "Auto" />
+            < RowDefinition Height = "*" />
+        </ Grid.RowDefinitions >
+
+
+        < StackPanel Grid.Row = "0" Orientation = "Horizontal" Margin = "10" >
+            < ComboBox x: Name = "comboBoxPorts" Width = "150" Margin = "0,0,10,0" />
+            < Button x: Name = "buttonConnect" Content = "Connect" Width = "100" Click = "ButtonConnect_Click" />
+        </ StackPanel >
+
+
+        < StackPanel Grid.Row = "1" Orientation = "Horizontal" Margin = "10" >
+            < TextBox x: Name = "textBoxSend" Width = "300" Margin = "0,0,10,0" />
+            < Button x: Name = "buttonSend" Content = "Send" Width = "100" Click = "ButtonSend_Click" />
+        </ StackPanel >
+
+
+        < StackPanel Grid.Row = "2" Orientation = "Horizontal" Margin = "10" >
+            < Button x: Name = "buttonRTS" Content = "RTS On" Width = "100" Margin = "0,0,10,0" Click = "ButtonRTS_Click" />
+            < Button x: Name = "buttonDTR" Content = "DTR On" Width = "100" Click = "ButtonDTR_Click" />
+        </ StackPanel >
+    </ Grid >
+</ Window >

@@ -77,4 +77,76 @@
 
     (2) returns the result of the awaited task or continues execution once the task is complete
 
-    (3) await allows other tasks to run while waiting for the asynchronous operation to complete,
+    (3) await allows other tasks to run while waiting for the asynchronous operation to complete
+
+11. static
+    
+    (1) has different meaning from being in c
+    
+    (2) c#
+    
+        A. a function w/ static modifier does not belong to an instance of the class.
+
+        B. Static Classes: cannot be instantiated and can only contain static members
+
+        C. Static Methods: belongs to the class itself rather than an instance
+
+        D. Static Fields and Properties: shared across all instances of a class
+            
+            e.g., 
+            
+            public class Example
+            {
+                public static int Count; // Shared among all instances
+            }
+
+        E. Static Constructors: used to initialize static members of a class
+
+            e.g.,
+
+            public class Example
+            {
+                static Example() {
+                    // Static constructor implementation
+                }
+            }
+
+12. Instance Methods
+
+    (1) Methods defined with public void (or any other access modifier and return type) are instance methods
+            
+        e.g., 
+
+        public class Example
+        {   
+            public void InstanceMethod()
+            {
+            }
+        }
+
+    (2) This means that to call them, you need to create an instance of the class. 
+        Instance methods operate on the instance data of the class.
+
+        e.g., 
+
+        Example example = new Example();
+        example.InstanceMethod();
+
+13. Static Methods
+
+    (1) Methods defined with the static modifier do not belong to a specific instance of the class. 
+
+        e.g., 
+
+        public class Example
+        {
+            public static void StaticMethod()
+            {
+            }
+        }
+
+    (2) They belong to the class itself and can be called without creating an instance of the class.
+
+        e.g.,
+
+        Example.StaticMethod();

@@ -9,9 +9,21 @@ using System.Runtime.InteropServices;
 namespace UartApp
 {
 
-    class Program
+
+
+    /*class Program
     {
-        
+        private void ExistSerialPortPrint()
+        {
+            string[] ports = SerialPort.GetPortNames();
+
+            Console.WriteLine("Available COM Ports:");
+            foreach (string port in ports)
+            {
+                Console.WriteLine(port);
+            }
+        }
+
         static async Task Main(string[] args)
         {
             if (args.Length != 1)
@@ -73,5 +85,47 @@ namespace UartApp
             }
 
         }
+    }*/
+
+    /*class Program1
+    {
+
+        private void ExistSerialPortPrint()
+        {
+            string[] ports = SerialPort.GetPortNames();
+
+            Console.WriteLine("Available COM Ports:");
+            foreach (string port in ports)
+            {
+                Console.WriteLine(port);
+            }
+        }
+
+        static void Main(string[] args)
+        {
+
+            ExistSerialPortPrint();
+
+        }
     }
+
+    class Program2
+    {
+        private void ExistSerialPortPrint()
+        {
+            string[] ports = SerialPort.GetPortNames();
+
+            Console.WriteLine("Available COM Ports:");
+            foreach (string port in ports)
+            {
+                Console.WriteLine(port);
+            }
+        }
+
+        static void Main(string[] args)
+        {
+            Program2 program = new Program();
+            program.ExistSerialPortPrint();
+        }
+    }*/
 }

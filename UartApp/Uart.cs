@@ -19,7 +19,14 @@ namespace UartApp
         public Uart(string name, Handshake handshake)
         {
             serialPort = new SerialPort();
-            UartInit(name, handshake);
+            try
+            {
+                UartInit(name, handshake);
+            }
+            catch (UnauthorizedAccessException)
+            {
+                
+            }
         }
 
         public void UartInit(string name, Handshake handshake)
@@ -86,6 +93,11 @@ namespace UartApp
             //
             string data = sp.ReadExisting();
 
+            if (string.IsNullOrEmpty (data)) 
+            {
+                return;
+            }
+            
             Console.WriteLine(serialPort.PortName + " received: " + data);
         }
 
