@@ -1,0 +1,4 @@
+1. $: symbol allows you to use {} to interpolate variables and expressions directly into a string.
+   C#: $"Selected port: {selectedPort}"
+   C : "Selected port: %s\n", selectedPort
+

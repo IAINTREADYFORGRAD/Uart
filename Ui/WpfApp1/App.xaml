@@ -1,0 +1,10 @@
+﻿<Application x:Class="WpfApp1.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:WpfApp1"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+        <!--resources are defined in the <Application.Resources> section 
+        and can be used in any XAML file within the application-->
+    </Application.Resources>
+</Application>
