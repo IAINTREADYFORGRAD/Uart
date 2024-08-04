@@ -2,3 +2,72 @@
    C#: $"Selected port: {selectedPort}"
    C : "Selected port: %s\n", selectedPort
 
+2. wrappanel vs grid
+	
+	(1) wrappanel
+		A. arranges its children in a line (either horizontally or vertically) 
+           until the edge of the container is reached, then wraps to the next line or column
+
+		B. e.g.,
+			<WrapPanel>
+				<Button Content="Button 1"/>
+				<Button Content="Button 2"/>
+				<Button Content="Button 3"/>
+				<Button Content="Button 4"/>
+			</WrapPanel>
+			
+			(A) normally
+				+------------+------------+------------+------------+
+				|  Button 1  |  Button 2  |  Button 3  |  Button 4  |
+				+------------+------------+------------+------------+
+
+			(B) If the panel¡¦s width isn't wide enough, it wraps
+				+------------+------------+
+				|  Button 1  |  Button 2  |
+				+------------+------------+
+				|  Button 3  |  Button 4  |
+				+------------+------------+
+
+	(2) grid
+		A. arrange child elements in a tabular form (rows and columns)
+
+		B. e.g.,
+			<Grid>
+				<Grid.RowDefinitions>
+					<RowDefinition Height="Auto"/>
+					<RowDefinition Height="Auto"/>
+				</Grid.RowDefinitions>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="Auto"/>
+					<ColumnDefinition Width="Auto"/>
+				</Grid.ColumnDefinitions>
+
+				<Button Grid.Row="0" Grid.Column="0" Content="Button 1"/>
+				<Button Grid.Row="0" Grid.Column="1" Content="Button 2"/>
+				<Button Grid.Row="1" Grid.Column="0" Content="Button 3"/>
+				<Button Grid.Row="1" Grid.Column="1" Content="Button 4"/>
+			</Grid>
+			
+			+------------+------------+
+			|  Button 1  |  Button 2  |
+			+------------+------------+
+			|  Button 3  |  Button 4  |
+			+------------+------------+
+
+3. static
+	(1) if you have a static property in a class that you want to use directly in XAML, 
+		you would use {x:Static}.
+	
+	(2) e.g.,
+
+		public static class Converters
+		{
+			public static readonly X1Converter X1ConverterInstance = new X1Converter();
+		}
+
+		 <Grid>
+			<Canvas>
+				<Line X1="{Binding ElementName=rts1, Path=ActualWidth, Converter={x:Static local:Converters.X1ConverterInstance}}"
+					  Stroke="LightBlue" StrokeThickness="2" />
+			</Canvas>
+		</Grid>

@@ -5,50 +5,116 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800" Background="#D3D3D3">
-    <WrapPanel>
+        Title="MainWindow" Height="350" Width="600" Background="#8080C0">
 
-    </WrapPanel>
     <Grid>
+        <!--ColumnDefinitions: a collection of ColumnDefinition objects, 
+                               each representing a single column in the grid-->
         <Grid.ColumnDefinitions>
+            <!--*: star sizing, take up a proportion of the available space in the grid
+                   e.g.,1. If you have two columns with Width="*", 
+                           it means that both columns will take up an equal share of the available space
+                   e.g.,2. If you have one column with Width="2*" and another with Width="*",
+                           the first column will take up twice as much space as the second-->
+
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-        <Border Grid.Column="0" Background="#8080C0" CornerRadius="10" Margin="10">
-            <StackPanel>
+        <Border Grid.Column="0" Background="#C8BFE7" CornerRadius="10" Margin="31,27,34,33">
+            <StackPanel x:Name="Panel1">
                 <ComboBox x:Name="comboBoxPorts1"
-                          VerticalAlignment="Center"
                           HorizontalAlignment="Center"
                           Width="100"
                           IsEditable="False" 
-                          SelectionChanged="comboBoxPorts_SelectionChanged2"/>      
-                <StackPanel Margin="10">
-                    <TextBlock Text="RTS"/>
-                    <TextBlock Text="CTS"/>
-                    <TextBlock Text="DTR"/>
-                    <TextBlock Text="DSR"/>
-                    <TextBlock Text="DCD"/>
+                          SelectionChanged="comboBoxPorts_SelectionChanged1"/>
+
+                <StackPanel Margin="40">
+                    <TextBlock x:Name="rts1" Text="RTS" FontSize ="20" FontFamily="Segoe UI Black" Foreground="#8080C0" Margin="0,5"/>
+                    <TextBlock x:Name="cts1" Text="CTS" FontSize ="20" FontFamily="Segoe UI Black" Foreground="#8080C0" Margin="0,5"/>
+                    <TextBlock x:Name="dtr1" Text="DTR" FontSize ="20" FontFamily="Segoe UI Black" Foreground="#8080C0" Margin="0,5"/>
+                    <TextBlock x:Name="dsr1" Text="DSR" FontSize ="20" FontFamily="Segoe UI Black" Foreground="#8080C0" Margin="0,5"/>
+                    <TextBlock x:Name="dcd1" Text="DCD" FontSize ="20" FontFamily="Segoe UI Black" Foreground="#8080C0" Margin="0,5"/>
                 </StackPanel>
             </StackPanel>
         </Border>
 
-        <Border Grid.Column="1" Background="#8080C0" CornerRadius="10" Margin="10">
-            <StackPanel>
+        <!-- Canvas to draw lines between ports -->
+        <!--
+        Grid.Column="0": Canvas is placed in the first column of the Grid
+        Grid.ColumnSpan="2": spans across two columns
+        HorizontalAlignment="Stretch": to fill the available horizontal space within its parent container
+        VerticalAlignment="Stretch": to fill the available vertical space within its parent container
+        IsHitTestVisible="False": do not receive input events like mouse clicks
+        -->
+        <Canvas Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" IsHitTestVisible="False">
+            <!--
+            ActualWidth
+                1. a read-only property that reflects the actual width of the element 
+                   after it has been rendered and laid out by the WPF layout system
+                2. If the size of the element changes (for instance, when the window is resized), 
+                   ActualWidth will update accordingly
+            -->
+            <!--
+            Binding
+                1. allows you to link a property of one object to a property of another object
+                2. This linking allows data to flow between the two properties, 
+                   meaning that if the source property changes, the target property will automatically update
+            -->
+            <!--
+            Converter: adjust the positioning of the lines based on the size and position of the elements
+            -->
+            <Line X1="{Binding ElementName=rts1, Path=ActualWidth, Converter={StaticResource X1Converter}}" 
+                  Y1="{Binding ElementName=rts1, Path=ActualHeight, Converter={StaticResource Y1Converter, ConverterParameter=0}}" 
+                  X2="{Binding ElementName=rts2, Path=ActualWidth, Converter={StaticResource X2Converter}}" 
+                  Y2="{Binding ElementName=rts2, Path=ActualHeight, Converter={StaticResource Y2Converter, ConverterParameter=0}}" 
+                  Stroke="LightBlue" StrokeThickness="2" />
+
+            <!--<Line X1="{Binding ElementName=ctsLeft, Path=ActualWidth, Converter={StaticResource LeftX1Converter}}" 
+                  Y1="{Binding ElementName=cts1, Path=ActualHeight, Converter={StaticResource Y1Converter, ConverterParameter=1}}" 
+                  X2="{Binding ElementName=cts2, Path=ActualWidth, Converter={StaticResource RightX2Converter}}" 
+                  Y2="{Binding ElementName=cts2, Path=ActualHeight, Converter={StaticResource Y2Converter, ConverterParameter=1}}" 
+                  Stroke="LightBlue" StrokeThickness="2" />
+
+            <Line X1="{Binding ElementName=dtr1, Path=ActualWidth, Converter={StaticResource LeftX1Converter}}" 
+                  Y1="{Binding ElementName=dtr1, Path=ActualHeight, Converter={StaticResource Y1Converter, ConverterParameter=2}}" 
+                  X2="{Binding ElementName=dtr2, Path=ActualWidth, Converter={StaticResource RightX2Converter}}" 
+                  Y2="{Binding ElementName=dtr2, Path=ActualHeight, Converter={StaticResource Y2Converter, ConverterParameter=2}}" 
+                  Stroke="LightBlue" StrokeThickness="2" />
+
+            <Line X1="{Binding ElementName=dsr1, Path=ActualWidth, Converter={StaticResource LeftX1Converter}}" 
+                  Y1="{Binding ElementName=dsr1, Path=ActualHeight, Converter={StaticResource Y1Converter, ConverterParameter=3}}" 
+                  X2="{Binding ElementName=dsr2, Path=ActualWidth, Converter={StaticResource RightX2Converter}}" 
+                  Y2="{Binding ElementName=dsr2, Path=ActualHeight, Converter={StaticResource Y2Converter, ConverterParameter=3}}" 
+                  Stroke="LightBlue" StrokeThickness="2" />
+
+            <Line X1="{Binding ElementName=dcd1, Path=ActualWidth, Converter={StaticResource LeftX1Converter}}" 
+                  Y1="{Binding ElementName=dcd1, Path=ActualHeight, Converter={StaticResource Y1Converter, ConverterParameter=4}}" 
+                  X2="{Binding ElementName=dcd2, Path=ActualWidth, Converter={StaticResource RightX2Converter}}" 
+                  Y2="{Binding ElementName=dcd2, Path=ActualHeight, Converter={StaticResource Y2Converter, ConverterParameter=4}}" 
+                  Stroke="LightBlue" StrokeThickness="2" />-->
+        </Canvas>
+
+        <!-- Second Border and StackPanel for the right port -->
+        <Border Grid.Column="1" Background="#C8BFE7" CornerRadius="10" Margin="34,27,31,33">
+            <StackPanel x:Name="Panel2">
                 <ComboBox x:Name="comboBoxPorts2"
                           VerticalAlignment="Center"
                           HorizontalAlignment="Center"
                           Width="100"
                           IsEditable="False" 
-                          SelectionChanged="comboBoxPorts_SelectionChanged2"/>          
-                <StackPanel Margin="10">
-                    <TextBlock Text="RTS"/>
-                    <TextBlock Text="CTS"/>
-                    <TextBlock Text="DTR"/>
-                    <TextBlock Text="DSR"/>
-                    <TextBlock Text="DCD"/>
+                          SelectionChanged="comboBoxPorts_SelectionChanged2"/>
+                <!--StackPanel: arranges its child elements into a single line, either vertically or horizontally
+                                This is determined by the Orientation property, which can be set to either Vertical or Horizontal-->
+                <StackPanel Margin="40">
+                    <TextBlock x:Name="rts2" Text="RTS" FontSize ="20" FontFamily="Segoe UI Black" Foreground="#8080C0" Margin="0,5" HorizontalAlignment="right"/>
+                    <TextBlock x:Name="cts2" Text="CTS" FontSize ="20" FontFamily="Segoe UI Black" Foreground="#8080C0" Margin="0,5" HorizontalAlignment="right"/>
+                    <TextBlock x:Name="dtr2" Text="DTR" FontSize ="20" FontFamily="Segoe UI Black" Foreground="#8080C0" Margin="0,5" HorizontalAlignment="right"/>
+                    <TextBlock x:Name="dsr2" Text="DSR" FontSize ="20" FontFamily="Segoe UI Black" Foreground="#8080C0" Margin="0,5" HorizontalAlignment="right"/>
+                    <TextBlock x:Name="dcd2" Text="DCD" FontSize ="20" FontFamily="Segoe UI Black" Foreground="#8080C0" Margin="0,5" HorizontalAlignment="right"/>
                 </StackPanel>
             </StackPanel>
         </Border>
+
     </Grid>
 </Window>

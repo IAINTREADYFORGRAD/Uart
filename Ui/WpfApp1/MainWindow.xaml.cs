@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Globalization;
 using System.IO.Ports;
 using System.Linq;
 using System.Windows;
+using System.Windows.Data;
 
 namespace WpfApp1
 {
@@ -65,6 +67,20 @@ namespace WpfApp1
 
             string[] filteredPorts = SerialPort.GetPortNames().Where(port => port != selectedPort2).ToArray();
             comboBoxPorts1.ItemsSource = filteredPorts;
+        }
+    }
+    public class X1Converter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            double actualWidth = (double)value;
+            // Adjust the value as needed
+            return actualWidth - 10; // Example adjustment
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
         }
     }
 }
