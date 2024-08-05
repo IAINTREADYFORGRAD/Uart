@@ -1,4 +1,6 @@
-﻿<Window x:Class="WpfApp1.MainWindow"
+﻿
+    
+<Window x:Class="WpfApp1.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -7,6 +9,13 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="600" Background="#8080C0">
 
+    <Window.Resources>
+        <local:LinePositionConverter x:Key="X1Converter" Direction="LeftToRight"/>
+        <local:LinePositionConverter x:Key="X2Converter" Direction="RightToLeft"/>
+        <local:LinePositionConverter x:Key="Y1Converter"/>
+        <local:LinePositionConverter x:Key="Y2Converter"/>
+    </Window.Resources>
+    
     <Grid>
         <!--ColumnDefinitions: a collection of ColumnDefinition objects, 
                                each representing a single column in the grid-->
@@ -62,7 +71,7 @@
                    meaning that if the source property changes, the target property will automatically update
             -->
             <!--
-            Converter: adjust the positioning of the lines based on the size and position of the elements
+            Converter: to determine the exact positions of the line endpoints based on the layout
             -->
             <Line X1="{Binding ElementName=rts1, Path=ActualWidth, Converter={StaticResource X1Converter}}" 
                   Y1="{Binding ElementName=rts1, Path=ActualHeight, Converter={StaticResource Y1Converter, ConverterParameter=0}}" 

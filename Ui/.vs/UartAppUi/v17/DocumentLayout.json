@@ -30,8 +30,12 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 2,
           "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
             {
               "$type": "Document",
               "DocumentIndex": 1,
@@ -40,7 +44,7 @@
               "RelativeDocumentMoniker": "WpfApp1\\C#",
               "ToolTip": "C:\\NOOBIE\\UartApp\\Ui\\WpfApp1\\C#",
               "RelativeToolTip": "WpfApp1\\C#",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAADMAAAAPAAAA",
+              "ViewState": "AQIAAEsAAAAAAAAAAAAkwGgAAAAhAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
               "WhenOpened": "2024-08-04T10:39:55.231Z",
               "EditorCaption": ""
@@ -65,7 +69,7 @@
               "RelativeDocumentMoniker": "WpfApp1\\MainWindow.xaml.cs",
               "ToolTip": "C:\\NOOBIE\\UartApp\\Ui\\WpfApp1\\MainWindow.xaml.cs",
               "RelativeToolTip": "WpfApp1\\MainWindow.xaml.cs",
-              "ViewState": "AQIAAA0AAAAAAAAAAAAuwBIAAAAnAAAA",
+              "ViewState": "AQIAAEIAAAAAAAAAAAAUwEsAAAAgAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-08-03T09:44:53.76Z",
               "EditorCaption": ""

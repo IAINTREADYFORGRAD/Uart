@@ -71,11 +71,32 @@ namespace WpfApp1
     }
     public class X1Converter : IValueConverter
     {
+        public string Direction { get; set; } = "LeftToRight";
+
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            double actualWidth = (double)value;
-            // Adjust the value as needed
-            return actualWidth - 10; // Example adjustment
+            if (value is double actualSize)
+            {
+                // For X coordinates, we may adjust based on element's side (left or right)
+                if (Direction == "LeftToRight")
+                {
+                    return 0; // Start from the left side of the element
+                }
+                else if (Direction == "RightToLeft")
+                {
+                    return actualSize; // Start from the right side of the element
+                }
+
+                // For Y coordinates, we align based on the item index (optional, if parameter is used)
+                if (parameter is string indexStr && int.TryParse(indexStr, out int index))
+                {
+                    return (actualSize / 5) * (index + 1);
+                }
+
+                return actualSize / 2; // Default to center for Y coordinates
+            }
+
+            return 0;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

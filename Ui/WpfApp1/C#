@@ -71,3 +71,45 @@
 					  Stroke="LightBlue" StrokeThickness="2" />
 			</Canvas>
 		</Grid>
+
+4. why we need to add 'converter' to resources in xaml but 'eventhandler' does not
+		
+	(1) event handler
+			
+		A. Build Time Resolution: When you declare an event handler in XAML (e.g., SelectionChanged="comboBoxPorts_SelectionChanged1"), 
+									the WPF compiler wires this up at build time. 
+									It looks for the corresponding method in the code-behind (MainWindow.xaml.cs).
+			
+		B. Direct Reference: The event handler is directly referenced in the XAML markup, 
+								and because this reference is resolved at build time, 
+								WPF can easily link the XAML with the code-behind.
+
+		C. Container: The XAML elements, like ComboBox, provide a "container" for event handlers. 
+					  These are predefined properties that expect method names (event handlers) from the code-behind.
+					  e.g., ComboBox SelectionChanged="comboBoxPorts_SelectionChanged1"
+
+	(2) converter
+
+		A. Runtime Resolution: Converters are used in data bindings, which are resolved at runtime. 
+						       The XAML engine needs to know where to find the converter object when it evaluates a binding expression.
+
+		B. Resource System: resource system in WPF is designed to provide objects (like converters) to the binding engine at runtime
+
+		C. No Direct Container: Unlike event handlers,
+								there is no direct "container" for converters in XAML elements. 
+								Instead, converters are referenced indirectly through bindings, 
+								and the resource system is responsible for resolving these references.
+
+	(3) conclusion
+		
+		A. Event Handlers: The reference is established during the build process, linking the XAML to code-behind.
+
+		B. Converters: The reference is established at runtime, requiring the resource system to supply the converter when needed.
+
+5. XAML markup: XML-based syntax used to define the user interface elements, layout, and behavior in a WPF
+
+6. WPF
+
+	(1) Windows Presentation Foundation
+
+7. XAML: eXtensible Application Markup Language
