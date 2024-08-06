@@ -69,34 +69,50 @@ namespace WpfApp1
             comboBoxPorts1.ItemsSource = filteredPorts;
         }
     }
-    public class X1Converter : IValueConverter
+    public enum Direction
     {
-        public string Direction { get; set; } = "LeftToRight";
+        LeftToRight,
+        RightToLeft,
+        TopToBottom,
+        BottomToTop
+    }
+
+    public class LinePositionConverter : IValueConverter
+    {
+        public Direction Direction { get; set; }
 
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            if (value is double actualSize)
+            double position = 0;
+            double offset = 0;
+
+            // Handle cases where the value is a double (e.g., ActualWidth or ActualHeight)
+            if (value is double actualValue)
             {
-                // For X coordinates, we may adjust based on element's side (left or right)
-                if (Direction == "LeftToRight")
+                switch (Direction)
                 {
-                    return 0; // Start from the left side of the element
-                }
-                else if (Direction == "RightToLeft")
-                {
-                    return actualSize; // Start from the right side of the element
+                    case Direction.LeftToRight:
+                        position = 0; // Start at the left (X1)
+                        break;
+                    case Direction.RightToLeft:
+                        position = actualValue; // End at the right (X2)
+                        break;
+                    case Direction.TopToBottom:
+                        position = 0; // Start at the top (Y1)
+                        break;
+                    case Direction.BottomToTop:
+                        position = actualValue; // End at the bottom (Y2)
+                        break;
                 }
 
-                // For Y coordinates, we align based on the item index (optional, if parameter is used)
-                if (parameter is string indexStr && int.TryParse(indexStr, out int index))
+                // If a parameter is passed, it is used to adjust the position, typically for Y-axis offsets
+                if (parameter != null && double.TryParse(parameter.ToString(), out offset))
                 {
-                    return (actualSize / 5) * (index + 1);
+                    position += offset;
                 }
-
-                return actualSize / 2; // Default to center for Y coordinates
             }
 
-            return 0;
+            return position;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

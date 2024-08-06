@@ -106,10 +106,10 @@
 
 		B. Converters: The reference is established at runtime, requiring the resource system to supply the converter when needed.
 
-5. XAML markup: XML-based syntax used to define the user interface elements, layout, and behavior in a WPF
-
-6. WPF
+5. WPF
 
 	(1) Windows Presentation Foundation
 
-7. XAML: eXtensible Application Markup Language
+6. XAML: eXtensible Application Markup Language
+
+7. XAML markup: XML-based syntax used to define the user interface elements, layout, and behavior in a WPF

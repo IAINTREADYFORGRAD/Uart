@@ -10,10 +10,25 @@
         Title="MainWindow" Height="350" Width="600" Background="#8080C0">
 
     <Window.Resources>
+        <!--local
+            1. typically mapped to the namespace of your application
+            2. is the alias you defined for the namespace clr-namespace:WpfApp1
+        -->
+        <!--LinePositionConverter
+            1. a class defined in your project under the 'local' namespace
+            2. specifies the type of the object you are creating
+        -->
+        <!--x:Key
+            1. used to give a name (key) to the resource you're defining
+            2. used to reference the resource in your XAML bindings or elsewhere in your XAML file
+        -->
+        <!--Direction: property defined in LinePositionConverter class-->
+        <!--local:LinePositionConverter: tells XAML to create an instance of the LinePositionConverter class-->
+        <!--x:Key="X1Converter: gives this instance a name (X1Converter), so you can refer to it later in your XAML-->
         <local:LinePositionConverter x:Key="X1Converter" Direction="LeftToRight"/>
         <local:LinePositionConverter x:Key="X2Converter" Direction="RightToLeft"/>
-        <local:LinePositionConverter x:Key="Y1Converter"/>
-        <local:LinePositionConverter x:Key="Y2Converter"/>
+        <local:LinePositionConverter x:Key="Y1Converter" Direction="TopToBottom"/>
+        <local:LinePositionConverter x:Key="Y2Converter" Direction="TopToBottom"/>
     </Window.Resources>
     
     <Grid>
@@ -63,15 +78,15 @@
                    after it has been rendered and laid out by the WPF layout system
                 2. If the size of the element changes (for instance, when the window is resized), 
                    ActualWidth will update accordingly
-            -->
-            <!--
+            
             Binding
-                1. allows you to link a property of one object to a property of another object
-                2. This linking allows data to flow between the two properties, 
-                   meaning that if the source property changes, the target property will automatically update
-            -->
-            <!--
-            Converter: to determine the exact positions of the line endpoints based on the layout
+                1. reates a connection between a property of an object (like a data model or another UI element) and a property of a WPF element
+                2. This connection ensures that when the property's value changes in the object, the WPF element automatically reflects that change, 
+                   and vice versa, depending on the binding mode
+            
+            Converter: dynamically calculates where the line should start and end
+            
+            {StaticResource X1Converter}: retrieves the LinePositionConverter instance named X1Converter from the resources.
             -->
             <Line X1="{Binding ElementName=rts1, Path=ActualWidth, Converter={StaticResource X1Converter}}" 
                   Y1="{Binding ElementName=rts1, Path=ActualHeight, Converter={StaticResource Y1Converter, ConverterParameter=0}}" 
