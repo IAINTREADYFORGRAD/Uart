@@ -39,7 +39,7 @@ namespace WpfApp1
             }
         }
 
-        private void comboBoxPorts_SelectionChanged1(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        private void ComboBoxPorts_SelectionChanged1(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
         {
             if (e.AddedItems.Count == 0)
             {
@@ -56,7 +56,7 @@ namespace WpfApp1
             comboBoxPorts2.ItemsSource = filteredPorts;
         }
 
-        private void comboBoxPorts_SelectionChanged2(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        private void ComboBoxPorts_SelectionChanged2(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
         {
             if (e.AddedItems.Count == 0)
             {
@@ -77,14 +77,18 @@ namespace WpfApp1
         BottomToTop
     }
 
-    public class LinePositionConverter : IValueConverter
+    public  class LinePositionConverter : IValueConverter
     {
         public Direction Direction { get; set; }
 
+        // value: ActualHeight of the rts2 element
+        // targetType: type of the binding target property
+        //             it indicates what type of data the converter should return
+        // parameter: corresponds to the ConverterParameter which in this case is 'Line' element
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             double position = 0;
-            double offset = 0;
+            double offset;
 
             // Handle cases where the value is a double (e.g., ActualWidth or ActualHeight)
             if (value is double actualValue)

@@ -113,3 +113,40 @@
 6. XAML: eXtensible Application Markup Language
 
 7. XAML markup: XML-based syntax used to define the user interface elements, layout, and behavior in a WPF
+
+8. partial class
+	
+	(1) A partial class can be spread across multiple files. 
+		Each file can contain part of the class's definition, 
+		and when compiled, the parts are combined into a single class.
+
+	(2) All parts of the partial class must have the same name and must be in the same namespace.
+
+	(3) All parts of the partial class must have the same access modifiers
+
+	(4) Partial classes are commonly used in scenarios where some parts of the class are auto-generated, 
+		and other parts are written by the developer.
+
+	(5) e.g.,
+		
+		// File1.cs                                                      // File2.cs
+		namespace MyNamespace											 namespace MyNamespace
+		{																 {
+			public partial class MyClass									 public partial class MyClass
+			{																 {
+				public void Method1()											 public void Method2()
+				{																 {
+					Console.WriteLine("Method1 from File1");						 Console.WriteLine("Method2 from File2");
+				}																 }
+			}																 }
+		}																 }
+
+		class Program
+		{
+			static void Main(string[] args)
+			{
+				MyClass myClass = new MyClass();
+				myClass.Method1();  // Output: Method1 from File1
+				myClass.Method2();  // Output: Method2 from File2
+			}
+		}
