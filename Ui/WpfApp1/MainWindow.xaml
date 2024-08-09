@@ -52,72 +52,33 @@
                           Width="100"
                           IsEditable="False" 
                           SelectionChanged="ComboBoxPorts_SelectionChanged1"/>
-
                 <StackPanel Margin="40">
-                    <TextBlock x:Name="rts1" Text="RTS" FontSize ="20" FontFamily="Segoe UI Black" Foreground="#8080C0" Margin="0,5"/>
-                    <TextBlock x:Name="cts1" Text="CTS" FontSize ="20" FontFamily="Segoe UI Black" Foreground="#8080C0" Margin="0,5"/>
-                    <TextBlock x:Name="dtr1" Text="DTR" FontSize ="20" FontFamily="Segoe UI Black" Foreground="#8080C0" Margin="0,5"/>
-                    <TextBlock x:Name="dsr1" Text="DSR" FontSize ="20" FontFamily="Segoe UI Black" Foreground="#8080C0" Margin="0,5"/>
-                    <TextBlock x:Name="dcd1" Text="DCD" FontSize ="20" FontFamily="Segoe UI Black" Foreground="#8080C0" Margin="0,5"/>
+                    <StackPanel Orientation="Horizontal" Margin="0,0">
+                        <TextBlock x:Name="rts1" Text="RTS" FontSize ="20" FontFamily="Segoe UI Black" Foreground="#8080C0" Margin="0,5"/>
+                        <Ellipse x:Name="rts1Pin" Width="10" Height="10" Fill="#7092BE" Margin="10,0,0,0"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0,0">
+                        <TextBlock x:Name="cts1" Text="CTS" FontSize ="20" FontFamily="Segoe UI Black" Foreground="#8080C0" Margin="0,5"/>
+                        <Ellipse x:Name="cts1Pin" Width="10" Height="10" Fill="#7092BE" Margin="10,0,0,0"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0,0">
+                        <TextBlock x:Name="dtr1" Text="DTR" FontSize ="20" FontFamily="Segoe UI Black" Foreground="#8080C0" Margin="0,5"/>
+                        <Ellipse x:Name="dtr1Pin" Width="10" Height="10" Fill="#7092BE" Margin="10,0,0,0"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0,0">
+                        <TextBlock x:Name="dsr1" Text="DSR" FontSize ="20" FontFamily="Segoe UI Black" Foreground="#8080C0" Margin="0,5"/>
+                        <Ellipse x:Name="dsr1Pin" Width="10" Height="10" Fill="#7092BE" Margin="10,0,0,0"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0,0">
+                        <TextBlock x:Name="dcd1" Text="DCD" FontSize ="20" FontFamily="Segoe UI Black" Foreground="#8080C0" Margin="0,5"/>
+                        <Ellipse x:Name="dcd1Pin" Width="10" Height="10" Fill="#7092BE" Margin="10,0,0,0"/>
+                    </StackPanel>
                 </StackPanel>
             </StackPanel>
         </Border>
 
-        <!-- Canvas to draw lines between ports -->
-        <!--
-        Grid.Column="0": Canvas is placed in the first column of the Grid
-        Grid.ColumnSpan="2": spans across two columns
-        HorizontalAlignment="Stretch": to fill the available horizontal space within its parent container
-        VerticalAlignment="Stretch": to fill the available vertical space within its parent container
-        IsHitTestVisible="False": do not receive input events like mouse clicks
-        -->
-        <Canvas Grid.Column="0" Grid.ColumnSpan="3" IsHitTestVisible="False">
-            <!--
-            ActualWidth
-                1. a read-only property that reflects the actual width of the element 
-                   after it has been rendered and laid out by the WPF layout system
-                2. If the size of the element changes (for instance, when the window is resized), 
-                   ActualWidth will update accordingly
-            
-            Binding
-                1. reates a connection between a property of an object (like a data model or another UI element) and a property of a WPF element
-                2. This connection ensures that when the property's value changes in the object, the WPF element automatically reflects that change, 
-                   and vice versa, depending on the binding mode
-            
-            Converter: dynamically calculates where the line should start and end
-            
-            {StaticResource X1Converter}: retrieves the LinePositionConverter instance named X1Converter from the resources.
-            -->
-            <Line X1="{Binding ElementName=rts1, Path=ActualWidth, Converter={StaticResource X1Converter}}" 
-                  Y1="{Binding ElementName=rts1, Path=ActualHeight, Converter={StaticResource Y1Converter}}" 
-                  X2="{Binding ElementName=rts2, Path=ActualWidth, Converter={StaticResource X2Converter}}" 
-                  Y2="{Binding ElementName=rts2, Path=ActualHeight, Converter={StaticResource Y2Converter}}" 
-                  Stroke="#7092BE" StrokeThickness="4" HorizontalAlignment="Left" Canvas.Top="256" VerticalAlignment="Top" Canvas.Left="129" />
 
-            <Line X1="{Binding ElementName=cts1, Path=ActualWidth, Converter={StaticResource X1Converter}}" 
-                  Y1="{Binding ElementName=cts1, Path=ActualHeight, Converter={StaticResource Y1Converter}}" 
-                  X2="{Binding ElementName=cts2, Path=ActualWidth, Converter={StaticResource X2Converter}}" 
-                  Y2="{Binding ElementName=cts2, Path=ActualHeight, Converter={StaticResource Y2Converter}}" 
-                  Stroke="#7092BE" StrokeThickness="4" HorizontalAlignment="Left" Canvas.Top="218" VerticalAlignment="Top" Canvas.Left="128" />
-
-            <Line X1="{Binding ElementName=dtr1, Path=ActualWidth, Converter={StaticResource X1Converter}}" 
-                  Y1="{Binding ElementName=dtr1, Path=ActualHeight, Converter={StaticResource Y1Converter}}" 
-                  X2="{Binding ElementName=dtr2, Path=ActualWidth, Converter={StaticResource X2Converter}}" 
-                  Y2="{Binding ElementName=dtr2, Path=ActualHeight, Converter={StaticResource Y2Converter}}" 
-                  Stroke="#7092BE" StrokeThickness="4" HorizontalAlignment="Left" Canvas.Top="184" VerticalAlignment="Top" Canvas.Left="125" />
-
-            <Line X1="{Binding ElementName=dsr1, Path=ActualWidth, Converter={StaticResource X1Converter}}" 
-                  Y1="{Binding ElementName=dsr1, Path=ActualHeight, Converter={StaticResource Y1Converter}}" 
-                  X2="{Binding ElementName=dsr2, Path=ActualWidth, Converter={StaticResource X2Converter}}" 
-                  Y2="{Binding ElementName=dsr2, Path=ActualHeight, Converter={StaticResource Y2Converter}}" 
-                  Stroke="#7092BE" StrokeThickness="4" HorizontalAlignment="Left" Canvas.Top="147" VerticalAlignment="Top" Canvas.Left="124" />
-
-            <Line X1="{Binding ElementName=dcd1, Path=ActualWidth, Converter={StaticResource X1Converter}}" 
-                  Y1="{Binding ElementName=dcd1, Path=ActualHeight, Converter={StaticResource Y1Converter}}" 
-                  X2="{Binding ElementName=dcd2, Path=ActualWidth, Converter={StaticResource X2Converter}}" 
-                  Y2="{Binding ElementName=dcd2, Path=ActualHeight, Converter={StaticResource Y2Converter}}" 
-                  Stroke="#7092BE" StrokeThickness="4" HorizontalAlignment="Left" Canvas.Top="109" VerticalAlignment="Top" Canvas.Left="124"/>
-        </Canvas>
+       
 
         <!-- Second Border and StackPanel for the right port -->
         <Border Grid.Column="2" Background="#C8BFE7" CornerRadius="10" Margin="34,27,31,33">
@@ -131,14 +92,96 @@
                 <!--StackPanel: arranges its child elements into a single line, either vertically or horizontally
                                 This is determined by the Orientation property, which can be set to either Vertical or Horizontal-->
                 <StackPanel Margin="40">
-                    <TextBlock x:Name="rts2" Text="RTS" FontSize ="20" FontFamily="Segoe UI Black" Foreground="#8080C0" Margin="0,5" HorizontalAlignment="right"/>
-                    <TextBlock x:Name="cts2" Text="CTS" FontSize ="20" FontFamily="Segoe UI Black" Foreground="#8080C0" Margin="0,5" HorizontalAlignment="right"/>
-                    <TextBlock x:Name="dtr2" Text="DTR" FontSize ="20" FontFamily="Segoe UI Black" Foreground="#8080C0" Margin="0,5" HorizontalAlignment="right"/>
-                    <TextBlock x:Name="dsr2" Text="DSR" FontSize ="20" FontFamily="Segoe UI Black" Foreground="#8080C0" Margin="0,5" HorizontalAlignment="right"/>
-                    <TextBlock x:Name="dcd2" Text="DCD" FontSize ="20" FontFamily="Segoe UI Black" Foreground="#8080C0" Margin="0,5" HorizontalAlignment="right"/>
+                    <StackPanel Orientation="Horizontal" Margin="0,0" HorizontalAlignment="right">
+                        <Ellipse x:Name="rts2Pin" Width="10" Height="10" Fill="#7092BE" Margin="0,0,10,0"/>
+                        <TextBlock x:Name="rts2" Text="RTS" FontSize ="20" FontFamily="Segoe UI Black" Foreground="#8080C0" Margin="0,5" HorizontalAlignment="right"/>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal" Margin="0,0" HorizontalAlignment="right">
+                        <Ellipse x:Name="cts2Pin" Width="10" Height="10" Fill="#7092BE" Margin="0,0,10,0"/>
+                        <TextBlock x:Name="cts2" Text="CTS" FontSize ="20" FontFamily="Segoe UI Black" Foreground="#8080C0" Margin="0,5" HorizontalAlignment="right"/>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal" Margin="0,0" HorizontalAlignment="right">
+                        <Ellipse x:Name="dtr2Pin" Width="10" Height="10" Fill="#7092BE" Margin="0,0,10,0"/>
+                        <TextBlock x:Name="dtr2" Text="DTR" FontSize ="20" FontFamily="Segoe UI Black" Foreground="#8080C0" Margin="0,5" HorizontalAlignment="right"/>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal" Margin="0,0" HorizontalAlignment="right">
+                        <Ellipse x:Name="dsr2Pin" Width="10" Height="10" Fill="#7092BE" Margin="0,0,10,0"/>
+                        <TextBlock x:Name="dsr2" Text="DSR" FontSize ="20" FontFamily="Segoe UI Black" Foreground="#8080C0" Margin="0,5" HorizontalAlignment="right"/>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal" Margin="0,0" HorizontalAlignment="right">
+                        <Ellipse x:Name="dcd2Pin" Width="10" Height="10" Fill="#7092BE" Margin="0,0,10,0"/>
+                        <TextBlock x:Name="dcd2" Text="DCD" FontSize ="20" FontFamily="Segoe UI Black" Foreground="#8080C0" Margin="0,5" HorizontalAlignment="right"/>
+                    </StackPanel>
                 </StackPanel>
             </StackPanel>
         </Border>
+
+        <!-- Canvas to draw lines between ports -->
+        <!--
+ Grid.Column="0": Canvas is placed in the first column of the Grid
+ Grid.ColumnSpan="2": spans across two columns
+ HorizontalAlignment="Stretch": to fill the available horizontal space within its parent container
+ VerticalAlignment="Stretch": to fill the available vertical space within its parent container
+ IsHitTestVisible="False": do not receive input events like mouse clicks
+ -->
+        <Canvas Grid.Column="0" Grid.ColumnSpan="3" IsHitTestVisible="False">
+            <!--
+     ActualWidth
+         1. a read-only property that reflects the actual width of the element 
+            after it has been rendered and laid out by the WPF layout system
+         2. If the size of the element changes (for instance, when the window is resized), 
+            ActualWidth will update accordingly
+     
+     Binding
+         1. reates a connection between a property of an object (like a data model or another UI element) and a property of a WPF element
+         2. This connection ensures that when the property's value changes in the object, the WPF element automatically reflects that change, 
+            and vice versa, depending on the binding mode
+     
+     Converter: dynamically calculates where the line should start and end
+     
+     {StaticResource X1Converter}: retrieves the LinePositionConverter instance named X1Converter from the resources.
+     -->
+            <Line X1="{Binding ElementName=rts1Pin, Path=ActualWidth, Converter={StaticResource X1Converter}}" 
+           Y1="{Binding ElementName=rts1Pin, Path=ActualHeight, Converter={StaticResource Y1Converter}}" 
+           X2="{Binding ElementName=rts2Pin, Path=ActualWidth, Converter={StaticResource X2Converter}}" 
+           Y2="{Binding ElementName=rts2Pin, Path=ActualHeight, Converter={StaticResource Y2Converter}}" 
+           Stroke="#7092BE" StrokeThickness="4" HorizontalAlignment="Center" Canvas.Top="253" VerticalAlignment="Top" Canvas.Left="150" />
+
+            <Line X1="{Binding ElementName=cts1Pin, Path=ActualWidth, Converter={StaticResource X1Converter}}" 
+           Y1="{Binding ElementName=cts1Pin, Path=ActualHeight, Converter={StaticResource Y1Converter}}" 
+           X2="{Binding ElementName=cts2Pin, Path=ActualWidth, Converter={StaticResource X2Converter}}" 
+           Y2="{Binding ElementName=cts2Pin, Path=ActualHeight, Converter={StaticResource Y2Converter}}" 
+           Stroke="#7092BE" StrokeThickness="4" HorizontalAlignment="Center" Canvas.Top="215" VerticalAlignment="Top" Canvas.Left="142" />
+
+            <Line X1="{Binding ElementName=dtr1Pin, Path=ActualWidth, Converter={StaticResource X1Converter}}" 
+           Y1="{Binding ElementName=dtr1Pin, Path=ActualHeight, Converter={StaticResource Y1Converter}}" 
+           X2="{Binding ElementName=dtr2Pin, Path=ActualWidth, Converter={StaticResource X2Converter}}" 
+           Y2="{Binding ElementName=dtr2Pin, Path=ActualHeight, Converter={StaticResource Y2Converter}}" 
+           Stroke="#7092BE" StrokeThickness="4" HorizontalAlignment="Center" Canvas.Top="180" VerticalAlignment="Top" Canvas.Left="143" />
+
+            <Line X1="{Binding ElementName=dsr1Pin, Path=ActualWidth, Converter={StaticResource X1Converter}}" 
+           Y1="{Binding ElementName=dsr1Pin, Path=ActualHeight, Converter={StaticResource Y1Converter}}" 
+           X2="{Binding ElementName=dsr2Pin, Path=ActualWidth, Converter={StaticResource X2Converter}}" 
+           Y2="{Binding ElementName=dsr2Pin, Path=ActualHeight, Converter={StaticResource Y2Converter}}" 
+           Stroke="#7092BE" StrokeThickness="4" HorizontalAlignment="Center" Canvas.Top="145" VerticalAlignment="Top" Canvas.Left="141" />
+
+            <Line X1="{Binding ElementName=dcd1Pin, Path=ActualWidth, Converter={StaticResource X1Converter}}" 
+           Y1="{Binding ElementName=dcd1Pin, Path=ActualHeight, Converter={StaticResource Y1Converter}}" 
+           X2="{Binding ElementName=dcd2Pin, Path=ActualWidth, Converter={StaticResource X2Converter}}" 
+           Y2="{Binding ElementName=dcd2Pin, Path=ActualHeight, Converter={StaticResource Y2Converter}}" 
+           Stroke="#7092BE" StrokeThickness="4" HorizontalAlignment="Center" Canvas.Top="112" VerticalAlignment="Top" Canvas.Left="139"/>
+
+            <Line X1="{Binding ElementName=dcd1Pin, Path=(Canvas.Left), Mode=OneWay}"
+                  Y1="{Binding ElementName=dcd1Pin, Path=(Canvas.Top), Mode=OneWay}"
+                  X2="{Binding ElementName=dcd2Pin, Path=(Canvas.Left), Mode=OneWay}"
+                  Y2="{Binding ElementName=dcd2Pin, Path=(Canvas.Top), Mode=OneWay}"
+                  Stroke="#7092BE" StrokeThickness="4" />
+
+        </Canvas>
 
     </Grid>
 </Window>
