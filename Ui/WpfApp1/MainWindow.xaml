@@ -28,6 +28,7 @@
         <local:LinePositionConverter x:Key="X2Converter" Direction="RightToLeft"/>
         <local:LinePositionConverter x:Key="Y1Converter" Direction="TopToBottom"/>
         <local:LinePositionConverter x:Key="Y2Converter" Direction="TopToBottom"/>
+        
     </Window.Resources>
 
     <Grid>
@@ -144,36 +145,39 @@
      Converter: dynamically calculates where the line should start and end
      
      {StaticResource X1Converter}: retrieves the LinePositionConverter instance named X1Converter from the resources.
-     -->
-            <Line X1="{Binding ElementName=rts1Pin, Path=ActualWidth, Converter={StaticResource X1Converter}}" 
-           Y1="{Binding ElementName=rts1Pin, Path=ActualHeight, Converter={StaticResource Y1Converter}}" 
-           X2="{Binding ElementName=rts2Pin, Path=ActualWidth, Converter={StaticResource X2Converter}}" 
-           Y2="{Binding ElementName=rts2Pin, Path=ActualHeight, Converter={StaticResource Y2Converter}}" 
-           Stroke="#7092BE" StrokeThickness="4" HorizontalAlignment="Center" Canvas.Top="253" VerticalAlignment="Top" Canvas.Left="150" />
+            
+     Path: indicates the specific property of the source object to bind to. 
+     Path=ActualWidth: bind to the ActualWidth property of the specified source element (e.g., rts1Pin)
+    -->
+            <Line X1="{Binding ElementName=rts1Pin, Path=ActualWidth, Converter={StaticResource X1Converter}, ConverterParameter='0'}" 
+                  Y1="{Binding ElementName=rts1Pin, Path=ActualHeight, Converter={StaticResource Y1Converter}}" 
+                  X2="{Binding ElementName=rts2Pin, Path=ActualWidth, Converter={StaticResource X2Converter}}" 
+                  Y2="{Binding ElementName=rts2Pin, Path=ActualHeight, Converter={StaticResource Y2Converter}}" 
+                  Stroke="#7092BE" StrokeThickness="4" Canvas.Top="253" VerticalAlignment="Top" Canvas.Left="150" />
 
             <Line X1="{Binding ElementName=cts1Pin, Path=ActualWidth, Converter={StaticResource X1Converter}}" 
-           Y1="{Binding ElementName=cts1Pin, Path=ActualHeight, Converter={StaticResource Y1Converter}}" 
-           X2="{Binding ElementName=cts2Pin, Path=ActualWidth, Converter={StaticResource X2Converter}}" 
-           Y2="{Binding ElementName=cts2Pin, Path=ActualHeight, Converter={StaticResource Y2Converter}}" 
-           Stroke="#7092BE" StrokeThickness="4" HorizontalAlignment="Center" Canvas.Top="215" VerticalAlignment="Top" Canvas.Left="142" />
+                  Y1="{Binding ElementName=cts1Pin, Path=ActualHeight, Converter={StaticResource Y1Converter}}" 
+                  X2="{Binding ElementName=cts2Pin, Path=ActualWidth, Converter={StaticResource X2Converter}}" 
+                  Y2="{Binding ElementName=cts2Pin, Path=ActualHeight, Converter={StaticResource Y2Converter}}" 
+                  Stroke="#7092BE" StrokeThickness="4" HorizontalAlignment="Center" Canvas.Top="215" VerticalAlignment="Top" Canvas.Left="142" />
 
             <Line X1="{Binding ElementName=dtr1Pin, Path=ActualWidth, Converter={StaticResource X1Converter}}" 
-           Y1="{Binding ElementName=dtr1Pin, Path=ActualHeight, Converter={StaticResource Y1Converter}}" 
-           X2="{Binding ElementName=dtr2Pin, Path=ActualWidth, Converter={StaticResource X2Converter}}" 
-           Y2="{Binding ElementName=dtr2Pin, Path=ActualHeight, Converter={StaticResource Y2Converter}}" 
-           Stroke="#7092BE" StrokeThickness="4" HorizontalAlignment="Center" Canvas.Top="180" VerticalAlignment="Top" Canvas.Left="143" />
+                  Y1="{Binding ElementName=dtr1Pin, Path=ActualHeight, Converter={StaticResource Y1Converter}}" 
+                  X2="{Binding ElementName=dtr2Pin, Path=ActualWidth, Converter={StaticResource X2Converter}}" 
+                  Y2="{Binding ElementName=dtr2Pin, Path=ActualHeight, Converter={StaticResource Y2Converter}}" 
+                  Stroke="#7092BE" StrokeThickness="4" HorizontalAlignment="Center" Canvas.Top="180" VerticalAlignment="Top" Canvas.Left="143" />
 
             <Line X1="{Binding ElementName=dsr1Pin, Path=ActualWidth, Converter={StaticResource X1Converter}}" 
-           Y1="{Binding ElementName=dsr1Pin, Path=ActualHeight, Converter={StaticResource Y1Converter}}" 
-           X2="{Binding ElementName=dsr2Pin, Path=ActualWidth, Converter={StaticResource X2Converter}}" 
-           Y2="{Binding ElementName=dsr2Pin, Path=ActualHeight, Converter={StaticResource Y2Converter}}" 
-           Stroke="#7092BE" StrokeThickness="4" HorizontalAlignment="Center" Canvas.Top="145" VerticalAlignment="Top" Canvas.Left="141" />
+                  Y1="{Binding ElementName=dsr1Pin, Path=ActualHeight, Converter={StaticResource Y1Converter}}" 
+                  X2="{Binding ElementName=dsr2Pin, Path=ActualWidth, Converter={StaticResource X2Converter}}" 
+                  Y2="{Binding ElementName=dsr2Pin, Path=ActualHeight, Converter={StaticResource Y2Converter}}" 
+                  Stroke="#7092BE" StrokeThickness="4" HorizontalAlignment="Center" Canvas.Top="145" VerticalAlignment="Top" Canvas.Left="141" />
 
             <Line X1="{Binding ElementName=dcd1Pin, Path=ActualWidth, Converter={StaticResource X1Converter}}" 
-           Y1="{Binding ElementName=dcd1Pin, Path=ActualHeight, Converter={StaticResource Y1Converter}}" 
-           X2="{Binding ElementName=dcd2Pin, Path=ActualWidth, Converter={StaticResource X2Converter}}" 
-           Y2="{Binding ElementName=dcd2Pin, Path=ActualHeight, Converter={StaticResource Y2Converter}}" 
-           Stroke="#7092BE" StrokeThickness="4" HorizontalAlignment="Center" Canvas.Top="112" VerticalAlignment="Top" Canvas.Left="139"/>
+                  Y1="{Binding ElementName=dcd1Pin, Path=ActualHeight, Converter={StaticResource Y1Converter}}" 
+                  X2="{Binding ElementName=dcd2Pin, Path=ActualWidth, Converter={StaticResource X2Converter}}" 
+                  Y2="{Binding ElementName=dcd2Pin, Path=ActualHeight, Converter={StaticResource Y2Converter}}" 
+                  Stroke="#7092BE" StrokeThickness="4" HorizontalAlignment="Center" Canvas.Top="112" VerticalAlignment="Top" Canvas.Left="139"/>
 
             <Line X1="{Binding ElementName=dcd1Pin, Path=(Canvas.Left), Mode=OneWay}"
                   Y1="{Binding ElementName=dcd1Pin, Path=(Canvas.Top), Mode=OneWay}"

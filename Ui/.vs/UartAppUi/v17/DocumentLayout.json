@@ -7,11 +7,11 @@
       "RelativeMoniker": "D:0:0:{1B8B30D2-0E47-4C5E-8051-3D8494AEE25C}|WpfApp1\\WpfApp1.csproj|solutionrelative:wpfapp1\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\w2000\\AppData\\Local\\SourceServer\\fa9eed09adedd84cd44489cd4dc413ce9b84ed6af5c701a01784fa90029bbd33\\Ui\\WpfApp1\\MainWindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{1B8B30D2-0E47-4C5E-8051-3D8494AEE25C}|WpfApp1\\WpfApp1.csproj|c:\\noobie\\uartapp\\ui\\wpfapp1\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1B8B30D2-0E47-4C5E-8051-3D8494AEE25C}|WpfApp1\\WpfApp1.csproj|solutionrelative:wpfapp1\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\w2000\\AppData\\Local\\SourceServer\\fa9eed09adedd84cd44489cd4dc413ce9b84ed6af5c701a01784fa90029bbd33\\Ui\\WpfApp1\\MainWindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -29,15 +29,15 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "MainWindow.xaml.cs",
               "DocumentMoniker": "C:\\Users\\w2000\\AppData\\Local\\SourceServer\\fa9eed09adedd84cd44489cd4dc413ce9b84ed6af5c701a01784fa90029bbd33\\Ui\\WpfApp1\\MainWindow.xaml.cs",
               "RelativeDocumentMoniker": "..\\..\\..\\Users\\w2000\\AppData\\Local\\SourceServer\\fa9eed09adedd84cd44489cd4dc413ce9b84ed6af5c701a01784fa90029bbd33\\Ui\\WpfApp1\\MainWindow.xaml.cs",
               "ToolTip": "C:\\Users\\w2000\\AppData\\Local\\SourceServer\\fa9eed09adedd84cd44489cd4dc413ce9b84ed6af5c701a01784fa90029bbd33\\Ui\\WpfApp1\\MainWindow.xaml.cs",
               "RelativeToolTip": "..\\..\\..\\Users\\w2000\\AppData\\Local\\SourceServer\\fa9eed09adedd84cd44489cd4dc413ce9b84ed6af5c701a01784fa90029bbd33\\Ui\\WpfApp1\\MainWindow.xaml.cs",
-              "ViewState": "AQIAAFcAAAAAAAAAAAAAAAwAAAAJAAAA",
+              "ViewState": "AQIAADAAAAAAAAAAAAAAwAsAAAAIAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-08T16:58:44.865Z",
+              "WhenOpened": "2024-08-10T16:58:33.358Z",
               "EditorCaption": ""
             },
             {
@@ -54,13 +54,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
               "Title": "MainWindow.xaml.cs",
               "DocumentMoniker": "C:\\NOOBIE\\UartApp\\Ui\\WpfApp1\\MainWindow.xaml.cs",
               "RelativeDocumentMoniker": "WpfApp1\\MainWindow.xaml.cs",
               "ToolTip": "C:\\NOOBIE\\UartApp\\Ui\\WpfApp1\\MainWindow.xaml.cs",
               "RelativeToolTip": "WpfApp1\\MainWindow.xaml.cs",
-              "ViewState": "AQIAAE4AAAAAAAAAAAAgwFYAAABgAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAADUAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-08-08T16:10:37.142Z",
               "EditorCaption": ""

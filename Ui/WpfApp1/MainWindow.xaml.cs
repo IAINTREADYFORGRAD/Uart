@@ -79,12 +79,19 @@ namespace WpfApp1
 
     public  class LinePositionConverter : IValueConverter
     {
+        // When you define a property with get and set accessors,
+        // the backing field is what holds the value that the property retrieves or modifies
+        // backing field: a private variable that stores the actual data for a property in a class
         public Direction Direction { get; set; }
 
-        // value: ActualHeight of the rts2 element
+        // value: represented by 'path'
         // targetType: type of the binding target property
         //             it indicates what type of data the converter should return
         // parameter: corresponds to the ConverterParameter which in this case is 'Line' element
+        // object: the base type for all types in C#
+        // Boxing: When a value type like double is returned from a method with an object return type,
+        //         it undergoes boxing, which means it is wrapped in an object box.
+        //         This allows it to be stored in the object type.
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             double position = 0;
@@ -116,7 +123,7 @@ namespace WpfApp1
                 }
             }
 
-            return position;
+            return value;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
