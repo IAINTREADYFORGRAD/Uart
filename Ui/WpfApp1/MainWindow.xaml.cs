@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Globalization;
 using System.IO.Ports;
 using System.Linq;
@@ -56,6 +57,19 @@ namespace WpfApp1
             comboBoxPorts2.ItemsSource = filteredPorts;
         }
 
+        private void Line_Loaded(object sender, RoutedEventArgs e)
+        {
+            this.UpdateLayout();
+
+            connectingLine.X1 = 0;
+            connectingLine.Y1 = 0;
+            connectingLine.X2 = 100;
+            connectingLine.Y2 = 100;
+
+            //Debug.WriteLine($"RTS1Pin: X={rts1Pin.ActualWidth}, Y={rts1Pin.ActualHeight}");
+            //Debug.WriteLine($"RTS2Pin: X={rts2Pin.ActualWidth}, Y={rts2Pin.ActualHeight}");
+
+        }
         private void ComboBoxPorts_SelectionChanged2(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
         {
             if (e.AddedItems.Count == 0)
