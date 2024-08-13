@@ -5,6 +5,7 @@ using System.IO.Ports;
 using System.Linq;
 using System.Windows;
 using System.Windows.Data;
+using System.Windows.Media;
 
 namespace WpfApp1
 {
@@ -57,92 +58,72 @@ namespace WpfApp1
             comboBoxPorts2.ItemsSource = filteredPorts;
         }
 
-        private void Line_Loaded(object sender, RoutedEventArgs e)
-        {
-            this.UpdateLayout();
+        /*private void Line_Loaded(object sender, RoutedEventArgs e)
+         {
+             Point positionOfRts1Pin = rts1Pin.TransformToAncestor(Application.Current.MainWindow).Transform(new Point(0, 0));
+             Point positionOfRts2Pin = rts2Pin.TransformToAncestor(Application.Current.MainWindow).Transform(new Point(0, 0));
 
-            connectingLine.X1 = 0;
-            connectingLine.Y1 = 0;
-            connectingLine.X2 = 100;
-            connectingLine.Y2 = 100;
+             connectingLine.X1 = positionOfRts1Pin.X + rts1Pin.ActualWidth / 2;
+             connectingLine.Y1 = positionOfRts1Pin.Y + rts1Pin.ActualHeight / 2;
 
-            //Debug.WriteLine($"RTS1Pin: X={rts1Pin.ActualWidth}, Y={rts1Pin.ActualHeight}");
-            //Debug.WriteLine($"RTS2Pin: X={rts2Pin.ActualWidth}, Y={rts2Pin.ActualHeight}");
-
-        }
+             connectingLine.X2 = positionOfRts2Pin.X + rts2Pin.ActualWidth / 2;
+             connectingLine.Y2 = positionOfRts2Pin.Y + rts2Pin.ActualHeight / 2;
+         }*/
         private void ComboBoxPorts_SelectionChanged2(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
         {
             if (e.AddedItems.Count == 0)
             {
                 return;
             }
-            
+
             string selectedPort2 = e.AddedItems[0] as string;
 
             string[] filteredPorts = SerialPort.GetPortNames().Where(port => port != selectedPort2).ToArray();
             comboBoxPorts1.ItemsSource = filteredPorts;
         }
+        
     }
-    public enum Direction
+    public class ElementPositionConverter : IValueConverter
     {
-        LeftToRight,
-        RightToLeft,
-        TopToBottom,
-        BottomToTop
-    }
-
-    public  class LinePositionConverter : IValueConverter
-    {
-        // When you define a property with get and set accessors,
-        // the backing field is what holds the value that the property retrieves or modifies
-        // backing field: a private variable that stores the actual data for a property in a class
-        public Direction Direction { get; set; }
-
-        // value: represented by 'path'
-        // targetType: type of the binding target property
-        //             it indicates what type of data the converter should return
-        // parameter: corresponds to the ConverterParameter which in this case is 'Line' element
-        // object: the base type for all types in C#
-        // Boxing: When a value type like double is returned from a method with an object return type,
-        //         it undergoes boxing, which means it is wrapped in an object box.
-        //         This allows it to be stored in the object type.
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            double position = 0;
-            double offset;
-
-            // Handle cases where the value is a double (e.g., ActualWidth or ActualHeight)
-            if (value is double actualValue)
+            Debug.Write("90");
+            if (value is UIElement element && parameter is string axis)
             {
-                switch (Direction)
+                var window = Application.Current.MainWindow;
+                Debug.Write("94");
+                if (VisualTreeHelper.GetParent(element) != null)
                 {
-                    case Direction.LeftToRight:
-                        position = 0; // Start at the left (X1)
-                        break;
-                    case Direction.RightToLeft:
-                        position = actualValue; // End at the right (X2)
-                        break;
-                    case Direction.TopToBottom:
-                        position = 0; // Start at the top (Y1)
-                        break;
-                    case Direction.BottomToTop:
-                        position = actualValue; // End at the bottom (Y2)
-                        break;
-                }
+                    Debug.Write("97");
+                    try
+                    {
+                        var position = element.TransformToAncestor(window)
+                                              .Transform(new Point(0, 0));
 
-                // If a parameter is passed, it is used to adjust the position, typically for Y-axis offsets
-                if (parameter != null && double.TryParse(parameter.ToString(), out offset))
-                {
-                    position += offset;
+                        Debug.Write($"position.X={position.X}");
+                        Debug.Write($"position.Y={position.Y}");
+                        if (axis == "X")
+                            return position.X + element.RenderSize.Width / 2;
+                        else if (axis == "Y")
+                            return position.Y + element.RenderSize.Height / 2;
+
+                    }
+                    catch (InvalidOperationException)
+                    {
+                        return DependencyProperty.UnsetValue;
+                    }
                 }
             }
 
-            return value;
+            return DependencyProperty.UnsetValue;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
+            // ConvertBack is not implemented in this scenario
             throw new NotImplementedException();
         }
     }
+
+
 }

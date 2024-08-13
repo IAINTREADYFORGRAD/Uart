@@ -9,26 +9,7 @@
         Title="MainWindow" Height="350" Width="600" Background="#8080C0">
 
     <Window.Resources>
-        <!--local
-        1. typically mapped to the namespace of your application
-        2. is the alias you defined for the namespace clr-namespace:WpfApp1
-        -->
-        <!--LinePositionConverter
-        1. a class defined in your project under the 'local' namespace
-        2. specifies the type of the object you are creating
-        -->
-        <!--x:Key
-        1. used to give a name (key) to the resource you're defining
-        2. used to reference the resource in your XAML bindings or elsewhere in your XAML file
-        -->
-        <!--Direction: property defined in LinePositionConverter class-->
-        <!--local:LinePositionConverter: tells XAML to create an instance of the LinePositionConverter class-->
-        <!--x:Key="X1Converter: gives this instance a name (X1Converter), so you can refer to it later in your XAML-->
-        <!--<local:LinePositionConverter x:Key="X1Converter" Direction="LeftToRight"/>
-        <local:LinePositionConverter x:Key="X2Converter" Direction="RightToLeft"/>
-        <local:LinePositionConverter x:Key="Y1Converter" Direction="TopToBottom"/>
-        <local:LinePositionConverter x:Key="Y2Converter" Direction="TopToBottom"/>
-        -->
+        <local:ElementPositionConverter x:Key="ElementPositionConverter"/>
     </Window.Resources>
 
     <Grid>
@@ -41,12 +22,14 @@
                    e.g.,2. If you have one column with Width="2*" and another with Width="*",
                            the first column will take up twice as much space as the second-->
 
-            <ColumnDefinition Width="7*"/>
-            <ColumnDefinition Width="68*"/>
-            <ColumnDefinition Width="75*"/>
+            <ColumnDefinition Width="0*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="27*"/>
+            <ColumnDefinition Width="272*"/>
+            <ColumnDefinition Width="300*"/>
         </Grid.ColumnDefinitions>
 
-        <Border Grid.Column="1" Background="#C8BFE7" CornerRadius="10" Margin="3,27,34,33">
+        <Border Grid.Column="3" Background="#C8BFE7" CornerRadius="10" Margin="3,27,34,33">
             <StackPanel x:Name="Panel1">
                 <ComboBox x:Name="comboBoxPorts1"
                           HorizontalAlignment="Center"
@@ -79,10 +62,10 @@
         </Border>
 
 
-       
+
 
         <!-- Second Border and StackPanel for the right port -->
-        <Border Grid.Column="2" Background="#C8BFE7" CornerRadius="10" Margin="34,27,31,33">
+        <Border Grid.Column="4" Background="#C8BFE7" CornerRadius="10" Margin="34,27,31,33">
             <StackPanel x:Name="Panel2">
                 <ComboBox x:Name="comboBoxPorts2"
                           VerticalAlignment="Center"
@@ -117,6 +100,7 @@
                         <Ellipse x:Name="dcd2Pin" Width="10" Height="10" Fill="#7092BE" Margin="0,0,10,0"/>
                         <TextBlock x:Name="dcd2" Text="DCD" FontSize ="20" FontFamily="Segoe UI Black" Foreground="#8080C0" Margin="0,5" HorizontalAlignment="right"/>
                     </StackPanel>
+
                 </StackPanel>
             </StackPanel>
         </Border>
@@ -129,7 +113,7 @@
  VerticalAlignment="Stretch": to fill the available vertical space within its parent container
  IsHitTestVisible="False": do not receive input events like mouse clicks
  -->
-        <Canvas Grid.Column="0" Grid.ColumnSpan="3" IsHitTestVisible="False">
+        <Canvas Grid.Column="0" Grid.ColumnSpan="5" IsHitTestVisible="False">
             <!--
      ActualWidth
          1. a read-only property that reflects the actual width of the element 
@@ -180,9 +164,14 @@
                   Stroke="#7092BE" StrokeThickness="4" HorizontalAlignment="Center" Canvas.Top="112" VerticalAlignment="Top" Canvas.Left="139"/>
 -->
 
-            <Line x:Name="connectingLine" Loaded = "Line_Loaded"  Stroke="#7092BE" StrokeThickness="4"/>
-            
+
+            <Line X1="{Binding ElementName=rts1Pin, Converter={StaticResource ElementPositionConverter}, ConverterParameter='X'}"
+                  Y1="{Binding ElementName=rts1Pin, Converter={StaticResource ElementPositionConverter}, ConverterParameter='Y'}"
+                  X2="{Binding ElementName=rts2Pin, Converter={StaticResource ElementPositionConverter}, ConverterParameter='X'}"
+                  Y2="{Binding ElementName=rts2Pin, Converter={StaticResource ElementPositionConverter}, ConverterParameter='Y'}"
+                  Stroke="#7092BE" StrokeThickness="4"/>
         </Canvas>
 
     </Grid>
 </Window>
+ 
