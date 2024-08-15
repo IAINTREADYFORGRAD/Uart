@@ -9,7 +9,7 @@
         Title="MainWindow" Height="350" Width="600" Background="#8080C0">
 
     <Window.Resources>
-        <local:ElementPositionConverter x:Key="ElementPositionConverter"/>
+        <local:CoordinateGet x:Key="CoordinateGet"/>
     </Window.Resources>
 
     <Grid>
@@ -61,10 +61,6 @@
             </StackPanel>
         </Border>
 
-
-
-
-        <!-- Second Border and StackPanel for the right port -->
         <Border Grid.Column="4" Background="#C8BFE7" CornerRadius="10" Margin="34,27,31,33">
             <StackPanel x:Name="Panel2">
                 <ComboBox x:Name="comboBoxPorts2"
@@ -73,8 +69,7 @@
                           Width="100"
                           IsEditable="False" 
                           SelectionChanged="ComboBoxPorts_SelectionChanged2"/>
-                <!--StackPanel: arranges its child elements into a single line, either vertically or horizontally
-                                This is determined by the Orientation property, which can be set to either Vertical or Horizontal-->
+              
                 <StackPanel Margin="40">
                     <StackPanel Orientation="Horizontal" Margin="0,0" HorizontalAlignment="right">
                         <Ellipse x:Name="rts2Pin" Width="10" Height="10" Fill="#7092BE" Margin="0,0,10,0"/>
@@ -105,70 +100,45 @@
             </StackPanel>
         </Border>
 
-        <!-- Canvas to draw lines between ports -->
-        <!--
- Grid.Column="0": Canvas is placed in the first column of the Grid
- Grid.ColumnSpan="2": spans across two columns
- HorizontalAlignment="Stretch": to fill the available horizontal space within its parent container
- VerticalAlignment="Stretch": to fill the available vertical space within its parent container
- IsHitTestVisible="False": do not receive input events like mouse clicks
- -->
         <Canvas Grid.Column="0" Grid.ColumnSpan="5" IsHitTestVisible="False">
-            <!--
-     ActualWidth
-         1. a read-only property that reflects the actual width of the element 
-            after it has been rendered and laid out by the WPF layout system
-         2. If the size of the element changes (for instance, when the window is resized), 
-            ActualWidth will update accordingly
-     
-     Binding
-         1. reates a connection between a property of an object (like a data model or another UI element) and a property of a WPF element
-         2. This connection ensures that when the property's value changes in the object, the WPF element automatically reflects that change, 
-            and vice versa, depending on the binding mode
-     
-     Converter: dynamically calculates where the line should start and end
-     
-     {StaticResource X1Converter}: retrieves the LinePositionConverter instance named X1Converter from the resources.
+            <Line x:Name="lineRts1ToCts2"
+                  Loaded="OnLineLoaded"
+                  X1="{Binding ElementName=rts1Pin, Converter={StaticResource CoordinateGet}, ConverterParameter='X'}"
+                  Y1="{Binding ElementName=rts1Pin, Converter={StaticResource CoordinateGet}, ConverterParameter='Y'}"
+                  X2="{Binding ElementName=cts2Pin, Converter={StaticResource CoordinateGet}, ConverterParameter='X'}"
+                  Y2="{Binding ElementName=cts2Pin, Converter={StaticResource CoordinateGet}, ConverterParameter='Y'}"
+                  Stroke="#7092BE" StrokeThickness="4"/>
             
-     Path: indicates the specific property of the source object to bind to. 
-     Path=ActualWidth: bind to the ActualWidth property of the specified source element (e.g., rts1Pin)
-    -->
-            <!--<Line X1="{Binding ElementName=rts1Pin, Path=ActualWidth, Converter={StaticResource X1Converter}, ConverterParameter='0'}" 
-                  Y1="{Binding ElementName=rts1Pin, Path=ActualHeight, Converter={StaticResource Y1Converter}}" 
-                  X2="{Binding ElementName=rts2Pin, Path=ActualWidth, Converter={StaticResource X2Converter}}" 
-                  Y2="{Binding ElementName=rts2Pin, Path=ActualHeight, Converter={StaticResource Y2Converter}}" 
-                  Stroke="#7092BE" StrokeThickness="4" Canvas.Top="253" VerticalAlignment="Top" Canvas.Left="150" />
+            <Line x:Name="lineCts1ToRts2"
+                  Loaded="OnLineLoaded"
+                  X1="{Binding ElementName=cts1Pin, Converter={StaticResource CoordinateGet}, ConverterParameter='X'}"
+                  Y1="{Binding ElementName=cts1Pin, Converter={StaticResource CoordinateGet}, ConverterParameter='Y'}"
+                  X2="{Binding ElementName=rts2Pin, Converter={StaticResource CoordinateGet}, ConverterParameter='X'}"
+                  Y2="{Binding ElementName=rts2Pin, Converter={StaticResource CoordinateGet}, ConverterParameter='Y'}"
+                  Stroke="#7092BE" StrokeThickness="4"/>
+            
+            <Line x:Name="lineDtr1ToDsr2"
+                  Loaded="OnLineLoaded"
+                  X1="{Binding ElementName=dtr1Pin, Converter={StaticResource CoordinateGet}, ConverterParameter='X'}"
+                  Y1="{Binding ElementName=dtr1Pin, Converter={StaticResource CoordinateGet}, ConverterParameter='Y'}"
+                  X2="{Binding ElementName=dsr2Pin, Converter={StaticResource CoordinateGet}, ConverterParameter='X'}"
+                  Y2="{Binding ElementName=dsr2Pin, Converter={StaticResource CoordinateGet}, ConverterParameter='Y'}"
+                  Stroke="#7092BE" StrokeThickness="4"/>
+            
+            <Line x:Name="lineDsr1ToDtr2"
+                  Loaded="OnLineLoaded"
+                  X1="{Binding ElementName=dsr1Pin, Converter={StaticResource CoordinateGet}, ConverterParameter='X'}"
+                  Y1="{Binding ElementName=dsr1Pin, Converter={StaticResource CoordinateGet}, ConverterParameter='Y'}"
+                  X2="{Binding ElementName=dtr2Pin, Converter={StaticResource CoordinateGet}, ConverterParameter='X'}"
+                  Y2="{Binding ElementName=dtr2Pin, Converter={StaticResource CoordinateGet}, ConverterParameter='Y'}"
+                  Stroke="#7092BE" StrokeThickness="4"/>
 
-            <Line X1="{Binding ElementName=cts1Pin, Path=ActualWidth, Converter={StaticResource X1Converter}}" 
-                  Y1="{Binding ElementName=cts1Pin, Path=ActualHeight, Converter={StaticResource Y1Converter}}" 
-                  X2="{Binding ElementName=cts2Pin, Path=ActualWidth, Converter={StaticResource X2Converter}}" 
-                  Y2="{Binding ElementName=cts2Pin, Path=ActualHeight, Converter={StaticResource Y2Converter}}" 
-                  Stroke="#7092BE" StrokeThickness="4" HorizontalAlignment="Center" Canvas.Top="215" VerticalAlignment="Top" Canvas.Left="142" />
-
-            <Line X1="{Binding ElementName=dtr1Pin, Path=ActualWidth, Converter={StaticResource X1Converter}}" 
-                  Y1="{Binding ElementName=dtr1Pin, Path=ActualHeight, Converter={StaticResource Y1Converter}}" 
-                  X2="{Binding ElementName=dtr2Pin, Path=ActualWidth, Converter={StaticResource X2Converter}}" 
-                  Y2="{Binding ElementName=dtr2Pin, Path=ActualHeight, Converter={StaticResource Y2Converter}}" 
-                  Stroke="#7092BE" StrokeThickness="4" HorizontalAlignment="Center" Canvas.Top="180" VerticalAlignment="Top" Canvas.Left="143" />
-
-            <Line X1="{Binding ElementName=dsr1Pin, Path=ActualWidth, Converter={StaticResource X1Converter}}" 
-                  Y1="{Binding ElementName=dsr1Pin, Path=ActualHeight, Converter={StaticResource Y1Converter}}" 
-                  X2="{Binding ElementName=dsr2Pin, Path=ActualWidth, Converter={StaticResource X2Converter}}" 
-                  Y2="{Binding ElementName=dsr2Pin, Path=ActualHeight, Converter={StaticResource Y2Converter}}" 
-                  Stroke="#7092BE" StrokeThickness="4" HorizontalAlignment="Center" Canvas.Top="145" VerticalAlignment="Top" Canvas.Left="141" />
-
-            <Line X1="{Binding ElementName=dcd1Pin, Path=ActualWidth, Converter={StaticResource X1Converter}}" 
-                  Y1="{Binding ElementName=dcd1Pin, Path=ActualHeight, Converter={StaticResource Y1Converter}}" 
-                  X2="{Binding ElementName=dcd2Pin, Path=ActualWidth, Converter={StaticResource X2Converter}}" 
-                  Y2="{Binding ElementName=dcd2Pin, Path=ActualHeight, Converter={StaticResource Y2Converter}}" 
-                  Stroke="#7092BE" StrokeThickness="4" HorizontalAlignment="Center" Canvas.Top="112" VerticalAlignment="Top" Canvas.Left="139"/>
--->
-
-
-            <Line X1="{Binding ElementName=rts1Pin, Converter={StaticResource ElementPositionConverter}, ConverterParameter='X'}"
-                  Y1="{Binding ElementName=rts1Pin, Converter={StaticResource ElementPositionConverter}, ConverterParameter='Y'}"
-                  X2="{Binding ElementName=rts2Pin, Converter={StaticResource ElementPositionConverter}, ConverterParameter='X'}"
-                  Y2="{Binding ElementName=rts2Pin, Converter={StaticResource ElementPositionConverter}, ConverterParameter='Y'}"
+            <Line x:Name="lineDcd1ToDcd2"
+                  Loaded="OnLineLoaded"
+                  X1="{Binding ElementName=dcd1Pin, Converter={StaticResource CoordinateGet}, ConverterParameter='X'}"
+                  Y1="{Binding ElementName=dcd1Pin, Converter={StaticResource CoordinateGet}, ConverterParameter='Y'}"
+                  X2="{Binding ElementName=dcd2Pin, Converter={StaticResource CoordinateGet}, ConverterParameter='X'}"
+                  Y2="{Binding ElementName=dcd2Pin, Converter={StaticResource CoordinateGet}, ConverterParameter='Y'}"
                   Stroke="#7092BE" StrokeThickness="4"/>
         </Canvas>
 

@@ -6,6 +6,7 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Data;
 using System.Windows.Media;
+using System.Windows.Shapes;
 
 namespace WpfApp1
 {
@@ -81,31 +82,34 @@ namespace WpfApp1
             string[] filteredPorts = SerialPort.GetPortNames().Where(port => port != selectedPort2).ToArray();
             comboBoxPorts1.ItemsSource = filteredPorts;
         }
-        
+
+        private void OnLineLoaded(object sender, RoutedEventArgs e)
+        {
+            var line = sender as Line;
+            BindingOperations.GetBindingExpression(line, Line.X1Property)?.UpdateTarget();
+            BindingOperations.GetBindingExpression(line, Line.Y1Property)?.UpdateTarget();
+            BindingOperations.GetBindingExpression(line, Line.X2Property)?.UpdateTarget();
+            BindingOperations.GetBindingExpression(line, Line.Y2Property)?.UpdateTarget();
+        }
+
     }
-    public class ElementPositionConverter : IValueConverter
+
+    
+    public class CoordinateGet : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            Debug.Write("90");
             if (value is UIElement element && parameter is string axis)
             {
                 var window = Application.Current.MainWindow;
-                Debug.Write("94");
                 if (VisualTreeHelper.GetParent(element) != null)
                 {
-                    Debug.Write("97");
                     try
                     {
-                        var position = element.TransformToAncestor(window)
-                                              .Transform(new Point(0, 0));
+                        var position = element.TransformToAncestor(window).Transform(new Point(0, 0));
 
-                        Debug.Write($"position.X={position.X}");
-                        Debug.Write($"position.Y={position.Y}");
-                        if (axis == "X")
-                            return position.X + element.RenderSize.Width / 2;
-                        else if (axis == "Y")
-                            return position.Y + element.RenderSize.Height / 2;
+                        if (axis == "X") return position.X + element.RenderSize.Width / 2;
+                        else if (axis == "Y") return position.Y + element.RenderSize.Height / 2;
 
                     }
                     catch (InvalidOperationException)
@@ -120,7 +124,6 @@ namespace WpfApp1
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            // ConvertBack is not implemented in this scenario
             throw new NotImplementedException();
         }
     }
