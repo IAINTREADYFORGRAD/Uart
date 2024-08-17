@@ -13,6 +13,11 @@
     </Window.Resources>
 
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="48"/>
+            <RowDefinition Height="106*"/>
+            <RowDefinition Height="25"/>
+        </Grid.RowDefinitions>
         <!--ColumnDefinitions: a collection of ColumnDefinition objects, 
                                each representing a single column in the grid-->
         <Grid.ColumnDefinitions>
@@ -22,14 +27,14 @@
                    e.g.,2. If you have one column with Width="2*" and another with Width="*",
                            the first column will take up twice as much space as the second-->
 
-            <ColumnDefinition Width="0*"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="27*"/>
+            <ColumnDefinition Width="35*"/>
             <ColumnDefinition Width="272*"/>
-            <ColumnDefinition Width="300*"/>
+            <ColumnDefinition Width="54*"/>
+            <ColumnDefinition Width="272*"/>
+            <ColumnDefinition Width="35*"/>
         </Grid.ColumnDefinitions>
 
-        <Border Grid.Column="3" Background="#C8BFE7" CornerRadius="10" Margin="3,27,34,33">
+        <Border Grid.Column="1" Background="#C8BFE7" CornerRadius="10" Margin="0,27,0,7" Grid.RowSpan="2">
             <StackPanel x:Name="Panel1">
                 <ComboBox x:Name="comboBoxPorts1"
                   HorizontalAlignment="Center"
@@ -51,15 +56,15 @@
                         <TextBlock x:Name="cts1" Grid.Column="0" Text="CTS" FontSize ="20" FontFamily="Segoe UI Black" Foreground="#8080C0" Margin="0,35"/>
                         <Ellipse x:Name="cts1Pin1" Grid.Column="1" Width="10" Height="10" Fill="#7092BE" Margin="15,0,0,210"/>
                         <Ellipse x:Name="cts1Pin2" Grid.Column="2" Width="5" Height="5" Fill="#7092BE" Margin="80,0,0,210"/>
-                        
+
                         <TextBlock x:Name="dtr1" Grid.Column="0" Text="DTR" FontSize ="20" FontFamily="Segoe UI Black" Foreground="#8080C0" Margin="0,70"/>
                         <Ellipse x:Name="dtr1Pin1" Grid.Column="1" Width="10" Height="10" Fill="#7092BE" Margin="15,0,0,140"/>
                         <Ellipse x:Name="dtr1Pin2" Grid.Column="2" Width="5" Height="5" Fill="#7092BE" Margin="80,0,0,140"/>
-                        
+
                         <TextBlock x:Name="dsr1" Grid.Column="0" Text="DSR" FontSize ="20" FontFamily="Segoe UI Black" Foreground="#8080C0" Margin="0,105"/>
                         <Ellipse x:Name="dsr1Pin1" Grid.Column="1" Width="10" Height="10" Fill="#7092BE" Margin="15,0,0,70"/>
                         <Ellipse x:Name="dsr1Pin2" Grid.Column="2" Width="5" Height="5" Fill="#7092BE" Margin="80,0,0,70"/>
-                        
+
                         <TextBlock x:Name="dcd1" Grid.Column="0" Text="DCD" FontSize ="20" FontFamily="Segoe UI Black" Foreground="#8080C0" Margin="0,140"/>
                         <Ellipse x:Name="dcd1Pin" Grid.Column="1" Width="10" Height="10" Fill="#7092BE" Margin="15,0,0,0"/>
                     </Grid>
@@ -67,7 +72,7 @@
             </StackPanel>
         </Border>
 
-        <Border Grid.Column="4" Background="#C8BFE7" CornerRadius="10" Margin="34,27,31,33">
+        <Border Grid.Column="3" Background="#C8BFE7" CornerRadius="10" Margin="0,27,0,7" Grid.RowSpan="2">
             <StackPanel x:Name="Panel2">
                 <ComboBox x:Name="comboBoxPorts2"
                           VerticalAlignment="Center"
@@ -77,37 +82,41 @@
                           SelectionChanged="ComboBoxPorts_SelectionChanged2"/>
                 <StackPanel Margin="40" HorizontalAlignment="right">
                     <Grid Margin="0,0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="138*"/>
+                            <RowDefinition Height="169*"/>
+                        </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto"/>
                             <ColumnDefinition Width="Auto"/>
                             <ColumnDefinition Width="Auto"/>
                         </Grid.ColumnDefinitions>
 
-                        <TextBlock x:Name="rts2" Grid.Column="2" Text="RTS" FontSize ="20" FontFamily="Segoe UI Black" Foreground="#8080C0" Margin="0,0" HorizontalAlignment="right"/>
-                        <Ellipse x:Name="rts2Pin1" Grid.Column="1" Width="10" Height="10" Fill="#7092BE" Margin="0,0,15,280"/>
-                        <Ellipse x:Name="rts2Pin2" Grid.Column="0" Width="5" Height="5" Fill="#7092BE" Margin="0,0,80,280"/>
+                        <TextBlock x:Name="rts2" Grid.Column="2" Text="RTS" FontSize ="20" FontFamily="Segoe UI Black" Foreground="#8080C0" Margin="0,0" HorizontalAlignment="Right" Grid.RowSpan="2"/>
+                        <Ellipse x:Name="rts2Pin1" Grid.Column="1" Width="10" Height="10" Fill="#7092BE" Margin="0,8,15,120"/>
+                        <Ellipse x:Name="rts2Pin2" Grid.Column="0" Width="5" Height="5" Fill="#7092BE" Margin="0,11,80,122"/>
 
-                        <TextBlock x:Name="cts2" Grid.Column="2" Text="CTS" FontSize ="20" FontFamily="Segoe UI Black" Foreground="#8080C0" Margin="0,35" HorizontalAlignment="right"/>
-                        <Ellipse x:Name="cts2Pin1" Grid.Column="1" Width="10" Height="10" Fill="#7092BE" Margin="0,0,15,210"/>
-                        <Ellipse x:Name="cts2Pin2" Grid.Column="0" Width="5" Height="5" Fill="#7092BE" Margin="0,0,80,210"/>
-                        
-                        <TextBlock x:Name="dtr2" Grid.Column="2" Text="DTR" FontSize ="20" FontFamily="Segoe UI Black" Foreground="#8080C0" Margin="0,70" HorizontalAlignment="right"/>
-                        <Ellipse x:Name="dtr2Pin1" Grid.Column="1" Width="10" Height="10" Fill="#7092BE" Margin="0,0,15,140"/>
-                        <Ellipse x:Name="dtr2Pin2" Grid.Column="0" Width="5" Height="5" Fill="#7092BE" Margin="0,0,80,140"/>
-                        
-                        <TextBlock x:Name="dsr2" Grid.Column="2" Text="DSR" FontSize ="20" FontFamily="Segoe UI Black" Foreground="#8080C0" Margin="0,105" HorizontalAlignment="right"/>
-                        <Ellipse x:Name="dsr2Pin1" Grid.Column="1" Width="10" Height="10" Fill="#7092BE" Margin="0,0,15,70"/>
-                        <Ellipse x:Name="dsr2Pin2" Grid.Column="0" Width="5" Height="5" Fill="#7092BE" Margin="0,0,80,70"/>
-                        
-                        <TextBlock x:Name="dcd2" Grid.Column="2" Text="DCD" FontSize ="20" FontFamily="Segoe UI Black" Foreground="#8080C0" Margin="0,140" HorizontalAlignment="right"/>
-                        <Ellipse x:Name="dcd2Pin" Grid.Column="1" Width="10" Height="10" Fill="#7092BE" Margin="0,0,15,0"/>
+                        <TextBlock x:Name="cts2" Grid.Column="2" Text="CTS" FontSize ="20" FontFamily="Segoe UI Black" Foreground="#8080C0" Margin="0,35" HorizontalAlignment="Right" Grid.RowSpan="2"/>
+                        <Ellipse x:Name="cts2Pin1" Grid.Column="1" Width="10" Height="10" Fill="#7092BE" Margin="0,43,15,85"/>
+                        <Ellipse x:Name="cts2Pin2" Grid.Column="0" Width="5" Height="5" Fill="#7092BE" Margin="0,46,80,87"/>
+
+                        <TextBlock x:Name="dtr2" Grid.Column="2" Text="DTR" FontSize ="20" FontFamily="Segoe UI Black" Foreground="#8080C0" Margin="0,70,0,70" HorizontalAlignment="Center" Grid.RowSpan="2"/>
+                        <Ellipse x:Name="dtr2Pin1" Grid.Column="1" Width="10" Height="10" Fill="#7092BE" Margin="0,78,15,50"/>
+                        <Ellipse x:Name="dtr2Pin2" Grid.Column="0" Width="5" Height="5" Fill="#7092BE" Margin="0,81,80,52"/>
+
+                        <TextBlock x:Name="dsr2" Grid.Column="2" Text="DSR" FontSize ="20" FontFamily="Segoe UI Black" Foreground="#8080C0" Margin="0,105" HorizontalAlignment="Right" Grid.RowSpan="2"/>
+                        <Ellipse x:Name="dsr2Pin1" Grid.Column="1" Width="10" Height="10" Fill="#7092BE" Margin="0,113,15,15"/>
+                        <Ellipse x:Name="dsr2Pin2" Grid.Column="0" Width="5" Height="5" Fill="#7092BE" Margin="0,116,80,17"/>
+
+                        <TextBlock x:Name="dcd2" Grid.Column="2" Text="DCD" FontSize ="20" FontFamily="Segoe UI Black" Foreground="#8080C0" Margin="0,2,0,140" HorizontalAlignment="Center" Grid.Row="1"/>
+                        <Ellipse x:Name="dcd2Pin" Grid.Column="1" Width="10" Height="10" Fill="#7092BE" Margin="0,10,15,149" Grid.Row="1"/>
                     </Grid>
                 </StackPanel>
             </StackPanel>
         </Border>
 
 
-        <Canvas Grid.Column="0" Grid.ColumnSpan="5" IsHitTestVisible="False">
+        <Canvas Grid.Column="0" Grid.ColumnSpan="5" IsHitTestVisible="False" Grid.RowSpan="4">
             <Line x:Name="lineRts1Pin1Pin2"
                   Loaded="OnLineLoaded"
                   X1="{Binding ElementName=rts1Pin1, Converter={StaticResource CoordinateGet}, ConverterParameter='X'}"
