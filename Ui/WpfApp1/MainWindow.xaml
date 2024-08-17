@@ -32,31 +32,37 @@
         <Border Grid.Column="3" Background="#C8BFE7" CornerRadius="10" Margin="3,27,34,33">
             <StackPanel x:Name="Panel1">
                 <ComboBox x:Name="comboBoxPorts1"
-                          HorizontalAlignment="Center"
-                          Width="100"
-                          IsEditable="False" 
-                          SelectionChanged="ComboBoxPorts_SelectionChanged1"/>
+                  HorizontalAlignment="Center"
+                  Width="100"
+                  IsEditable="False" 
+                  SelectionChanged="ComboBoxPorts_SelectionChanged1"/>
                 <StackPanel Margin="40">
-                    <StackPanel Orientation="Horizontal" Margin="0,0">
-                        <TextBlock x:Name="rts1" Text="RTS" FontSize ="20" FontFamily="Segoe UI Black" Foreground="#8080C0" Margin="0,5"/>
-                        <Ellipse x:Name="rts1Pin" Width="10" Height="10" Fill="#7092BE" Margin="10,0,0,0"/>
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal" Margin="0,0">
-                        <TextBlock x:Name="cts1" Text="CTS" FontSize ="20" FontFamily="Segoe UI Black" Foreground="#8080C0" Margin="0,5"/>
-                        <Ellipse x:Name="cts1Pin" Width="10" Height="10" Fill="#7092BE" Margin="10,0,0,0"/>
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal" Margin="0,0">
-                        <TextBlock x:Name="dtr1" Text="DTR" FontSize ="20" FontFamily="Segoe UI Black" Foreground="#8080C0" Margin="0,5"/>
-                        <Ellipse x:Name="dtr1Pin" Width="10" Height="10" Fill="#7092BE" Margin="10,0,0,0"/>
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal" Margin="0,0">
-                        <TextBlock x:Name="dsr1" Text="DSR" FontSize ="20" FontFamily="Segoe UI Black" Foreground="#8080C0" Margin="0,5"/>
-                        <Ellipse x:Name="dsr1Pin" Width="10" Height="10" Fill="#7092BE" Margin="10,0,0,0"/>
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal" Margin="0,0">
-                        <TextBlock x:Name="dcd1" Text="DCD" FontSize ="20" FontFamily="Segoe UI Black" Foreground="#8080C0" Margin="0,5"/>
-                        <Ellipse x:Name="dcd1Pin" Width="10" Height="10" Fill="#7092BE" Margin="10,0,0,0"/>
-                    </StackPanel>
+                    <Grid Margin="0,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock x:Name="rts1" Grid.Column="0" Text="RTS" FontSize ="20" FontFamily="Segoe UI Black" Foreground="#8080C0" Margin="0,0"/>
+                        <Ellipse x:Name="rts1Pin1" Grid.Column="1" Width="10" Height="10" Fill="#7092BE" Margin="15,0,0,280"/>
+                        <Ellipse x:Name="rts1Pin2" Grid.Column="2" Width="5" Height="5" Fill="#7092BE" Margin="80,0,0,280"/>
+
+                        <TextBlock x:Name="cts1" Grid.Column="0" Text="CTS" FontSize ="20" FontFamily="Segoe UI Black" Foreground="#8080C0" Margin="0,35"/>
+                        <Ellipse x:Name="cts1Pin1" Grid.Column="1" Width="10" Height="10" Fill="#7092BE" Margin="15,0,0,210"/>
+                        <Ellipse x:Name="cts1Pin2" Grid.Column="2" Width="5" Height="5" Fill="#7092BE" Margin="80,0,0,210"/>
+                        
+                        <TextBlock x:Name="dtr1" Grid.Column="0" Text="DTR" FontSize ="20" FontFamily="Segoe UI Black" Foreground="#8080C0" Margin="0,70"/>
+                        <Ellipse x:Name="dtr1Pin1" Grid.Column="1" Width="10" Height="10" Fill="#7092BE" Margin="15,0,0,140"/>
+                        <Ellipse x:Name="dtr1Pin2" Grid.Column="2" Width="5" Height="5" Fill="#7092BE" Margin="80,0,0,140"/>
+                        
+                        <TextBlock x:Name="dsr1" Grid.Column="0" Text="DSR" FontSize ="20" FontFamily="Segoe UI Black" Foreground="#8080C0" Margin="0,105"/>
+                        <Ellipse x:Name="dsr1Pin1" Grid.Column="1" Width="10" Height="10" Fill="#7092BE" Margin="15,0,0,70"/>
+                        <Ellipse x:Name="dsr1Pin2" Grid.Column="2" Width="5" Height="5" Fill="#7092BE" Margin="80,0,0,70"/>
+                        
+                        <TextBlock x:Name="dcd1" Grid.Column="0" Text="DCD" FontSize ="20" FontFamily="Segoe UI Black" Foreground="#8080C0" Margin="0,140"/>
+                        <Ellipse x:Name="dcd1Pin" Grid.Column="1" Width="10" Height="10" Fill="#7092BE" Margin="15,0,0,0"/>
+                    </Grid>
                 </StackPanel>
             </StackPanel>
         </Border>
@@ -69,68 +75,101 @@
                           Width="100"
                           IsEditable="False" 
                           SelectionChanged="ComboBoxPorts_SelectionChanged2"/>
-              
-                <StackPanel Margin="40">
-                    <StackPanel Orientation="Horizontal" Margin="0,0" HorizontalAlignment="right">
-                        <Ellipse x:Name="rts2Pin" Width="10" Height="10" Fill="#7092BE" Margin="0,0,10,0"/>
-                        <TextBlock x:Name="rts2" Text="RTS" FontSize ="20" FontFamily="Segoe UI Black" Foreground="#8080C0" Margin="0,5" HorizontalAlignment="right"/>
-                    </StackPanel>
+                <StackPanel Margin="40" HorizontalAlignment="right">
+                    <Grid Margin="0,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
 
-                    <StackPanel Orientation="Horizontal" Margin="0,0" HorizontalAlignment="right">
-                        <Ellipse x:Name="cts2Pin" Width="10" Height="10" Fill="#7092BE" Margin="0,0,10,0"/>
-                        <TextBlock x:Name="cts2" Text="CTS" FontSize ="20" FontFamily="Segoe UI Black" Foreground="#8080C0" Margin="0,5" HorizontalAlignment="right"/>
-                    </StackPanel>
+                        <TextBlock x:Name="rts2" Grid.Column="2" Text="RTS" FontSize ="20" FontFamily="Segoe UI Black" Foreground="#8080C0" Margin="0,0" HorizontalAlignment="right"/>
+                        <Ellipse x:Name="rts2Pin1" Grid.Column="1" Width="10" Height="10" Fill="#7092BE" Margin="0,0,15,280"/>
+                        <Ellipse x:Name="rts2Pin2" Grid.Column="0" Width="5" Height="5" Fill="#7092BE" Margin="0,0,80,280"/>
 
-                    <StackPanel Orientation="Horizontal" Margin="0,0" HorizontalAlignment="right">
-                        <Ellipse x:Name="dtr2Pin" Width="10" Height="10" Fill="#7092BE" Margin="0,0,10,0"/>
-                        <TextBlock x:Name="dtr2" Text="DTR" FontSize ="20" FontFamily="Segoe UI Black" Foreground="#8080C0" Margin="0,5" HorizontalAlignment="right"/>
-                    </StackPanel>
-
-                    <StackPanel Orientation="Horizontal" Margin="0,0" HorizontalAlignment="right">
-                        <Ellipse x:Name="dsr2Pin" Width="10" Height="10" Fill="#7092BE" Margin="0,0,10,0"/>
-                        <TextBlock x:Name="dsr2" Text="DSR" FontSize ="20" FontFamily="Segoe UI Black" Foreground="#8080C0" Margin="0,5" HorizontalAlignment="right"/>
-                    </StackPanel>
-
-                    <StackPanel Orientation="Horizontal" Margin="0,0" HorizontalAlignment="right">
-                        <Ellipse x:Name="dcd2Pin" Width="10" Height="10" Fill="#7092BE" Margin="0,0,10,0"/>
-                        <TextBlock x:Name="dcd2" Text="DCD" FontSize ="20" FontFamily="Segoe UI Black" Foreground="#8080C0" Margin="0,5" HorizontalAlignment="right"/>
-                    </StackPanel>
-
+                        <TextBlock x:Name="cts2" Grid.Column="2" Text="CTS" FontSize ="20" FontFamily="Segoe UI Black" Foreground="#8080C0" Margin="0,35" HorizontalAlignment="right"/>
+                        <Ellipse x:Name="cts2Pin1" Grid.Column="1" Width="10" Height="10" Fill="#7092BE" Margin="0,0,15,210"/>
+                        <Ellipse x:Name="cts2Pin2" Grid.Column="0" Width="5" Height="5" Fill="#7092BE" Margin="0,0,80,210"/>
+                        
+                        <TextBlock x:Name="dtr2" Grid.Column="2" Text="DTR" FontSize ="20" FontFamily="Segoe UI Black" Foreground="#8080C0" Margin="0,70" HorizontalAlignment="right"/>
+                        <Ellipse x:Name="dtr2Pin1" Grid.Column="1" Width="10" Height="10" Fill="#7092BE" Margin="0,0,15,140"/>
+                        <Ellipse x:Name="dtr2Pin2" Grid.Column="0" Width="5" Height="5" Fill="#7092BE" Margin="0,0,80,140"/>
+                        
+                        <TextBlock x:Name="dsr2" Grid.Column="2" Text="DSR" FontSize ="20" FontFamily="Segoe UI Black" Foreground="#8080C0" Margin="0,105" HorizontalAlignment="right"/>
+                        <Ellipse x:Name="dsr2Pin1" Grid.Column="1" Width="10" Height="10" Fill="#7092BE" Margin="0,0,15,70"/>
+                        <Ellipse x:Name="dsr2Pin2" Grid.Column="0" Width="5" Height="5" Fill="#7092BE" Margin="0,0,80,70"/>
+                        
+                        <TextBlock x:Name="dcd2" Grid.Column="2" Text="DCD" FontSize ="20" FontFamily="Segoe UI Black" Foreground="#8080C0" Margin="0,140" HorizontalAlignment="right"/>
+                        <Ellipse x:Name="dcd2Pin" Grid.Column="1" Width="10" Height="10" Fill="#7092BE" Margin="0,0,15,0"/>
+                    </Grid>
                 </StackPanel>
             </StackPanel>
         </Border>
 
+
         <Canvas Grid.Column="0" Grid.ColumnSpan="5" IsHitTestVisible="False">
-            <Line x:Name="lineRts1ToCts2"
+            <Line x:Name="lineRts1Pin1Pin2"
                   Loaded="OnLineLoaded"
-                  X1="{Binding ElementName=rts1Pin, Converter={StaticResource CoordinateGet}, ConverterParameter='X'}"
-                  Y1="{Binding ElementName=rts1Pin, Converter={StaticResource CoordinateGet}, ConverterParameter='Y'}"
-                  X2="{Binding ElementName=cts2Pin, Converter={StaticResource CoordinateGet}, ConverterParameter='X'}"
-                  Y2="{Binding ElementName=cts2Pin, Converter={StaticResource CoordinateGet}, ConverterParameter='Y'}"
+                  X1="{Binding ElementName=rts1Pin1, Converter={StaticResource CoordinateGet}, ConverterParameter='X'}"
+                  Y1="{Binding ElementName=rts1Pin1, Converter={StaticResource CoordinateGet}, ConverterParameter='Y'}"
+                  X2="{Binding ElementName=rts1Pin2, Converter={StaticResource CoordinateGet}, ConverterParameter='X'}"
+                  Y2="{Binding ElementName=rts1Pin2, Converter={StaticResource CoordinateGet}, ConverterParameter='Y'}"
                   Stroke="#7092BE" StrokeThickness="4"/>
-            
-            <Line x:Name="lineCts1ToRts2"
+
+            <Line x:Name="lineCts1Pin1Pin2"
                   Loaded="OnLineLoaded"
-                  X1="{Binding ElementName=cts1Pin, Converter={StaticResource CoordinateGet}, ConverterParameter='X'}"
-                  Y1="{Binding ElementName=cts1Pin, Converter={StaticResource CoordinateGet}, ConverterParameter='Y'}"
-                  X2="{Binding ElementName=rts2Pin, Converter={StaticResource CoordinateGet}, ConverterParameter='X'}"
-                  Y2="{Binding ElementName=rts2Pin, Converter={StaticResource CoordinateGet}, ConverterParameter='Y'}"
+                  X1="{Binding ElementName=cts1Pin1, Converter={StaticResource CoordinateGet}, ConverterParameter='X'}"
+                  Y1="{Binding ElementName=cts1Pin1, Converter={StaticResource CoordinateGet}, ConverterParameter='Y'}"
+                  X2="{Binding ElementName=cts1Pin2, Converter={StaticResource CoordinateGet}, ConverterParameter='X'}"
+                  Y2="{Binding ElementName=cts1Pin2, Converter={StaticResource CoordinateGet}, ConverterParameter='Y'}"
                   Stroke="#7092BE" StrokeThickness="4"/>
-            
-            <Line x:Name="lineDtr1ToDsr2"
+
+            <Line x:Name="lineDsr1Pin1Pin2"
                   Loaded="OnLineLoaded"
-                  X1="{Binding ElementName=dtr1Pin, Converter={StaticResource CoordinateGet}, ConverterParameter='X'}"
-                  Y1="{Binding ElementName=dtr1Pin, Converter={StaticResource CoordinateGet}, ConverterParameter='Y'}"
-                  X2="{Binding ElementName=dsr2Pin, Converter={StaticResource CoordinateGet}, ConverterParameter='X'}"
-                  Y2="{Binding ElementName=dsr2Pin, Converter={StaticResource CoordinateGet}, ConverterParameter='Y'}"
+                  X1="{Binding ElementName=dtr1Pin1, Converter={StaticResource CoordinateGet}, ConverterParameter='X'}"
+                  Y1="{Binding ElementName=dtr1Pin1, Converter={StaticResource CoordinateGet}, ConverterParameter='Y'}"
+                  X2="{Binding ElementName=dtr1Pin2, Converter={StaticResource CoordinateGet}, ConverterParameter='X'}"
+                  Y2="{Binding ElementName=dtr1Pin2, Converter={StaticResource CoordinateGet}, ConverterParameter='Y'}"
                   Stroke="#7092BE" StrokeThickness="4"/>
-            
-            <Line x:Name="lineDsr1ToDtr2"
+
+            <Line x:Name="lineDtr1Pin1Pin2"
                   Loaded="OnLineLoaded"
-                  X1="{Binding ElementName=dsr1Pin, Converter={StaticResource CoordinateGet}, ConverterParameter='X'}"
-                  Y1="{Binding ElementName=dsr1Pin, Converter={StaticResource CoordinateGet}, ConverterParameter='Y'}"
-                  X2="{Binding ElementName=dtr2Pin, Converter={StaticResource CoordinateGet}, ConverterParameter='X'}"
-                  Y2="{Binding ElementName=dtr2Pin, Converter={StaticResource CoordinateGet}, ConverterParameter='Y'}"
+                  X1="{Binding ElementName=dsr1Pin1, Converter={StaticResource CoordinateGet}, ConverterParameter='X'}"
+                  Y1="{Binding ElementName=dsr1Pin1, Converter={StaticResource CoordinateGet}, ConverterParameter='Y'}"
+                  X2="{Binding ElementName=dsr1Pin2, Converter={StaticResource CoordinateGet}, ConverterParameter='X'}"
+                  Y2="{Binding ElementName=dsr1Pin2, Converter={StaticResource CoordinateGet}, ConverterParameter='Y'}"
+                  Stroke="#7092BE" StrokeThickness="4"/>
+
+            <Line x:Name="lineRts2Pin1Pin2"
+                  Loaded="OnLineLoaded"
+                  X1="{Binding ElementName=rts2Pin1, Converter={StaticResource CoordinateGet}, ConverterParameter='X'}"
+                  Y1="{Binding ElementName=rts2Pin1, Converter={StaticResource CoordinateGet}, ConverterParameter='Y'}"
+                  X2="{Binding ElementName=rts2Pin2, Converter={StaticResource CoordinateGet}, ConverterParameter='X'}"
+                  Y2="{Binding ElementName=rts2Pin2, Converter={StaticResource CoordinateGet}, ConverterParameter='Y'}"
+                  Stroke="#7092BE" StrokeThickness="4"/>
+
+            <Line x:Name="lineCts2Pin1Pin2"
+                  Loaded="OnLineLoaded"
+                  X1="{Binding ElementName=cts2Pin1, Converter={StaticResource CoordinateGet}, ConverterParameter='X'}"
+                  Y1="{Binding ElementName=cts2Pin1, Converter={StaticResource CoordinateGet}, ConverterParameter='Y'}"
+                  X2="{Binding ElementName=cts2Pin2, Converter={StaticResource CoordinateGet}, ConverterParameter='X'}"
+                  Y2="{Binding ElementName=cts2Pin2, Converter={StaticResource CoordinateGet}, ConverterParameter='Y'}"
+                  Stroke="#7092BE" StrokeThickness="4"/>
+
+            <Line x:Name="lineDsr2Pin1Pin2"
+                  Loaded="OnLineLoaded"
+                  X1="{Binding ElementName=dtr2Pin1, Converter={StaticResource CoordinateGet}, ConverterParameter='X'}"
+                  Y1="{Binding ElementName=dtr2Pin1, Converter={StaticResource CoordinateGet}, ConverterParameter='Y'}"
+                  X2="{Binding ElementName=dtr2Pin2, Converter={StaticResource CoordinateGet}, ConverterParameter='X'}"
+                  Y2="{Binding ElementName=dtr2Pin2, Converter={StaticResource CoordinateGet}, ConverterParameter='Y'}"
+                  Stroke="#7092BE" StrokeThickness="4"/>
+
+            <Line x:Name="lineDtr2Pin1Pin2"
+                  Loaded="OnLineLoaded"
+                  X1="{Binding ElementName=dsr2Pin1, Converter={StaticResource CoordinateGet}, ConverterParameter='X'}"
+                  Y1="{Binding ElementName=dsr2Pin1, Converter={StaticResource CoordinateGet}, ConverterParameter='Y'}"
+                  X2="{Binding ElementName=dsr2Pin2, Converter={StaticResource CoordinateGet}, ConverterParameter='X'}"
+                  Y2="{Binding ElementName=dsr2Pin2, Converter={StaticResource CoordinateGet}, ConverterParameter='Y'}"
                   Stroke="#7092BE" StrokeThickness="4"/>
 
             <Line x:Name="lineDcd1ToDcd2"
@@ -140,6 +179,39 @@
                   X2="{Binding ElementName=dcd2Pin, Converter={StaticResource CoordinateGet}, ConverterParameter='X'}"
                   Y2="{Binding ElementName=dcd2Pin, Converter={StaticResource CoordinateGet}, ConverterParameter='Y'}"
                   Stroke="#7092BE" StrokeThickness="4"/>
+
+            <Line x:Name="crossRtsCts"
+                  Loaded="OnLineLoaded"
+                  X1="{Binding ElementName=rts1Pin2, Converter={StaticResource CoordinateGet}, ConverterParameter='X'}"
+                  Y1="{Binding ElementName=rts1Pin2, Converter={StaticResource CoordinateGet}, ConverterParameter='Y'}"
+                  X2="{Binding ElementName=cts2Pin2, Converter={StaticResource CoordinateGet}, ConverterParameter='X'}"
+                  Y2="{Binding ElementName=cts2Pin2, Converter={StaticResource CoordinateGet}, ConverterParameter='Y'}"
+                  Stroke="#7092BE" StrokeThickness="4"/>
+
+            <Line x:Name="crossCtsRts"
+                  Loaded="OnLineLoaded"
+                  X1="{Binding ElementName=cts1Pin2, Converter={StaticResource CoordinateGet}, ConverterParameter='X'}"
+                  Y1="{Binding ElementName=cts1Pin2, Converter={StaticResource CoordinateGet}, ConverterParameter='Y'}"
+                  X2="{Binding ElementName=rts2Pin2, Converter={StaticResource CoordinateGet}, ConverterParameter='X'}"
+                  Y2="{Binding ElementName=rts2Pin2, Converter={StaticResource CoordinateGet}, ConverterParameter='Y'}"
+                  Stroke="#7092BE" StrokeThickness="4"/>
+
+            <Line x:Name="crossDtrDsr"
+                  Loaded="OnLineLoaded"
+                  X1="{Binding ElementName=dtr1Pin2, Converter={StaticResource CoordinateGet}, ConverterParameter='X'}"
+                  Y1="{Binding ElementName=dtr1Pin2, Converter={StaticResource CoordinateGet}, ConverterParameter='Y'}"
+                  X2="{Binding ElementName=dsr2Pin2, Converter={StaticResource CoordinateGet}, ConverterParameter='X'}"
+                  Y2="{Binding ElementName=dsr2Pin2, Converter={StaticResource CoordinateGet}, ConverterParameter='Y'}"
+                  Stroke="#7092BE" StrokeThickness="4"/>
+
+            <Line x:Name="crossDsrDtr"
+                  Loaded="OnLineLoaded"
+                  X1="{Binding ElementName=dsr1Pin2, Converter={StaticResource CoordinateGet}, ConverterParameter='X'}"
+                  Y1="{Binding ElementName=dsr1Pin2, Converter={StaticResource CoordinateGet}, ConverterParameter='Y'}"
+                  X2="{Binding ElementName=dtr2Pin2, Converter={StaticResource CoordinateGet}, ConverterParameter='X'}"
+                  Y2="{Binding ElementName=dtr2Pin2, Converter={StaticResource CoordinateGet}, ConverterParameter='Y'}"
+                  Stroke="#7092BE" StrokeThickness="4"/>
+
         </Canvas>
 
     </Grid>
