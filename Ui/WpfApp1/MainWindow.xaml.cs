@@ -7,6 +7,7 @@ using System.Windows;
 using System.Windows.Data;
 using System.Windows.Media;
 using System.Windows.Shapes;
+using Uart;
 
 namespace WpfApp1
 {
@@ -58,18 +59,6 @@ namespace WpfApp1
             string[] filteredPorts = SerialPort.GetPortNames().Where(port => port != selectedPort1).ToArray();
             comboBoxPorts2.ItemsSource = filteredPorts;
         }
-
-        /*private void Line_Loaded(object sender, RoutedEventArgs e)
-         {
-             Point positionOfRts1Pin = rts1Pin.TransformToAncestor(Application.Current.MainWindow).Transform(new Point(0, 0));
-             Point positionOfRts2Pin = rts2Pin.TransformToAncestor(Application.Current.MainWindow).Transform(new Point(0, 0));
-
-             connectingLine.X1 = positionOfRts1Pin.X + rts1Pin.ActualWidth / 2;
-             connectingLine.Y1 = positionOfRts1Pin.Y + rts1Pin.ActualHeight / 2;
-
-             connectingLine.X2 = positionOfRts2Pin.X + rts2Pin.ActualWidth / 2;
-             connectingLine.Y2 = positionOfRts2Pin.Y + rts2Pin.ActualHeight / 2;
-         }*/
         private void ComboBoxPorts_SelectionChanged2(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
         {
             if (e.AddedItems.Count == 0)
@@ -90,6 +79,12 @@ namespace WpfApp1
             BindingOperations.GetBindingExpression(line, Line.Y1Property)?.UpdateTarget();
             BindingOperations.GetBindingExpression(line, Line.X2Property)?.UpdateTarget();
             BindingOperations.GetBindingExpression(line, Line.Y2Property)?.UpdateTarget();
+        }
+
+        private void rts1Butt_Click(object sender, RoutedEventArgs e)
+        {
+            SerialPortManager.RtsEnable();
+            rts1Butt.Background = new SolidColorBrush(Colors.White);
         }
 
     }

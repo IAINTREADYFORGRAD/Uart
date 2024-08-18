@@ -3,12 +3,16 @@
   "WorkspaceRootPath": "C:\\NOOBIE\\UartApp\\Ui\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{1B8B30D2-0E47-4C5E-8051-3D8494AEE25C}|WpfApp1\\WpfApp1.csproj|c:\\noobie\\uartapp\\ui\\wpfapp1\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{1B8B30D2-0E47-4C5E-8051-3D8494AEE25C}|WpfApp1\\WpfApp1.csproj|solutionrelative:wpfapp1\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{1B8B30D2-0E47-4C5E-8051-3D8494AEE25C}|WpfApp1\\WpfApp1.csproj|c:\\noobie\\uartapp\\ui\\wpfapp1\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1B8B30D2-0E47-4C5E-8051-3D8494AEE25C}|WpfApp1\\WpfApp1.csproj|solutionrelative:wpfapp1\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CA5503DB-8441-4A0B-95B6-C7D3D8C29496}|Solution Items{CA5503DB-8441-4A0B-95B6-C7D3D8C29496}|C:\\NOOBIE\\UartApp\\Ui\\SerialPortManager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CA5503DB-8441-4A0B-95B6-C7D3D8C29496}|Solution Items{CA5503DB-8441-4A0B-95B6-C7D3D8C29496}|solutionrelative:SerialPortManager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1B8B30D2-0E47-4C5E-8051-3D8494AEE25C}|WpfApp1\\WpfApp1.csproj|c:\\noobie\\uartapp\\ui\\wpfapp1\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{1B8B30D2-0E47-4C5E-8051-3D8494AEE25C}|WpfApp1\\WpfApp1.csproj|solutionrelative:wpfapp1\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     }
   ],
   "DocumentGroupContainers": [
@@ -27,19 +31,32 @@
             {
               "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "SerialPortManager.cs",
+              "DocumentMoniker": "C:\\NOOBIE\\UartApp\\Ui\\SerialPortManager.cs",
+              "RelativeDocumentMoniker": "SerialPortManager.cs",
+              "ToolTip": "C:\\NOOBIE\\UartApp\\Ui\\SerialPortManager.cs",
+              "RelativeToolTip": "SerialPortManager.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABQAAAAZAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-18T16:48:45.589Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
               "Title": "MainWindow.xaml.cs",
               "DocumentMoniker": "C:\\NOOBIE\\UartApp\\Ui\\WpfApp1\\MainWindow.xaml.cs",
               "RelativeDocumentMoniker": "WpfApp1\\MainWindow.xaml.cs",
               "ToolTip": "C:\\NOOBIE\\UartApp\\Ui\\WpfApp1\\MainWindow.xaml.cs",
               "RelativeToolTip": "WpfApp1\\MainWindow.xaml.cs",
-              "ViewState": "AQIAADUAAAAAAAAAAAAgwDQAAAAOAAAA",
+              "ViewState": "AQIAAE4AAAAAAAAAAAAowFUAAAAqAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-08-17T15:44:22.549Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "MainWindow.xaml",
               "DocumentMoniker": "C:\\NOOBIE\\UartApp\\Ui\\WpfApp1\\MainWindow.xaml",
               "RelativeDocumentMoniker": "WpfApp1\\MainWindow.xaml",
