@@ -1,10 +1,10 @@
 ﻿<!--(Common Language Runtime) namespace-->
-<Window x:Class="WpfApp1.MainWindow"
+<Window x:Class="WpfApp.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:WpfApp1" 
+        xmlns:local="clr-namespace:WpfApp" 
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="600" Background="#8080C0">
 
@@ -18,8 +18,7 @@
             <RowDefinition Height="106*"/>
             <RowDefinition Height="25"/>
         </Grid.RowDefinitions>
-        <!--ColumnDefinitions: a collection of ColumnDefinition objects, 
-                               each representing a single column in the grid-->
+        
         <Grid.ColumnDefinitions>
             <!--*: star sizing, take up a proportion of the available space in the grid
                    e.g.,1. If you have two columns with Width="*", 
@@ -50,7 +49,7 @@
                             <ColumnDefinition Width="Auto"/>
                         </Grid.ColumnDefinitions>
 
-                        <Button x:Name="rts1Butt" Grid.Column="0" Width="15" Height="15" Background="Transparent" Margin="20,35,0,270" Click="rts1Butt_Click">
+                        <Button x:Name="rts1Butt" Grid.Column="0" Width="15" Height="15" Background="Transparent" Margin="20,35,0,270" Click="Rts1Butt_Click">
                             <Button.Template>
                                 <ControlTemplate TargetType="Button">
                                     <Grid>
@@ -69,7 +68,7 @@
                         <Ellipse x:Name="cts1Pin1" Grid.Column="2" Width="10" Height="10" Fill="#7092BE" Margin="20,45,0,210"/>
                         <Ellipse x:Name="cts1Pin2" Grid.Column="3" Width="5" Height="5" Fill="#7092BE" Margin="50,45,0,210"/>
 
-                        <Button x:Name="dtr1Butt" Grid.Column="0" Width="15" Height="15" Background="Transparent" Margin="20,105,0,200">
+                        <Button x:Name="dtr1Butt" Grid.Column="0" Width="15" Height="15" Background="Transparent" Margin="20,105,0,200" Click="Dtr1Butt_Click">
                             <Button.Template>
                                 <ControlTemplate TargetType="Button">
                                     <Grid>

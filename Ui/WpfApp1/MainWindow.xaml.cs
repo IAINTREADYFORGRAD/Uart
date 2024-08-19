@@ -7,12 +7,14 @@ using System.Windows;
 using System.Windows.Data;
 using System.Windows.Media;
 using System.Windows.Shapes;
-using Uart;
+using WpfApp;
 
-namespace WpfApp1
+namespace WpfApp
 {
     public partial class MainWindow : Window
     {
+        private Uart uart1;
+        private Uart uart2;
         public MainWindow()
         {
             InitializeComponent();
@@ -35,7 +37,7 @@ namespace WpfApp1
             if (ports.Length > 1)
             {
                 //
-                // port: parameter used within the lambda expression trepresenting 'ports'
+                // port: parameter used within the lambda expression representing 'ports'
                 //
                 string[] filteredPorts = ports.Where(port => port != selectedPort1).ToArray();
                 comboBoxPorts2.ItemsSource = filteredPorts;
@@ -50,14 +52,25 @@ namespace WpfApp1
                 return;
 
             }
-             
+
             //
             // cast the selected item from the ComboBox to a string
             //
             string selectedPort1 = e.AddedItems[0] as string;
 
             string[] filteredPorts = SerialPort.GetPortNames().Where(port => port != selectedPort1).ToArray();
-            comboBoxPorts2.ItemsSource = filteredPorts;
+            comboBoxPorts1.ItemsSource = filteredPorts;
+
+            if (selectedPort1 != null)
+            {
+                if (uart1 != null)
+                {
+                    uart1.UartDestroy();
+                }
+
+                uart1 = new Uart(selectedPort1, Handshake.None);
+                uart1.UartStart();
+            }
         }
         private void ComboBoxPorts_SelectionChanged2(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
         {
@@ -69,7 +82,18 @@ namespace WpfApp1
             string selectedPort2 = e.AddedItems[0] as string;
 
             string[] filteredPorts = SerialPort.GetPortNames().Where(port => port != selectedPort2).ToArray();
-            comboBoxPorts1.ItemsSource = filteredPorts;
+            comboBoxPorts2.ItemsSource = filteredPorts;
+
+            if (selectedPort2 != null)
+            {
+                if (uart2 != null)
+                {
+                    uart2.UartDestroy();
+                }
+
+                uart2 = new Uart(selectedPort2, Handshake.None);
+                uart2.UartStart();
+            }
         }
 
         private void OnLineLoaded(object sender, RoutedEventArgs e)
@@ -81,10 +105,32 @@ namespace WpfApp1
             BindingOperations.GetBindingExpression(line, Line.Y2Property)?.UpdateTarget();
         }
 
-        private void rts1Butt_Click(object sender, RoutedEventArgs e)
+        private void Rts1Butt_Click(object sender, RoutedEventArgs e)
         {
-            SerialPortManager.RtsEnable();
-            rts1Butt.Background = new SolidColorBrush(Colors.White);
+            uart1.RtsEnable();
+            rts1Butt.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#99D9EA"));
+            lineRts1Pin1Pin2.Stroke = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#99D9EA"));
+        }
+
+        private void Dtr1Butt_Click(object sender, RoutedEventArgs e)
+        {
+            uart1.DtrEnable();
+            dtr1Butt.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#99D9EA"));
+            lineDtr1Pin1Pin2.Stroke = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#99D9EA"));
+        }
+
+        private void Rts2Butt_Click(object sender, RoutedEventArgs e)
+        {
+            uart2.RtsEnable();
+            rts1Butt.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#99D9EA"));
+            lineRts2Pin1Pin2.Stroke = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#99D9EA"));
+        }
+
+        private void Dtr2Butt_Click(object sender, RoutedEventArgs e)
+        {
+            uart1.DtrEnable();
+            dtr1Butt.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#99D9EA"));
+            lineDtr2Pin1Pin2.Stroke = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#99D9EA"));
         }
 
     }

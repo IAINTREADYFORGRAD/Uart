@@ -239,9 +239,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\NOOBIE\\UartApp\\Ui\\WpfApp1\\WpfApp1.csproj",
-      "projectName": "WpfApp1",
-      "projectPath": "C:\\NOOBIE\\UartApp\\Ui\\WpfApp1\\WpfApp1.csproj",
+      "projectUniqueName": "C:\\NOOBIE\\UartApp\\Ui\\WpfApp1\\WpfApp.csproj",
+      "projectName": "WpfApp",
+      "projectPath": "C:\\NOOBIE\\UartApp\\Ui\\WpfApp1\\WpfApp.csproj",
       "packagesPath": "C:\\Users\\w2000\\.nuget\\packages\\",
       "outputPath": "C:\\NOOBIE\\UartApp\\Ui\\WpfApp1\\obj\\",
       "projectStyle": "PackageReference",
