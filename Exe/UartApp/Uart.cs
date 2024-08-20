@@ -33,7 +33,7 @@ namespace UartApp
         {
 
             serialPort.PortName = name;
-            serialPort.BaudRate = 9600;
+            serialPort.BaudRate = 115200;
             serialPort.Parity = Parity.None;
             serialPort.DataBits = 8;
             serialPort.StopBits = StopBits.One;
@@ -55,8 +55,15 @@ namespace UartApp
             }
 
             serialPort.Open();
-
             Console.WriteLine(serialPort.PortName + " is open");
+
+            Console.WriteLine(serialPort.PortName + " Cts: " + serialPort.CtsHolding);
+            Console.WriteLine(serialPort.PortName + " Dst: " + serialPort.DsrHolding);
+            Console.WriteLine(serialPort.PortName + " Cd: " + serialPort.CDHolding);
+
+            serialPort.PinChanged += new SerialPinChangedEventHandler(CtsMonitorHandler);
+            serialPort.PinChanged += new SerialPinChangedEventHandler(DstMonitorHandler);
+            serialPort.PinChanged += new SerialPinChangedEventHandler(CdMonitorHandler);
         }
 
         public void UartDestroy()
@@ -69,7 +76,7 @@ namespace UartApp
             serialPort.Close();
             serialPort.PinChanged -= CtsMonitorHandler;
             serialPort.PinChanged -= DstMonitorHandler;
-
+            serialPort.PinChanged -= CdMonitorHandler;
 
             Console.WriteLine(serialPort.PortName + " is closed");
         }
@@ -101,7 +108,7 @@ namespace UartApp
             Console.WriteLine(serialPort.PortName + " received: " + data);
         }
 
-        public async Task UartWrite(string msg)
+        /*public async Task UartWrite(string msg)
         {
             if (!await CtsWait())
             {
@@ -112,6 +119,11 @@ namespace UartApp
                 Console.WriteLine(serialPort.PortName + " CTS timeout and failed to send msg");
             }
 
+        }*/
+
+        public void UartWrite(string msg)
+        {
+            serialPort.WriteLine(msg);
         }
 
         private async Task<bool> CtsWait ()
@@ -223,13 +235,8 @@ namespace UartApp
             if (e.EventType == SerialPinChange.CtsChanged)
             {
                 bool cts = sp.CtsHolding;
-                Console.WriteLine(serialPort.PortName + " CTS changed to: " + (cts ? "High" : "Low"));
+                Console.WriteLine(serialPort.PortName + " Cts changed to: " + (cts ? "High" : "Low"));
             }
-        }
-
-        public void CtsMonitor ()
-        {
-            serialPort.PinChanged += new SerialPinChangedEventHandler (CtsMonitorHandler);
         }
 
         private void DstMonitorHandler(object sender, SerialPinChangedEventArgs e)
@@ -243,9 +250,15 @@ namespace UartApp
             }
         }
 
-        public void DsrMonitor()
+        private void CdMonitorHandler(object sender, SerialPinChangedEventArgs e)
         {
-            serialPort.PinChanged += new SerialPinChangedEventHandler(DstMonitorHandler);
+            SerialPort sp = (SerialPort)sender;
+
+            if (e.EventType == SerialPinChange.CDChanged)
+            {
+                bool dsr = sp.CDHolding;
+                Console.WriteLine(serialPort.PortName + " Cd changed to: " + (dsr ? "High" : "Low"));
+            }
         }
     }
 }

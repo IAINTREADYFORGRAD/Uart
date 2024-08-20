@@ -11,33 +11,40 @@ namespace UartApp
 
 
 
-    /*class Program
+    class Program
     {
-        private void ExistSerialPortPrint()
-        {
-            string[] ports = SerialPort.GetPortNames();
 
-            Console.WriteLine("Available COM Ports:");
-            foreach (string port in ports)
-            {
-                Console.WriteLine(port);
-            }
-        }
-
-        static async Task Main(string[] args)
+        //static async Task Main(string[] args)
+        static void Main(string[] args)
         {
-            if (args.Length != 1)
+            if (args.Length != 2)
             {
                 return;
             }
 
             string comPortName = args[0];
+            string handshake = args[1];
+            Uart   comPort;
 
-            Uart comPort = new Uart(comPortName, Handshake.None);
+            if (handshake == "n")
+            {
+                comPort = new Uart(comPortName, Handshake.None);
+                Console.WriteLine("Handshake: None");
+            } else if (handshake == "h")
+            {
+                comPort = new Uart(comPortName, Handshake.RequestToSend);
+                Console.WriteLine("Handshake: RequestToSend");
+            } else
+            {
+                return;
+            }
+
             comPort.UartStart();
-            comPort.CtsMonitor();
-            comPort.DsrMonitor();
-
+            Console.WriteLine("F1: RtsEnable");
+            Console.WriteLine("F2: RtsDisable");
+            Console.WriteLine("F3: DtrEnable");
+            Console.WriteLine("F4: DtrDisable");
+            Console.WriteLine("ESC: Close Uart");
 
             while (true)
             {
@@ -80,12 +87,13 @@ namespace UartApp
 
                 string msg = Console.ReadLine();
                 if (!string.IsNullOrEmpty (msg)) {
-                    await comPort.UartWrite(msg);
+                    comPort.UartWrite(msg);
+                    //await comPort.UartWrite(msg);
                 }
             }
 
         }
-    }*/
+    }
 
     /*class Program1
     {

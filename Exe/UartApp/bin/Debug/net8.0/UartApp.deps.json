@@ -8,6 +8,7 @@
     ".NETCoreApp,Version=v8.0": {
       "UartApp/1.0.0": {
         "dependencies": {
+          "Microsoft.Extensions.Logging.Abstractions": "8.0.0",
           "RJCP.SerialPortStream": "3.0.1",
           "System.IO.Ports": "8.0.0"
         },
