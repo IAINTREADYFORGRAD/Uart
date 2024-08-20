@@ -155,7 +155,7 @@
                   Y2="{Binding ElementName=cts1Pin2, Converter={StaticResource CoordinateGet}, ConverterParameter='Y'}"
                   Stroke="#7092BE" StrokeThickness="4"/>
 
-            <Line x:Name="lineDsr1Pin1Pin2"
+            <Line x:Name="lineDtr1Pin1Pin2"
                   Loaded="OnLineLoaded"
                   X1="{Binding ElementName=dtr1Pin1, Converter={StaticResource CoordinateGet}, ConverterParameter='X'}"
                   Y1="{Binding ElementName=dtr1Pin1, Converter={StaticResource CoordinateGet}, ConverterParameter='Y'}"
@@ -163,7 +163,7 @@
                   Y2="{Binding ElementName=dtr1Pin2, Converter={StaticResource CoordinateGet}, ConverterParameter='Y'}"
                   Stroke="#7092BE" StrokeThickness="4"/>
 
-            <Line x:Name="lineDtr1Pin1Pin2"
+            <Line x:Name="lineDsr1Pin1Pin2"
                   Loaded="OnLineLoaded"
                   X1="{Binding ElementName=dsr1Pin1, Converter={StaticResource CoordinateGet}, ConverterParameter='X'}"
                   Y1="{Binding ElementName=dsr1Pin1, Converter={StaticResource CoordinateGet}, ConverterParameter='Y'}"

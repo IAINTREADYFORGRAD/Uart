@@ -1,9 +1,17 @@
 ﻿using System.IO.Ports;
+using System.Security.Cryptography;
+using System.Windows;
 
 namespace WpfApp {
     public class Uart
     {
         static SerialPort serialPort;
+        public event EventHandler ctsHigh;
+        public event EventHandler ctsLow;
+        public event EventHandler dsrHigh;
+        public event EventHandler dsrLow;
+        public event EventHandler cdHigh;
+        public event EventHandler cdLow;
 
         public Uart(string name, Handshake handshake)
         {
@@ -43,9 +51,10 @@ namespace WpfApp {
                 return;
             }
 
-            serialPort.Open();
+            //serialPort.Open();
             serialPort.PinChanged += new SerialPinChangedEventHandler(CtsMonitorHandler);
-            serialPort.PinChanged += new SerialPinChangedEventHandler(DstMonitorHandler);
+            serialPort.PinChanged += new SerialPinChangedEventHandler(DsrMonitorHandler);
+            serialPort.PinChanged += new SerialPinChangedEventHandler(CdMonitorHandler);
 
             Console.WriteLine(serialPort.PortName + " is open");
         }
@@ -59,7 +68,8 @@ namespace WpfApp {
 
             serialPort.Close();
             serialPort.PinChanged -= CtsMonitorHandler;
-            serialPort.PinChanged -= DstMonitorHandler;
+            serialPort.PinChanged -= DsrMonitorHandler;
+            serialPort.PinChanged -= CdMonitorHandler;
 
 
             Console.WriteLine(serialPort.PortName + " is closed");
@@ -106,6 +116,16 @@ namespace WpfApp {
             serialPort.DtrEnable = false;
         }
 
+        protected virtual void OnCtsHigh()
+        {
+           ctsHigh?.Invoke(this, EventArgs.Empty);
+        }
+
+        protected virtual void OnCtsLow()
+        {
+            ctsLow?.Invoke(this, EventArgs.Empty);
+        }
+
         private void CtsMonitorHandler(object sender, SerialPinChangedEventArgs e)
         {
             SerialPort sp = (SerialPort)sender;
@@ -113,18 +133,68 @@ namespace WpfApp {
             if (e.EventType == SerialPinChange.CtsChanged)
             {
                 bool cts = sp.CtsHolding;
-                Console.WriteLine(serialPort.PortName + " CTS changed to: " + (cts ? "High" : "Low"));
+                if (cts)
+                {
+                    OnCtsHigh();
+                }
+                else
+                {
+                    OnCtsLow();
+                }
             }
         }
 
-        private void DstMonitorHandler(object sender, SerialPinChangedEventArgs e)
+        protected virtual void OnDsrHigh()
+        {
+            dsrHigh?.Invoke(this, EventArgs.Empty);
+        }
+
+        protected virtual void OnDsrLow()
+        {
+            dsrLow?.Invoke(this, EventArgs.Empty);
+        }
+
+        private void DsrMonitorHandler(object sender, SerialPinChangedEventArgs e)
         {
             SerialPort sp = (SerialPort)sender;
 
             if (e.EventType == SerialPinChange.DsrChanged)
             {
                 bool dsr = sp.DsrHolding;
-                Console.WriteLine(serialPort.PortName + " Dst changed to: " + (dsr ? "High" : "Low"));
+                if (dsr)
+                {
+                    OnDsrHigh();
+                }
+                else
+                {
+                    OnDsrLow();
+                }
+            }
+        }
+
+        protected virtual void OnCdHigh()
+        {
+            cdHigh?.Invoke(this, EventArgs.Empty);
+        }
+
+        protected virtual void OnCdLow()
+        {
+            cdLow?.Invoke(this, EventArgs.Empty);
+        }
+        private void CdMonitorHandler(object sender, SerialPinChangedEventArgs e)
+        {
+            SerialPort sp = (SerialPort)sender;
+
+            if (e.EventType == SerialPinChange.CDChanged)
+            {
+                bool dcd = sp.CDHolding;
+                if (dcd)
+                {
+                    OnCdHigh();
+                } else
+                {
+                    OnCdLow();
+                }
             }
         }
 
