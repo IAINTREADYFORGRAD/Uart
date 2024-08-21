@@ -18,7 +18,7 @@
             <RowDefinition Height="106*"/>
             <RowDefinition Height="25"/>
         </Grid.RowDefinitions>
-        
+
         <Grid.ColumnDefinitions>
             <!--*: star sizing, take up a proportion of the available space in the grid
                    e.g.,1. If you have two columns with Width="*", 
@@ -53,12 +53,12 @@
                             <Button.Template>
                                 <ControlTemplate TargetType="Button">
                                     <Grid>
-                                        <Ellipse Fill="#7092BE"/>
+                                        <Ellipse Fill="Transparent"/>
                                         <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
                                     </Grid>
                                 </ControlTemplate>
                             </Button.Template>
-                            <TextBlock Text="N" Foreground="White" FontSize="7" FontWeight="Bold"/>
+                            <TextBlock Text="ON" Foreground="#7092BE" FontSize="15" FontWeight="Bold" FontFamily="Segoe UI Black"/>
                         </Button>
                         <TextBlock x:Name="rts1" Grid.Column="1" Text="RTS" FontSize ="20" FontFamily="Segoe UI Black" Foreground="#8080C0" Margin="15,35,0,0"/>
                         <Ellipse x:Name="rts1Pin1" Grid.Column="2" Width="10" Height="10" Fill="#7092BE" Margin="20,45,0,280"/>
@@ -67,17 +67,17 @@
                         <TextBlock x:Name="cts1" Grid.Column="1" Text="CTS" FontSize ="20" FontFamily="Segoe UI Black" Foreground="#8080C0" Margin="15,70,0,0"/>
                         <Ellipse x:Name="cts1Pin1" Grid.Column="2" Width="10" Height="10" Fill="#7092BE" Margin="20,45,0,210"/>
                         <Ellipse x:Name="cts1Pin2" Grid.Column="3" Width="5" Height="5" Fill="#7092BE" Margin="50,45,0,210"/>
-
+                           
                         <Button x:Name="dtr1Butt" Grid.Column="0" Width="15" Height="15" Background="Transparent" Margin="20,105,0,200" Click="Dtr1Butt_Click">
                             <Button.Template>
                                 <ControlTemplate TargetType="Button">
                                     <Grid>
-                                        <Ellipse Fill="#7092BE"/>
+                                        <Ellipse Fill="Transparent"/>
                                         <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
                                     </Grid>
                                 </ControlTemplate>
                             </Button.Template>
-                            <TextBlock Text="N" Foreground="White" FontSize="7" FontWeight="Bold"/>
+                            <TextBlock Text="ON" Foreground="#7092BE" FontSize="15" FontWeight="Bold" FontFamily="Segoe UI Black"/>
                         </Button>
                         <TextBlock x:Name="dtr1" Grid.Column="1" Text="DTR" FontSize ="20" FontFamily="Segoe UI Black" Foreground="#8080C0" Margin="15,105,0,0"/>
                         <Ellipse x:Name="dtr1Pin1" Grid.Column="2" Width="10" Height="10" Fill="#7092BE" Margin="20,45,0,140"/>
@@ -115,12 +115,12 @@
                             <Button.Template>
                                 <ControlTemplate TargetType="Button">
                                     <Grid>
-                                        <Ellipse Fill="#7092BE"/>
+                                        <Ellipse Fill="Transparent"/>
                                         <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
                                     </Grid>
                                 </ControlTemplate>
                             </Button.Template>
-                            <TextBlock Text="N" Foreground="White" FontSize="7" FontWeight="Bold"/>
+                            <TextBlock Text="ON" Foreground="#7092BE" FontSize="15" FontWeight="Bold" FontFamily="Segoe UI Black"/>
                         </Button>
 
                         <TextBlock x:Name="rts2" Grid.Column="2" Text="RTS" FontSize ="20" FontFamily="Segoe UI Black" Foreground="#8080C0" Margin="0,35,15,0" HorizontalAlignment="Right"/>
@@ -131,18 +131,17 @@
                         <Ellipse x:Name="cts2Pin1" Grid.Column="1" Width="10" Height="10" Fill="#7092BE" Margin="0,45,20,210"/>
                         <Ellipse x:Name="cts2Pin2" Grid.Column="0" Width="5" Height="5" Fill="#7092BE" Margin="0,45,50,210"/>
 
-                        <Button x:Name="dtr2Butt" Grid.Column="3" Width="15" Height="15" Background="Transparent" Margin="0,105,20,200" Click="Dtr1Butt_Click" HorizontalAlignment="Right">
+                        <Button x:Name="dtr2Butt" Grid.Column="3" Width="15" Height="15" Background="Transparent" Margin="0,105,20,200" Click="Dtr2Butt_Click" HorizontalAlignment="Right">
                             <Button.Template>
                                 <ControlTemplate TargetType="Button">
                                     <Grid>
-                                        <Ellipse Fill="#7092BE"/>
+                                        <Ellipse Fill="Transparent"/>
                                         <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
                                     </Grid>
                                 </ControlTemplate>
                             </Button.Template>
-                            <TextBlock Text="N" Foreground="White" FontSize="7" FontWeight="Bold"/>
+                            <TextBlock Text="ON" Foreground="#7092BE" FontSize="15" FontWeight="Bold" FontFamily="Segoe UI Black"/>
                         </Button>
-
                         <TextBlock x:Name="dtr2" Grid.Column="2" Text="DTR" FontSize ="20" FontFamily="Segoe UI Black" Foreground="#8080C0" Margin="0,105,15,0" HorizontalAlignment="Right"/>
                         <Ellipse x:Name="dtr2Pin1" Grid.Column="1" Width="10" Height="10" Fill="#7092BE" Margin="0,45,20,140"/>
                         <Ellipse x:Name="dtr2Pin2" Grid.Column="0" Width="5" Height="5" Fill="#7092BE" Margin="0,45,50,140"/>
@@ -208,7 +207,7 @@
                   Y2="{Binding ElementName=cts2Pin2, Converter={StaticResource CoordinateGet}, ConverterParameter='Y'}"
                   Stroke="#7092BE" StrokeThickness="4"/>
 
-            <Line x:Name="lineDsr2Pin1Pin2"
+            <Line x:Name="lineDtr2Pin1Pin2"
                   Loaded="OnLineLoaded"
                   X1="{Binding ElementName=dtr2Pin1, Converter={StaticResource CoordinateGet}, ConverterParameter='X'}"
                   Y1="{Binding ElementName=dtr2Pin1, Converter={StaticResource CoordinateGet}, ConverterParameter='Y'}"
@@ -216,7 +215,7 @@
                   Y2="{Binding ElementName=dtr2Pin2, Converter={StaticResource CoordinateGet}, ConverterParameter='Y'}"
                   Stroke="#7092BE" StrokeThickness="4"/>
 
-            <Line x:Name="lineDtr2Pin1Pin2"
+            <Line x:Name="lineDsr2Pin1Pin2"
                   Loaded="OnLineLoaded"
                   X1="{Binding ElementName=dsr2Pin1, Converter={StaticResource CoordinateGet}, ConverterParameter='X'}"
                   Y1="{Binding ElementName=dsr2Pin1, Converter={StaticResource CoordinateGet}, ConverterParameter='Y'}"

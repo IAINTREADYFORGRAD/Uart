@@ -17,6 +17,10 @@ namespace WpfApp
     {
         private Uart uart1;
         private Uart uart2;
+        private bool rts1ButtClick = false;
+        private bool dtr1ButtClick = false;
+        private bool rts2ButtClick = false;
+        private bool dtr2ButtClick = false;
         public MainWindow()
         {
             InitializeComponent();
@@ -177,6 +181,7 @@ namespace WpfApp
         {
             Dispatcher.Invoke(() =>
             {
+                // sleep 0.5s
                 dsr2Pin1.Fill = new SolidColorBrush(Color.FromRgb(0x70, 0x92, 0xBE));
                 lineDsr2Pin1Pin2.Fill = new SolidColorBrush(Color.FromRgb(0x70, 0x92, 0xBE));
                 crossDtrDsr.Fill = new SolidColorBrush(Color.FromRgb(0x70, 0x92, 0xBE));
@@ -245,35 +250,89 @@ namespace WpfApp
 
         private void Rts1Butt_Click(object sender, RoutedEventArgs e)
         {
-            uart1.RtsEnable();
-            rts1Butt.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#99D9EA"));
-            rts1Pin1.Stroke = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#99D9EA")); 
-            lineRts1Pin1Pin2.Stroke = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#99D9EA"));
+            if (!rts1ButtClick)
+            {
+                uart1.RtsEnable();
+                rts1Butt.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#99D9EA"));
+                rts1Pin1.Fill = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#99D9EA")); 
+                lineRts1Pin1Pin2.Stroke = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#99D9EA"));
+
+                rts1ButtClick = true;
+
+            } else
+            {
+                uart1.RtsDisable();
+                rts1Butt.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#7092BE"));
+                rts1Pin1.Fill = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#7092BE"));
+                lineRts1Pin1Pin2.Stroke = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#7092BE"));
+
+                rts1ButtClick = false;
+            }
         }
 
         private void Dtr1Butt_Click(object sender, RoutedEventArgs e)
         {
-            uart1.DtrEnable();
-            dtr1Butt.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#99D9EA"));
-            dtr1Pin1.Stroke = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#99D9EA"));
-            lineDtr1Pin1Pin2.Stroke = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#99D9EA"));
+            if (!dtr1ButtClick)
+            {
+                uart1.DtrEnable();
+                dtr1Butt.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#99D9EA"));
+                dtr1Pin1.Fill = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#99D9EA"));
+                lineDtr1Pin1Pin2.Stroke = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#99D9EA"));
+
+                dtr1ButtClick = true;
+            }
+            else
+            {
+                uart1.DtrDisable();
+                dtr1Butt.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#7092BE"));
+                dtr1Pin1.Fill = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#7092BE"));
+                lineDtr1Pin1Pin2.Stroke = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#7092BE"));
+            }
+
         }
 
-        /*private void Rts2Butt_Click(object sender, RoutedEventArgs e)
+        private void Rts2Butt_Click(object sender, RoutedEventArgs e)
         {
-            uart2.RtsEnable();
-            rts2Butt.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#99D9EA"));
-            rts2Pin1.Stroke = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#99D9EA"));
-            lineRts2Pin1Pin2.Stroke = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#99D9EA"));
+            if (!rts2ButtClick)
+            {
+                uart2.RtsEnable();
+                rts2Butt.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#99D9EA"));
+                rts2Pin1.Fill = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#99D9EA"));
+                lineRts2Pin1Pin2.Stroke = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#99D9EA"));
+
+                rts2ButtClick = true;
+
+            } else
+            {
+                uart2.RtsDisable();
+                rts2Butt.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#7092BE"));
+                rts2Pin1.Fill = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#7092BE"));
+                lineRts2Pin1Pin2.Stroke = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#7092BE"));
+
+                rts2ButtClick = false;
+            }
         }
 
         private void Dtr2Butt_Click(object sender, RoutedEventArgs e)
         {
-            uart2.DtrEnable();
-            dtr2Butt.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#99D9EA"));
-            rts2Pin1.Stroke = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#99D9EA"));
-            lineDtr2Pin1Pin2.Stroke = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#99D9EA"));
-        }*/
+            if (!dtr2ButtClick)
+            {
+                uart2.DtrEnable();
+                dtr2Butt.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#99D9EA"));
+                dtr2Pin1.Fill = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#99D9EA"));
+                lineDtr2Pin1Pin2.Stroke = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#99D9EA"));
+
+                dtr2ButtClick = true;
+            } else
+            {
+                uart2.DtrDisable();
+                dtr2Butt.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#7092BE"));
+                dtr2Pin1.Fill = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#7092BE"));
+                lineDtr2Pin1Pin2.Stroke = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#7092BE"));
+
+                dtr2ButtClick = false;
+            }
+        }
 
     }    
     public class CoordinateGet : IValueConverter
