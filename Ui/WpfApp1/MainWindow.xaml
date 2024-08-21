@@ -102,36 +102,57 @@
                           Width="100"
                           IsEditable="False" 
                           SelectionChanged="ComboBoxPorts_SelectionChanged2"/>
-                <StackPanel Margin="40" HorizontalAlignment="right">
-                    <Grid Margin="0,0">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="138*"/>
-                            <RowDefinition Height="169*"/>
-                        </Grid.RowDefinitions>
+                <StackPanel Margin="0" HorizontalAlignment="right">
+                    <Grid>
                         <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
                             <ColumnDefinition Width="Auto"/>
                             <ColumnDefinition Width="Auto"/>
                             <ColumnDefinition Width="Auto"/>
                         </Grid.ColumnDefinitions>
 
-                        <TextBlock x:Name="rts2" Grid.Column="2" Text="RTS" FontSize ="20" FontFamily="Segoe UI Black" Foreground="#8080C0" Margin="0,0" HorizontalAlignment="Right" Grid.RowSpan="2"/>
-                        <Ellipse x:Name="rts2Pin1" Grid.Column="1" Width="10" Height="10" Fill="#7092BE" Margin="0,8,15,120"/>
-                        <Ellipse x:Name="rts2Pin2" Grid.Column="0" Width="5" Height="5" Fill="#7092BE" Margin="0,11,80,122"/>
+                        <Button x:Name="rts2Butt" Grid.Column="3" Width="15" Height="15" Background="Transparent" Margin="0,35,20,270" Click="Rts2Butt_Click" HorizontalAlignment="Right" >
+                            <Button.Template>
+                                <ControlTemplate TargetType="Button">
+                                    <Grid>
+                                        <Ellipse Fill="#7092BE"/>
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Grid>
+                                </ControlTemplate>
+                            </Button.Template>
+                            <TextBlock Text="N" Foreground="White" FontSize="7" FontWeight="Bold"/>
+                        </Button>
 
-                        <TextBlock x:Name="cts2" Grid.Column="2" Text="CTS" FontSize ="20" FontFamily="Segoe UI Black" Foreground="#8080C0" Margin="0,35" HorizontalAlignment="Right" Grid.RowSpan="2"/>
-                        <Ellipse x:Name="cts2Pin1" Grid.Column="1" Width="10" Height="10" Fill="#7092BE" Margin="0,43,15,85"/>
-                        <Ellipse x:Name="cts2Pin2" Grid.Column="0" Width="5" Height="5" Fill="#7092BE" Margin="0,46,80,87"/>
+                        <TextBlock x:Name="rts2" Grid.Column="2" Text="RTS" FontSize ="20" FontFamily="Segoe UI Black" Foreground="#8080C0" Margin="0,35,15,0" HorizontalAlignment="Right"/>
+                        <Ellipse x:Name="rts2Pin1" Grid.Column="1" Width="10" Height="10" Fill="#7092BE" Margin="0,45,20,280"/>
+                        <Ellipse x:Name="rts2Pin2" Grid.Column="0" Width="5" Height="5" Fill="#7092BE" Margin="0,45,50,280"/>
 
-                        <TextBlock x:Name="dtr2" Grid.Column="2" Text="DTR" FontSize ="20" FontFamily="Segoe UI Black" Foreground="#8080C0" Margin="0,70,0,70" HorizontalAlignment="Center" Grid.RowSpan="2"/>
-                        <Ellipse x:Name="dtr2Pin1" Grid.Column="1" Width="10" Height="10" Fill="#7092BE" Margin="0,78,15,50"/>
-                        <Ellipse x:Name="dtr2Pin2" Grid.Column="0" Width="5" Height="5" Fill="#7092BE" Margin="0,81,80,52"/>
+                        <TextBlock x:Name="cts2" Grid.Column="2" Text="CTS" FontSize ="20" FontFamily="Segoe UI Black" Foreground="#8080C0" Margin="0,70,15,0" HorizontalAlignment="Right"/>
+                        <Ellipse x:Name="cts2Pin1" Grid.Column="1" Width="10" Height="10" Fill="#7092BE" Margin="0,45,20,210"/>
+                        <Ellipse x:Name="cts2Pin2" Grid.Column="0" Width="5" Height="5" Fill="#7092BE" Margin="0,45,50,210"/>
 
-                        <TextBlock x:Name="dsr2" Grid.Column="2" Text="DSR" FontSize ="20" FontFamily="Segoe UI Black" Foreground="#8080C0" Margin="0,105" HorizontalAlignment="Right" Grid.RowSpan="2"/>
-                        <Ellipse x:Name="dsr2Pin1" Grid.Column="1" Width="10" Height="10" Fill="#7092BE" Margin="0,113,15,15"/>
-                        <Ellipse x:Name="dsr2Pin2" Grid.Column="0" Width="5" Height="5" Fill="#7092BE" Margin="0,116,80,17"/>
+                        <Button x:Name="dtr2Butt" Grid.Column="3" Width="15" Height="15" Background="Transparent" Margin="0,105,20,200" Click="Dtr1Butt_Click" HorizontalAlignment="Right">
+                            <Button.Template>
+                                <ControlTemplate TargetType="Button">
+                                    <Grid>
+                                        <Ellipse Fill="#7092BE"/>
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Grid>
+                                </ControlTemplate>
+                            </Button.Template>
+                            <TextBlock Text="N" Foreground="White" FontSize="7" FontWeight="Bold"/>
+                        </Button>
 
-                        <TextBlock x:Name="dcd2" Grid.Column="2" Text="DCD" FontSize ="20" FontFamily="Segoe UI Black" Foreground="#8080C0" Margin="0,2,0,140" HorizontalAlignment="Center" Grid.Row="1"/>
-                        <Ellipse x:Name="dcd2Pin" Grid.Column="1" Width="10" Height="10" Fill="#7092BE" Margin="0,10,15,149" Grid.Row="1"/>
+                        <TextBlock x:Name="dtr2" Grid.Column="2" Text="DTR" FontSize ="20" FontFamily="Segoe UI Black" Foreground="#8080C0" Margin="0,105,15,0" HorizontalAlignment="Right"/>
+                        <Ellipse x:Name="dtr2Pin1" Grid.Column="1" Width="10" Height="10" Fill="#7092BE" Margin="0,45,20,140"/>
+                        <Ellipse x:Name="dtr2Pin2" Grid.Column="0" Width="5" Height="5" Fill="#7092BE" Margin="0,45,50,140"/>
+
+                        <TextBlock x:Name="dsr2" Grid.Column="2" Text="DSR" FontSize ="20" FontFamily="Segoe UI Black" Foreground="#8080C0" Margin="0,140,15,0" HorizontalAlignment="Right"/>
+                        <Ellipse x:Name="dsr2Pin1" Grid.Column="1" Width="10" Height="10" Fill="#7092BE" Margin="0,45,20,70"/>
+                        <Ellipse x:Name="dsr2Pin2" Grid.Column="0" Width="5" Height="5" Fill="#7092BE" Margin="0,45,50,70"/>
+
+                        <TextBlock x:Name="dcd2" Grid.Column="2" Text="DCD" FontSize ="20" FontFamily="Segoe UI Black" Foreground="#8080C0" Margin="0,175,15,0" HorizontalAlignment="Right"/>
+                        <Ellipse x:Name="dcd2Pin" Grid.Column="1" Width="10" Height="10" Fill="#7092BE" Margin="0,45,20,0"/>
                     </Grid>
                 </StackPanel>
             </StackPanel>
