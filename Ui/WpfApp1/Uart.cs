@@ -5,7 +5,7 @@ using System.Windows;
 namespace WpfApp {
     public class Uart
     {
-        static SerialPort serialPort;
+        static SerialPort serialPort = null;
         public event EventHandler ctsHigh;
         public event EventHandler ctsLow;
         public event EventHandler dsrHigh;
@@ -15,6 +15,10 @@ namespace WpfApp {
 
         public Uart(string name, Handshake handshake)
         {
+            if (!name.StartsWith("COM", StringComparison.OrdinalIgnoreCase))
+            {
+                return;
+            }
             serialPort = new SerialPort();
             try
             {
@@ -51,7 +55,7 @@ namespace WpfApp {
                 return;
             }
 
-            //serialPort.Open();
+            serialPort.Open();
             serialPort.PinChanged += new SerialPinChangedEventHandler(CtsMonitorHandler);
             serialPort.PinChanged += new SerialPinChangedEventHandler(DsrMonitorHandler);
             serialPort.PinChanged += new SerialPinChangedEventHandler(CdMonitorHandler);
@@ -73,6 +77,8 @@ namespace WpfApp {
 
 
             Console.WriteLine(serialPort.PortName + " is closed");
+
+            serialPort = null;
         }
 
 
