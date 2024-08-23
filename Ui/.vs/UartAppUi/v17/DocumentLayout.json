@@ -36,9 +36,10 @@
               "RelativeDocumentMoniker": "WpfApp1\\Uart.cs",
               "ToolTip": "C:\\NOOBIE\\UartApp\\Ui\\WpfApp1\\Uart.cs",
               "RelativeToolTip": "WpfApp1\\Uart.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAAoAAAA",
+              "ViewState": "AQIAAD4AAAAAAAAAAAAAwEkAAAAXAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-22T15:18:54.656Z"
+              "WhenOpened": "2024-08-22T15:18:54.656Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -60,7 +61,7 @@
               "RelativeDocumentMoniker": "WpfApp1\\MainWindow.xaml.cs",
               "ToolTip": "C:\\NOOBIE\\UartApp\\Ui\\WpfApp1\\MainWindow.xaml.cs",
               "RelativeToolTip": "WpfApp1\\MainWindow.xaml.cs",
-              "ViewState": "AQIAAIwAAAAAAAAAAAAmwJ4AAAAmAAAA",
+              "ViewState": "AQIAAHcBAAAAAAAAAAAtwJYBAAAxAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-08-21T15:58:48.886Z",
               "EditorCaption": ""

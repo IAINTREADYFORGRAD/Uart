@@ -102,7 +102,7 @@
                           VerticalAlignment="Center"
                           HorizontalAlignment="Center"
                           Width="100"
-                          IsEditable="True"/>
+                          IsEditable="False"/>
                 <StackPanel Margin="0" HorizontalAlignment="right">
                     <Grid>
                         <Grid.ColumnDefinitions>

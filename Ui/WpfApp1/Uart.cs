@@ -1,4 +1,5 @@
-﻿using System.IO.Ports;
+﻿using System.Data;
+using System.IO.Ports;
 using System.Security.Cryptography;
 using System.Windows;
 
@@ -6,6 +7,7 @@ namespace WpfApp {
     public class Uart
     {
         static SerialPort serialPort = null;
+        public string Name = null;
         public event EventHandler ctsHigh;
         public event EventHandler ctsLow;
         public event EventHandler dsrHigh;
@@ -44,6 +46,8 @@ namespace WpfApp {
             serialPort.DataReceived += new SerialDataReceivedEventHandler(UartRead);
 
             serialPort.RtsEnable = true;
+
+            Name = name;
         }
 
         public void UartStart()
