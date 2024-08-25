@@ -66,10 +66,10 @@ namespace WpfApp
             {
                 cts1Switch.Text = "HIGH";
 
-                ColorOn(cts1Switch.Foreground);
-                ColorOn(cts1Pin1.Fill);
-                ColorOn(lineCts1Pin1Pin2.Fill);
-                ColorOn(crossCtsRts.Fill);
+                cts1Switch.Foreground   = ColorOn();
+                cts1Pin1.Fill           = ColorOn();
+                lineCts1Pin1Pin2.Stroke = ColorOn();
+                crossCtsRts.Stroke      = ColorOn();
             });
         }
 
@@ -79,10 +79,10 @@ namespace WpfApp
             {
                 cts1Switch.Text = "LOW";
 
-                ColorOff(cts1Switch.Foreground);
-                ColorOff(cts1Pin1.Fill);
-                ColorOff(lineCts1Pin1Pin2.Fill);
-                ColorOff(crossCtsRts.Fill);
+                cts1Switch.Foreground   = ColorOff();
+                cts1Pin1.Fill           = ColorOff();
+                lineCts1Pin1Pin2.Stroke = ColorOff();
+                crossCtsRts.Stroke      = ColorOff();
             });
         }
 
@@ -92,10 +92,10 @@ namespace WpfApp
             {
                 dsr1Switch.Text = "HIGH";
 
-                ColorOn (dsr1Switch.Foreground);
-                ColorOn (dsr1Pin1.Fill);
-                ColorOn (lineDsr1Pin1Pin2.Fill);
-                ColorOn (crossDsrDtr.Fill);
+                dsr1Switch.Foreground   = ColorOn();
+                dsr1Pin1.Fill           = ColorOn();
+                lineDsr1Pin1Pin2.Stroke = ColorOn();
+                crossDsrDtr.Stroke      = ColorOn();
             });
         }
 
@@ -105,10 +105,10 @@ namespace WpfApp
             {
                 dsr1Switch.Text = "LOW";
 
-                ColorOff(dsr1Switch.Foreground);
-                ColorOff(dsr1Pin1.Fill);
-                ColorOff(lineDsr1Pin1Pin2.Fill);
-                ColorOff(crossDsrDtr.Fill);
+                dsr1Switch.Foreground   = ColorOff();
+                dsr1Pin1.Fill           = ColorOff();
+                lineDsr1Pin1Pin2.Stroke = ColorOff();
+                crossDsrDtr.Stroke      = ColorOff();
 
             });
         }
@@ -119,9 +119,9 @@ namespace WpfApp
             {
                 dcd1Switch.Text = "HIGH";
 
-                ColorOn(dcd1Switch.Foreground);
-                ColorOn(dcd1Pin.Fill);
-                ColorOn(lineDcd1ToDcd2.Fill);
+                dcd1Switch.Foreground = ColorOn();
+                dcd1Pin.Fill          = ColorOn();
+                lineDcd1ToDcd2.Stroke = ColorOn();
 
             });
         }
@@ -132,9 +132,9 @@ namespace WpfApp
             {
                 dcd1Switch.Text = "LOW";
 
-                ColorOff(dcd1Switch.Foreground);
-                ColorOff(dcd1Pin.Fill);
-                ColorOff(lineDcd1ToDcd2.Fill);
+                dcd1Switch.Foreground = ColorOff();
+                dcd1Pin.Fill          = ColorOff();
+                lineDcd1ToDcd2.Stroke = ColorOff();
             });
         }
 
@@ -184,6 +184,8 @@ namespace WpfApp
                     uart1.dsrLow += Uart1DsrLow;
                     uart1.cdHigh += Uart1DcdHigh;
                     uart1.cdLow += Uart1DcdLow;
+
+                    Port1Init();
                 }
             }            
         }
@@ -194,10 +196,10 @@ namespace WpfApp
             {
                 cts2Switch.Text = "HIGH";
 
-                ColorOn(cts2Switch.Foreground);
-                ColorOn(cts2Pin1.Fill);
-                ColorOn(lineCts2Pin1Pin2.Fill);
-                ColorOn(crossRtsCts.Fill);
+                cts2Switch.Foreground   = ColorOn();
+                cts2Pin1.Fill           = ColorOn();
+                lineCts2Pin1Pin2.Stroke = ColorOn();
+                crossRtsCts.Stroke      = ColorOn();
             });
         }
 
@@ -207,10 +209,10 @@ namespace WpfApp
             {
                 cts2Switch.Text = "LOW";
 
-                ColorOff(cts2Switch.Foreground);
-                ColorOff(cts2Pin1.Fill);
-                ColorOff(lineCts2Pin1Pin2.Fill);
-                ColorOff(crossRtsCts.Fill);
+                cts2Switch.Foreground   = ColorOff();
+                cts2Pin1.Fill           = ColorOff();
+                lineCts2Pin1Pin2.Stroke = ColorOff();
+                crossRtsCts.Stroke      = ColorOff();
             });
         }
 
@@ -220,10 +222,10 @@ namespace WpfApp
             {
                 dsr2Switch.Text = "HIGH";
 
-                ColorOn(dsr2Switch.Foreground);
-                ColorOn(dsr2Pin1.Fill);
-                ColorOn(lineDsr2Pin1Pin2.Fill);
-                ColorOn(crossDtrDsr.Fill);
+                dsr2Switch.Foreground   = ColorOn();
+                dsr2Pin1.Fill           = ColorOn();
+                lineDsr2Pin1Pin2.Stroke = ColorOn();
+                crossDtrDsr.Stroke      = ColorOn();
 
             });
         }
@@ -235,10 +237,10 @@ namespace WpfApp
                 // sleep 0.5s
                 dsr2Switch.Text = "LOW";
 
-                ColorOff(dsr2Switch.Foreground);
-                ColorOff(dsr2Pin1.Fill);
-                ColorOff(lineDsr2Pin1Pin2.Fill);
-                ColorOff(crossDtrDsr.Fill);
+                dsr2Switch.Foreground   = ColorOff();
+                dsr2Pin1.Fill           = ColorOff();
+                lineDsr2Pin1Pin2.Stroke = ColorOff();
+                crossDtrDsr.Stroke      = ColorOff();
             });
         }
 
@@ -248,9 +250,9 @@ namespace WpfApp
             {
                 dcd2Switch.Text = "HIGH";
 
-                ColorOn(dcd2Switch.Foreground);
-                ColorOn(dcd2Pin.Fill);
-                ColorOn(lineDcd1ToDcd2.Fill);
+                dcd2Switch.Foreground = ColorOn();
+                dcd2Pin.Fill          = ColorOn();
+                lineDcd1ToDcd2.Stroke = ColorOn();
             });
         }
 
@@ -260,9 +262,9 @@ namespace WpfApp
             {
                 dcd2Switch.Text = "LOW";
 
-                ColorOff(dcd2Switch.Foreground);
-                ColorOff(dcd2Pin.Fill);
-                ColorOff(lineDcd1ToDcd2.Fill);
+                dcd2Switch.Foreground = ColorOff();
+                dcd2Pin.Fill          = ColorOff();
+                lineDcd1ToDcd2.Stroke = ColorOff();
 
             });
         }
@@ -310,6 +312,8 @@ namespace WpfApp
                     uart2.dsrLow += Uart2DsrLow;
                     uart2.cdHigh += Uart2DcdHigh;
                     uart2.cdLow += Uart2DcdLow;
+
+                    Port2Init();
                 }
             }
         }
@@ -339,9 +343,9 @@ namespace WpfApp
                 uart1.RtsEnable();
                 rts1ButtText.Text = "ON";
 
-                ColorOn (rts1ButtText.Foreground);
-                ColorOn (rts1Pin1.Fill);
-                ColorOn (lineRts1Pin1Pin2.Stroke);
+                rts1ButtText.Foreground = ColorOn();
+                rts1Pin1.Fill           = ColorOn();
+                lineRts1Pin1Pin2.Stroke = ColorOn();
 
                 rts1ButtClick = true;
 
@@ -350,9 +354,9 @@ namespace WpfApp
                 uart1.RtsDisable();
                 rts1ButtText.Text = "OFF";
 
-                ColorOff (rts1ButtText.Foreground);
-                ColorOff (rts1Pin1.Fill);
-                ColorOff (lineRts1Pin1Pin2.Stroke);
+                rts1ButtText.Foreground = ColorOff();
+                rts1Pin1.Fill           = ColorOff();
+                lineRts1Pin1Pin2.Stroke = ColorOff();
 
                 rts1ButtClick = false;
             }
@@ -370,9 +374,9 @@ namespace WpfApp
                 uart1.DtrEnable();
                 dtr1ButtText.Text = "ON";
 
-                ColorOn(dtr1ButtText.Foreground);
-                ColorOn(dtr1Pin1.Fill);
-                ColorOn(lineDtr1Pin1Pin2.Stroke);
+                dtr1ButtText.Foreground = ColorOn();
+                dtr1Pin1.Fill           = ColorOn();
+                lineDtr1Pin1Pin2.Stroke = ColorOn();
 
                 dtr1ButtClick = true;
             }
@@ -381,9 +385,9 @@ namespace WpfApp
                 uart1.DtrDisable();
                 dtr1ButtText.Text = "OFF";
 
-                ColorOff(dtr1ButtText.Foreground);
-                ColorOff(dtr1Pin1.Fill);
-                ColorOff(lineDtr1Pin1Pin2.Stroke);
+                dtr1ButtText.Foreground = ColorOff();
+                dtr1Pin1.Fill           = ColorOff();
+                lineDtr1Pin1Pin2.Stroke = ColorOff();
 
                 dtr1ButtClick = false;
             }
@@ -402,9 +406,9 @@ namespace WpfApp
                 uart2.RtsEnable();
                 rts2ButtText.Text = "ON";
 
-                ColorOn(rts2ButtText.Foreground);
-                ColorOn(rts2Pin1.Fill);
-                ColorOn(lineRts2Pin1Pin2.Stroke);
+                rts2ButtText.Foreground = ColorOn();
+                rts2Pin1.Fill           = ColorOn();
+                lineRts2Pin1Pin2.Stroke = ColorOn();
 
                 rts2ButtClick = true;
 
@@ -413,9 +417,9 @@ namespace WpfApp
                 uart2.RtsDisable();
                 rts2ButtText.Text = "OFF";
 
-                ColorOff(rts2ButtText.Foreground);
-                ColorOff(rts2Pin1.Fill);
-                ColorOff(lineRts2Pin1Pin2.Stroke);
+                rts2ButtText.Foreground = ColorOff();
+                rts2Pin1.Fill           = ColorOff();
+                lineRts2Pin1Pin2.Stroke = ColorOff();
 
                 rts2ButtClick = false;
             }
@@ -433,9 +437,9 @@ namespace WpfApp
                 uart2.DtrEnable();
                 dtr2ButtText.Text = "ON";
 
-                ColorOn(dtr2ButtText.Foreground);
-                ColorOn(dtr2Pin1.Fill);
-                ColorOn(lineDtr2Pin1Pin2.Stroke);
+                dtr2ButtText.Foreground = ColorOn();
+                dtr2Pin1.Fill           = ColorOn();
+                lineDtr2Pin1Pin2.Stroke = ColorOn();
 
                 dtr2ButtClick = true;
 
@@ -444,9 +448,9 @@ namespace WpfApp
                 uart2.DtrDisable();
                 dtr2ButtText.Text = "OFF";
 
-                ColorOff(dtr2ButtText.Foreground);
-                ColorOff(dtr2Pin1.Fill);
-                ColorOff(lineDtr2Pin1Pin2.Stroke);
+                dtr2ButtText.Foreground = ColorOff();
+                dtr2Pin1.Fill           = ColorOff();
+                lineDtr2Pin1Pin2.Stroke = ColorOff();
 
                 dtr2ButtClick = false;
             }
@@ -466,14 +470,74 @@ namespace WpfApp
             return !ComboBoxFiredOnce;
         }
 
-        private void ColorOff(Brush brush)
+        private Brush ColorOff()
         {
-            brush = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#7092BE"));
+            return new SolidColorBrush((Color)ColorConverter.ConvertFromString("#7092BE"));
         }
 
-        private void ColorOn(Brush brush)
+        private Brush ColorOn()
         {
-            brush = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#99D9EA"));
+            return new SolidColorBrush((Color)ColorConverter.ConvertFromString("#99D9EA"));
+        }
+
+        private void Port1Init ()
+        {
+            cts2Switch.Text         = "LOW";
+            cts1Switch.Foreground   = ColorOff();
+            cts1Pin1.Fill           = ColorOff();
+            lineCts1Pin1Pin2.Stroke = ColorOff();
+            crossCtsRts.Stroke = ColorOff();
+
+            dsr1Switch.Text         = "LOW";
+            dsr1Switch.Foreground   = ColorOff();
+            dsr1Pin1.Fill           = ColorOff();
+            lineDsr1Pin1Pin2.Stroke = ColorOff();
+            crossDsrDtr.Stroke      = ColorOff();
+
+            dcd1Switch.Text         = "LOW";
+            dcd1Switch.Foreground   = ColorOff();
+            dcd1Pin.Fill            = ColorOff();
+            lineDcd1ToDcd2.Stroke   = ColorOff();
+
+            rts1ButtText.Text       = "OFF";
+            rts1ButtText.Foreground = ColorOff();
+            rts1Pin1.Fill           = ColorOff();
+            lineRts1Pin1Pin2.Stroke = ColorOff();
+
+            dtr1ButtText.Text       = "OFF";
+            dtr1ButtText.Foreground = ColorOff();
+            dtr1Pin1.Fill           = ColorOff();
+            lineDtr1Pin1Pin2.Stroke = ColorOff();
+        }
+
+        private void Port2Init()
+        {
+            cts2Switch.Text         = "LOW";
+            cts2Switch.Foreground   = ColorOff();
+            cts2Pin1.Fill           = ColorOff();
+            lineCts2Pin1Pin2.Stroke = ColorOff();
+            crossRtsCts.Stroke      = ColorOff();
+
+            dsr2Switch.Text         = "LOW";
+            dsr2Switch.Foreground   = ColorOff();
+            dsr2Pin1.Fill           = ColorOff();
+            lineDsr2Pin1Pin2.Stroke = ColorOff();
+            crossDtrDsr.Stroke      = ColorOff();
+
+            dcd2Switch.Text         = "LOW";
+            dcd2Switch.Foreground   = ColorOff();
+            dcd2Pin.Fill            = ColorOff();
+            lineDcd1ToDcd2.Stroke   = ColorOff();
+
+            rts2ButtText.Text       = "OFF";
+            rts2ButtText.Foreground = ColorOff();
+            rts2Pin1.Fill           = ColorOff();
+            lineRts2Pin1Pin2.Stroke = ColorOff();
+
+            dtr2ButtText.Text       = "OFF";
+            dtr2ButtText.Foreground = ColorOff();
+            dtr2Pin1.Fill           = ColorOff();
+            lineDtr2Pin1Pin2.Stroke = ColorOff();
         }
 
     }    
