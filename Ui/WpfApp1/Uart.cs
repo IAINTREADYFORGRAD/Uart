@@ -2,6 +2,7 @@
 using System.IO.Ports;
 using System.Security.Cryptography;
 using System.Windows;
+using System.Diagnostics;
 
 namespace WpfApp {
     public class Uart
@@ -55,7 +56,13 @@ namespace WpfApp {
 
             if (serialPort == null)
             {
-                Console.WriteLine("Uart has not been created");
+                Debug.WriteLine("Uart has not been created");
+                return;
+            }
+
+            if (serialPort.IsOpen)
+            {
+                Debug.WriteLine("Uart has been opened");
                 return;
             }
 
@@ -64,7 +71,7 @@ namespace WpfApp {
             serialPort.PinChanged += new SerialPinChangedEventHandler(DsrMonitorHandler);
             serialPort.PinChanged += new SerialPinChangedEventHandler(CdMonitorHandler);
 
-            Console.WriteLine(serialPort.PortName + " is open");
+            Debug.WriteLine(serialPort.PortName + " is open");
         }
 
         public void UartDestroy()
@@ -80,7 +87,7 @@ namespace WpfApp {
             serialPort.PinChanged -= CdMonitorHandler;
 
 
-            Console.WriteLine(serialPort.PortName + " is closed");
+            Debug.WriteLine(serialPort.PortName + " is closed");
 
             serialPort = null;
         }
@@ -128,12 +135,12 @@ namespace WpfApp {
 
         protected virtual void OnCtsHigh()
         {
-           ctsHigh?.Invoke(this, EventArgs.Empty);
+           ctsHigh.Invoke(this, EventArgs.Empty);
         }
 
         protected virtual void OnCtsLow()
         {
-            ctsLow?.Invoke(this, EventArgs.Empty);
+            ctsLow.Invoke(this, EventArgs.Empty);
         }
 
         private void CtsMonitorHandler(object sender, SerialPinChangedEventArgs e)
@@ -145,10 +152,12 @@ namespace WpfApp {
                 bool cts = sp.CtsHolding;
                 if (cts)
                 {
+                    Debug.WriteLine(sp.PortName + "Cts: High");
                     OnCtsHigh();
                 }
                 else
                 {
+                    Debug.WriteLine(sp.PortName + "Cts: LOW");
                     OnCtsLow();
                 }
             }
@@ -156,12 +165,12 @@ namespace WpfApp {
 
         protected virtual void OnDsrHigh()
         {
-            dsrHigh?.Invoke(this, EventArgs.Empty);
+            dsrHigh.Invoke(this, EventArgs.Empty);
         }
 
         protected virtual void OnDsrLow()
         {
-            dsrLow?.Invoke(this, EventArgs.Empty);
+            dsrLow.Invoke(this, EventArgs.Empty);
         }
 
         private void DsrMonitorHandler(object sender, SerialPinChangedEventArgs e)
@@ -173,10 +182,12 @@ namespace WpfApp {
                 bool dsr = sp.DsrHolding;
                 if (dsr)
                 {
+                    Debug.WriteLine(sp.PortName + "Dsr: High");
                     OnDsrHigh();
                 }
                 else
                 {
+                    Debug.WriteLine(sp.PortName + "Dsr: LOW");
                     OnDsrLow();
                 }
             }
@@ -184,12 +195,12 @@ namespace WpfApp {
 
         protected virtual void OnCdHigh()
         {
-            cdHigh?.Invoke(this, EventArgs.Empty);
+            cdHigh.Invoke(this, EventArgs.Empty);
         }
 
         protected virtual void OnCdLow()
         {
-            cdLow?.Invoke(this, EventArgs.Empty);
+            cdLow.Invoke(this, EventArgs.Empty);
         }
         private void CdMonitorHandler(object sender, SerialPinChangedEventArgs e)
         {
@@ -200,9 +211,12 @@ namespace WpfApp {
                 bool dcd = sp.CDHolding;
                 if (dcd)
                 {
+                    Debug.WriteLine(sp.PortName + "Cd: High");
                     OnCdHigh();
+
                 } else
                 {
+                    Debug.WriteLine(sp.PortName + "Cd: LOW");
                     OnCdLow();
                 }
             }
@@ -219,7 +233,7 @@ namespace WpfApp {
                 return;
             }
 
-            Console.WriteLine(serialPort.PortName + " received: " + data);
+            Debug.WriteLine(serialPort.PortName + " received: " + data);
         }
 
         public async Task UartWrite(string msg)
@@ -230,7 +244,7 @@ namespace WpfApp {
             }
             else
             {
-                Console.WriteLine(serialPort.PortName + " CTS timeout and failed to send msg");
+                Debug.WriteLine(serialPort.PortName + " CTS timeout and failed to send msg");
             }
 
         }

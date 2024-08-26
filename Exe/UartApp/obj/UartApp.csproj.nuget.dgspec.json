@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Noobie\\UartApp\\Exe\\UartApp\\UartApp.csproj": {}
+    "C:\\NOOBIE\\UartApp\\Exe\\UartApp\\UartApp.csproj": {}
   },
   "projects": {
-    "D:\\Noobie\\UartApp\\Exe\\UartApp\\UartApp.csproj": {
+    "C:\\NOOBIE\\UartApp\\Exe\\UartApp\\UartApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Noobie\\UartApp\\Exe\\UartApp\\UartApp.csproj",
+        "projectUniqueName": "C:\\NOOBIE\\UartApp\\Exe\\UartApp\\UartApp.csproj",
         "projectName": "UartApp",
-        "projectPath": "D:\\Noobie\\UartApp\\Exe\\UartApp\\UartApp.csproj",
-        "packagesPath": "C:\\Users\\evelyn.lin\\.nuget\\packages\\",
-        "outputPath": "D:\\Noobie\\UartApp\\Exe\\UartApp\\obj\\",
+        "projectPath": "C:\\NOOBIE\\UartApp\\Exe\\UartApp\\UartApp.csproj",
+        "packagesPath": "C:\\Users\\w2000\\.nuget\\packages\\",
+        "outputPath": "C:\\NOOBIE\\UartApp\\Exe\\UartApp\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\evelyn.lin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\w2000\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -78,7 +78,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.302/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

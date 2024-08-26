@@ -482,11 +482,11 @@ namespace WpfApp
 
         private void Port1Init ()
         {
-            cts2Switch.Text         = "LOW";
+            cts1Switch.Text         = "LOW";
             cts1Switch.Foreground   = ColorOff();
             cts1Pin1.Fill           = ColorOff();
             lineCts1Pin1Pin2.Stroke = ColorOff();
-            crossCtsRts.Stroke = ColorOff();
+            crossCtsRts.Stroke      = ColorOff();
 
             dsr1Switch.Text         = "LOW";
             dsr1Switch.Foreground   = ColorOff();
