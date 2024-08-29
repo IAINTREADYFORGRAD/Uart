@@ -35,7 +35,7 @@
 
         <Border Grid.Column="1" Background="#C8BFE7" CornerRadius="10" Margin="0,27,0,7" Grid.RowSpan="2">
             <StackPanel x:Name="Panel1">
-                <ComboBox x:Name="comboBoxPorts1"
+                <ComboBox x:Name="comboBox1"
                   HorizontalAlignment="Center"
                   Width="100"
                   IsEditable="False"/>
@@ -98,7 +98,7 @@
 
         <Border Grid.Column="3" Background="#C8BFE7" CornerRadius="10" Margin="0,27,0,7" Grid.RowSpan="2">
             <StackPanel x:Name="Panel2">
-                <ComboBox x:Name="comboBoxPorts2"
+                <ComboBox x:Name="comboBox2"
                           VerticalAlignment="Center"
                           HorizontalAlignment="Center"
                           Width="100"

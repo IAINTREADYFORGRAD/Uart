@@ -4,12 +4,11 @@ using System.Globalization;
 using System.IO.Ports;
 using System.Linq;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Media;
 using System.Windows.Shapes;
 using WpfApp;
-
-// INS button
 
 namespace WpfApp
 {
@@ -22,159 +21,181 @@ namespace WpfApp
         private bool rts2ButtClick = false;
         private bool dtr2ButtClick = false;
 
-        private bool ComboBoxFiredOnce = false;
         public MainWindow()
         {
             InitializeComponent();
-            PortComboBoxInit();
-            comboBoxPorts1.SelectionChanged += ComboBoxPorts_SelectionChanged1;
-            comboBoxPorts2.SelectionChanged += ComboBoxPorts_SelectionChanged2;
+            this.Loaded += MainWindow_Loaded;
         }
 
-        private void PortComboBoxInit()
+        private void MainWindow_Loaded(object sender, RoutedEventArgs e)
         {
-            string[] ports = SerialPort.GetPortNames();
-            string selectedPort1 = null;
-            string selectedPort2 = null;
-
-            if (ports.Length > 0)
-            {
-                comboBoxPorts1.ItemsSource = ports;
-
-                selectedPort1 = ports[0];
-
-                comboBoxPorts1.Text = selectedPort1;
-            }
-
-            if (ports.Length > 1)
-            {
-                //
-                // port: parameter used within the lambda expression representing 'ports'
-                //
-                string[] filteredPorts = ports.Where(port => port != selectedPort1).ToArray();
-                comboBoxPorts2.ItemsSource = filteredPorts;
-
-                selectedPort2 = ports[0];
-
-                comboBoxPorts2.Text = selectedPort2;
-            }
+            Debug.WriteLine("MainWindow_Loaded");
+            comboBox1.SelectionChanged += ComboBoxSelectionChanged1;
+            comboBox2.SelectionChanged += ComboBoxSelectionChanged2;
+            comboBox1.DropDownOpened += ComboBoxDropDown1;
+            comboBox2.DropDownOpened += ComboBoxDropDown2;
         }
 
         private void Uart1CtsHigh(object sender, EventArgs e)
         {
-            Dispatcher.Invoke(() =>
+            try
             {
-                cts1Switch.Text = "HIGH";
-
-                cts1Switch.Foreground   = ColorOn();
-                cts1Pin1.Fill           = ColorOn();
-                lineCts1Pin1Pin2.Stroke = ColorOn();
-                crossCtsRts.Stroke      = ColorOn();
-            });
+                Dispatcher.Invoke(() =>
+                {
+                    cts1Switch.Text = "HIGH";
+                    cts1Switch.Foreground = ColorOn();
+                    cts1Pin1.Fill = ColorOn();
+                    lineCts1Pin1Pin2.Stroke = ColorOn();
+                    crossCtsRts.Stroke = ColorOn();
+                });
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("Error in Uart1CtsHigh: " + ex.Message);
+            }
         }
 
         private void Uart1CtsLow(object sender, EventArgs e)
         {
-            Dispatcher.Invoke(() =>
+            try
             {
-                cts1Switch.Text = "LOW";
-
-                cts1Switch.Foreground   = ColorOff();
-                cts1Pin1.Fill           = ColorOff();
-                lineCts1Pin1Pin2.Stroke = ColorOff();
-                crossCtsRts.Stroke      = ColorOff();
-            });
+                Dispatcher.Invoke(() =>
+                {
+                    cts1Switch.Text = "LOW";
+                    cts1Switch.Foreground = ColorOff();
+                    cts1Pin1.Fill = ColorOff();
+                    lineCts1Pin1Pin2.Stroke = ColorOff();
+                    crossCtsRts.Stroke = ColorOff();
+                });
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("Error in Uart1CtsLow: " + ex.Message);
+            }
         }
 
         private void Uart1DsrHigh(object sender, EventArgs e)
         {
-            Dispatcher.Invoke(() =>
+            try
             {
-                dsr1Switch.Text = "HIGH";
-
-                dsr1Switch.Foreground   = ColorOn();
-                dsr1Pin1.Fill           = ColorOn();
-                lineDsr1Pin1Pin2.Stroke = ColorOn();
-                crossDsrDtr.Stroke      = ColorOn();
-            });
+                Dispatcher.Invoke(() =>
+                {
+                    dsr1Switch.Text = "HIGH";
+                    dsr1Switch.Foreground = ColorOn();
+                    dsr1Pin1.Fill = ColorOn();
+                    lineDsr1Pin1Pin2.Stroke = ColorOn();
+                    crossDsrDtr.Stroke = ColorOn();
+                });
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("Error in Uart1DsrHigh: " + ex.Message);
+            }
         }
 
         private void Uart1DsrLow(object sender, EventArgs e)
         {
-            Dispatcher.Invoke(() =>
+            try
             {
-                dsr1Switch.Text = "LOW";
-
-                dsr1Switch.Foreground   = ColorOff();
-                dsr1Pin1.Fill           = ColorOff();
-                lineDsr1Pin1Pin2.Stroke = ColorOff();
-                crossDsrDtr.Stroke      = ColorOff();
-
-            });
+                Dispatcher.Invoke(() =>
+                {
+                    dsr1Switch.Text = "LOW";
+                    dsr1Switch.Foreground = ColorOff();
+                    dsr1Pin1.Fill = ColorOff();
+                    lineDsr1Pin1Pin2.Stroke = ColorOff();
+                    crossDsrDtr.Stroke = ColorOff();
+                });
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("Error in Uart1DsrLow: " + ex.Message);
+            }
         }
 
         private void Uart1DcdHigh(object sender, EventArgs e)
         {
-            Dispatcher.Invoke(() =>
+            try
             {
-                dcd1Switch.Text = "HIGH";
-
-                dcd1Switch.Foreground = ColorOn();
-                dcd1Pin.Fill          = ColorOn();
-                lineDcd1ToDcd2.Stroke = ColorOn();
-
-            });
+                Dispatcher.Invoke(() =>
+                {
+                    dcd1Switch.Text = "HIGH";
+                    dcd1Switch.Foreground = ColorOn();
+                    dcd1Pin.Fill = ColorOn();
+                    lineDcd1ToDcd2.Stroke = ColorOn();
+                });
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("Error in Uart1DcdHigh: " + ex.Message);
+            }
         }
 
         private void Uart1DcdLow(object sender, EventArgs e)
         {
-            Dispatcher.Invoke(() =>
+            try
             {
-                dcd1Switch.Text = "LOW";
-
-                dcd1Switch.Foreground = ColorOff();
-                dcd1Pin.Fill          = ColorOff();
-                lineDcd1ToDcd2.Stroke = ColorOff();
-            });
+                Dispatcher.Invoke(() =>
+                {
+                    dcd1Switch.Text = "LOW";
+                    dcd1Switch.Foreground = ColorOff();
+                    dcd1Pin.Fill = ColorOff();
+                    lineDcd1ToDcd2.Stroke = ColorOff();
+                });
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("Error in Uart1DcdLow: " + ex.Message);
+            }
         }
 
-        private void ComboBoxPorts_SelectionChanged1(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        private void ComboBoxDropDown1(object sender, EventArgs e)
         {
-            string   selectedPort;
-            string[] filteredPorts;
-
-            if (ComboBoxToList())
+            try
             {
+                string[] filteredPorts;
 
-                if (uart2 == null)
                 {
-                    filteredPorts = SerialPort.GetPortNames().ToArray();
-                }
-                else
-                {
-                    filteredPorts = SerialPort.GetPortNames().Where(port => (port != uart2.Name)).ToArray();
-                }
+                    if (uart2 == null)
+                    {
+                        filteredPorts = SerialPort.GetPortNames().ToArray();
+                    }
+                    else
+                    {
+                        filteredPorts = SerialPort.GetPortNames().Where(port => (port != uart2.Name)).ToArray();
+                    }
 
-                comboBoxPorts1.ItemsSource = filteredPorts;
+                    comboBox1.ItemsSource = filteredPorts;
+                }
+                
             }
-            else if (ComboBoxToSelect())
+            catch (Exception ex)
             {
+                Debug.WriteLine("Error in ComboBoxDropDown1: " + ex.Message);
+            }
+        }
+
+        private void ComboBoxSelectionChanged1(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        {
+            try
+            {
+                string selectedPort;
+
+                if (uart1 != null)
+                {
+                    uart1.UartDestroy();
+                    Debug.WriteLine("uart1 " + uart1.Name + " is closed");
+                }
 
                 if (e.AddedItems.Count == 0)
                 {
                     return;
                 }
 
-                if (uart1 != null)
-                {
-                    uart1.UartDestroy();
-                }
-
                 selectedPort = e.AddedItems[0] as string;
-                
+
                 if (selectedPort != null)
                 {
-                    comboBoxPorts1.Text = selectedPort;
+                    comboBox1.Text = selectedPort;
 
                     uart1 = new Uart(selectedPort, Handshake.None);
                     uart1.UartStart();
@@ -187,122 +208,176 @@ namespace WpfApp
 
                     Port1Init();
                 }
-            }            
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("Error in ComboBoxSelectionChanged1: " + ex.Message);
+            }
         }
 
         private void Uart2CtsHigh(object sender, EventArgs e)
         {
-            Dispatcher.Invoke(() =>
+            try
             {
-                cts2Switch.Text = "HIGH";
-
-                cts2Switch.Foreground   = ColorOn();
-                cts2Pin1.Fill           = ColorOn();
-                lineCts2Pin1Pin2.Stroke = ColorOn();
-                crossRtsCts.Stroke      = ColorOn();
-            });
+                Dispatcher.Invoke(() =>
+                {
+                    cts2Switch.Text = "HIGH";
+                    cts2Switch.Foreground = ColorOn();
+                    cts2Pin1.Fill = ColorOn();
+                    lineCts2Pin1Pin2.Stroke = ColorOn();
+                    crossRtsCts.Stroke = ColorOn();
+                });
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("Error in Uart2CtsHigh: " + ex.Message);
+            }
         }
 
         private void Uart2CtsLow(object sender, EventArgs e)
         {
-            Dispatcher.Invoke(() =>
+            try
             {
-                cts2Switch.Text = "LOW";
-
-                cts2Switch.Foreground   = ColorOff();
-                cts2Pin1.Fill           = ColorOff();
-                lineCts2Pin1Pin2.Stroke = ColorOff();
-                crossRtsCts.Stroke      = ColorOff();
-            });
+                Dispatcher.Invoke(() =>
+                {
+                    cts2Switch.Text = "LOW";
+                    cts2Switch.Foreground = ColorOff();
+                    cts2Pin1.Fill = ColorOff();
+                    lineCts2Pin1Pin2.Stroke = ColorOff();
+                    crossRtsCts.Stroke = ColorOff();
+                });
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("Error in Uart2CtsLow: " + ex.Message);
+            }
         }
 
         private void Uart2DsrHigh(object sender, EventArgs e)
         {
-            Dispatcher.Invoke(() =>
+            try
             {
-                dsr2Switch.Text = "HIGH";
-
-                dsr2Switch.Foreground   = ColorOn();
-                dsr2Pin1.Fill           = ColorOn();
-                lineDsr2Pin1Pin2.Stroke = ColorOn();
-                crossDtrDsr.Stroke      = ColorOn();
-
-            });
+                Dispatcher.Invoke(() =>
+                {
+                    dsr2Switch.Text = "HIGH";
+                    dsr2Switch.Foreground = ColorOn();
+                    dsr2Pin1.Fill = ColorOn();
+                    lineDsr2Pin1Pin2.Stroke = ColorOn();
+                    crossDtrDsr.Stroke = ColorOn();
+                });
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("Error in Uart2DsrHigh: " + ex.Message);
+            }
         }
 
         private void Uart2DsrLow(object sender, EventArgs e)
         {
-            Dispatcher.Invoke(() =>
+            try
             {
-                // sleep 0.5s
-                dsr2Switch.Text = "LOW";
-
-                dsr2Switch.Foreground   = ColorOff();
-                dsr2Pin1.Fill           = ColorOff();
-                lineDsr2Pin1Pin2.Stroke = ColorOff();
-                crossDtrDsr.Stroke      = ColorOff();
-            });
+                Dispatcher.Invoke(() =>
+                {
+                    dsr2Switch.Text = "LOW";
+                    dsr2Switch.Foreground = ColorOff();
+                    dsr2Pin1.Fill = ColorOff();
+                    lineDsr2Pin1Pin2.Stroke = ColorOff();
+                    crossDtrDsr.Stroke = ColorOff();
+                });
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("Error in Uart2DsrLow: " + ex.Message);
+            }
         }
 
         private void Uart2DcdHigh(object sender, EventArgs e)
         {
-            Dispatcher.Invoke(() =>
+            try
             {
-                dcd2Switch.Text = "HIGH";
-
-                dcd2Switch.Foreground = ColorOn();
-                dcd2Pin.Fill          = ColorOn();
-                lineDcd1ToDcd2.Stroke = ColorOn();
-            });
+                Dispatcher.Invoke(() =>
+                {
+                    dcd2Switch.Text = "HIGH";
+                    dcd2Switch.Foreground = ColorOn();
+                    dcd2Pin.Fill = ColorOn();
+                    lineDcd1ToDcd2.Stroke = ColorOn();
+                });
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("Error in Uart2DcdHigh: " + ex.Message);
+            }
         }
 
         private void Uart2DcdLow(object sender, EventArgs e)
         {
-            Dispatcher.Invoke(() =>
+            try
             {
-                dcd2Switch.Text = "LOW";
-
-                dcd2Switch.Foreground = ColorOff();
-                dcd2Pin.Fill          = ColorOff();
-                lineDcd1ToDcd2.Stroke = ColorOff();
-
-            });
+                Dispatcher.Invoke(() =>
+                {
+                    dcd2Switch.Text = "LOW";
+                    dcd2Switch.Foreground = ColorOff();
+                    dcd2Pin.Fill = ColorOff();
+                    lineDcd1ToDcd2.Stroke = ColorOff();
+                });
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("Error in Uart2DcdLow: " + ex.Message);
+            }
         }
-        private void ComboBoxPorts_SelectionChanged2(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
-        {
-            string   selectedPort;
-            string[] filteredPorts;
 
-            if (ComboBoxToList())
+        private void ComboBoxDropDown2(object sender, EventArgs e)
+        {
+            try
             {
+                string[] filteredPorts;
+
+                Debug.WriteLine("ComboBoxDropDown2 enter");
+
                 if (uart1 == null)
                 {
+                    Debug.WriteLine("uart1 == null");
                     filteredPorts = SerialPort.GetPortNames().ToArray();
                 }
                 else
                 {
+                    Debug.WriteLine("uart1 != null");
                     filteredPorts = SerialPort.GetPortNames().Where(port => (port != uart1.Name)).ToArray();
                 }
 
-                comboBoxPorts2.ItemsSource = filteredPorts;
+                comboBox2.ItemsSource = filteredPorts;
 
-            }   else if (ComboBoxToSelect())
+                
+            }
+            catch (Exception ex)
             {
-                if (e.AddedItems.Count == 0)
-                {
-                    return;
-                }
+                Debug.WriteLine("Error in ComboBoxPorts_SelectionChanged2: " + ex.Message);
+            }
+        }
+
+        private void ComboBoxSelectionChanged2(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        {
+            try
+            {
+                string selectedPort;
 
                 if (uart2 != null)
                 {
                     uart2.UartDestroy();
+                    Debug.WriteLine("uart2 " + uart2.Name + " is closed");
+                }
+
+                if (e.AddedItems.Count == 0)
+                {
+                    return;
                 }
 
                 selectedPort = e.AddedItems[0] as string;
 
                 if (selectedPort != null)
                 {
-                    comboBoxPorts2.Text = selectedPort;
+                    comboBox2.Text = selectedPort;
 
                     uart2 = new Uart(selectedPort, Handshake.None);
                     uart2.UartStart();
@@ -315,13 +390,14 @@ namespace WpfApp
 
                     Port2Init();
                 }
+                
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("Error in ComboBoxSelectionChanged2: " + ex.Message);
             }
         }
 
-        private void ResetCable ()
-        {
-
-        }
         private void OnLineLoaded(object sender, RoutedEventArgs e)
         {
             var line = sender as Line;
@@ -344,18 +420,19 @@ namespace WpfApp
                 rts1ButtText.Text = "ON";
 
                 rts1ButtText.Foreground = ColorOn();
-                rts1Pin1.Fill           = ColorOn();
+                rts1Pin1.Fill = ColorOn();
                 lineRts1Pin1Pin2.Stroke = ColorOn();
 
                 rts1ButtClick = true;
 
-            } else
+            }
+            else
             {
                 uart1.RtsDisable();
                 rts1ButtText.Text = "OFF";
 
                 rts1ButtText.Foreground = ColorOff();
-                rts1Pin1.Fill           = ColorOff();
+                rts1Pin1.Fill = ColorOff();
                 lineRts1Pin1Pin2.Stroke = ColorOff();
 
                 rts1ButtClick = false;
@@ -375,7 +452,7 @@ namespace WpfApp
                 dtr1ButtText.Text = "ON";
 
                 dtr1ButtText.Foreground = ColorOn();
-                dtr1Pin1.Fill           = ColorOn();
+                dtr1Pin1.Fill = ColorOn();
                 lineDtr1Pin1Pin2.Stroke = ColorOn();
 
                 dtr1ButtClick = true;
@@ -386,7 +463,7 @@ namespace WpfApp
                 dtr1ButtText.Text = "OFF";
 
                 dtr1ButtText.Foreground = ColorOff();
-                dtr1Pin1.Fill           = ColorOff();
+                dtr1Pin1.Fill = ColorOff();
                 lineDtr1Pin1Pin2.Stroke = ColorOff();
 
                 dtr1ButtClick = false;
@@ -407,18 +484,19 @@ namespace WpfApp
                 rts2ButtText.Text = "ON";
 
                 rts2ButtText.Foreground = ColorOn();
-                rts2Pin1.Fill           = ColorOn();
+                rts2Pin1.Fill = ColorOn();
                 lineRts2Pin1Pin2.Stroke = ColorOn();
 
                 rts2ButtClick = true;
 
-            } else
+            }
+            else
             {
                 uart2.RtsDisable();
                 rts2ButtText.Text = "OFF";
 
                 rts2ButtText.Foreground = ColorOff();
-                rts2Pin1.Fill           = ColorOff();
+                rts2Pin1.Fill = ColorOff();
                 lineRts2Pin1Pin2.Stroke = ColorOff();
 
                 rts2ButtClick = false;
@@ -438,36 +516,23 @@ namespace WpfApp
                 dtr2ButtText.Text = "ON";
 
                 dtr2ButtText.Foreground = ColorOn();
-                dtr2Pin1.Fill           = ColorOn();
+                dtr2Pin1.Fill = ColorOn();
                 lineDtr2Pin1Pin2.Stroke = ColorOn();
 
                 dtr2ButtClick = true;
 
-            } else
+            }
+            else
             {
                 uart2.DtrDisable();
                 dtr2ButtText.Text = "OFF";
 
                 dtr2ButtText.Foreground = ColorOff();
-                dtr2Pin1.Fill           = ColorOff();
+                dtr2Pin1.Fill = ColorOff();
                 lineDtr2Pin1Pin2.Stroke = ColorOff();
 
                 dtr2ButtClick = false;
             }
-        }
-
-        private bool ComboBoxToList ()
-        {
-            ComboBoxFiredOnce = true;
-
-            return !ComboBoxFiredOnce;
-        }
-
-        private bool ComboBoxToSelect()
-        {
-            ComboBoxFiredOnce = false;
-
-            return !ComboBoxFiredOnce;
         }
 
         private Brush ColorOff()
@@ -480,67 +545,67 @@ namespace WpfApp
             return new SolidColorBrush((Color)ColorConverter.ConvertFromString("#99D9EA"));
         }
 
-        private void Port1Init ()
+        private void Port1Init()
         {
-            cts1Switch.Text         = "LOW";
-            cts1Switch.Foreground   = ColorOff();
-            cts1Pin1.Fill           = ColorOff();
+            cts2Switch.Text = "LOW";
+            cts1Switch.Foreground = ColorOff();
+            cts1Pin1.Fill = ColorOff();
             lineCts1Pin1Pin2.Stroke = ColorOff();
-            crossCtsRts.Stroke      = ColorOff();
+            crossCtsRts.Stroke = ColorOff();
 
-            dsr1Switch.Text         = "LOW";
-            dsr1Switch.Foreground   = ColorOff();
-            dsr1Pin1.Fill           = ColorOff();
+            dsr1Switch.Text = "LOW";
+            dsr1Switch.Foreground = ColorOff();
+            dsr1Pin1.Fill = ColorOff();
             lineDsr1Pin1Pin2.Stroke = ColorOff();
-            crossDsrDtr.Stroke      = ColorOff();
+            crossDsrDtr.Stroke = ColorOff();
 
-            dcd1Switch.Text         = "LOW";
-            dcd1Switch.Foreground   = ColorOff();
-            dcd1Pin.Fill            = ColorOff();
-            lineDcd1ToDcd2.Stroke   = ColorOff();
+            dcd1Switch.Text = "LOW";
+            dcd1Switch.Foreground = ColorOff();
+            dcd1Pin.Fill = ColorOff();
+            lineDcd1ToDcd2.Stroke = ColorOff();
 
-            rts1ButtText.Text       = "OFF";
+            rts1ButtText.Text = "OFF";
             rts1ButtText.Foreground = ColorOff();
-            rts1Pin1.Fill           = ColorOff();
+            rts1Pin1.Fill = ColorOff();
             lineRts1Pin1Pin2.Stroke = ColorOff();
 
-            dtr1ButtText.Text       = "OFF";
+            dtr1ButtText.Text = "OFF";
             dtr1ButtText.Foreground = ColorOff();
-            dtr1Pin1.Fill           = ColorOff();
+            dtr1Pin1.Fill = ColorOff();
             lineDtr1Pin1Pin2.Stroke = ColorOff();
         }
 
         private void Port2Init()
         {
-            cts2Switch.Text         = "LOW";
-            cts2Switch.Foreground   = ColorOff();
-            cts2Pin1.Fill           = ColorOff();
+            cts2Switch.Text = "LOW";
+            cts2Switch.Foreground = ColorOff();
+            cts2Pin1.Fill = ColorOff();
             lineCts2Pin1Pin2.Stroke = ColorOff();
-            crossRtsCts.Stroke      = ColorOff();
+            crossRtsCts.Stroke = ColorOff();
 
-            dsr2Switch.Text         = "LOW";
-            dsr2Switch.Foreground   = ColorOff();
-            dsr2Pin1.Fill           = ColorOff();
+            dsr2Switch.Text = "LOW";
+            dsr2Switch.Foreground = ColorOff();
+            dsr2Pin1.Fill = ColorOff();
             lineDsr2Pin1Pin2.Stroke = ColorOff();
-            crossDtrDsr.Stroke      = ColorOff();
+            crossDtrDsr.Stroke = ColorOff();
 
-            dcd2Switch.Text         = "LOW";
-            dcd2Switch.Foreground   = ColorOff();
-            dcd2Pin.Fill            = ColorOff();
-            lineDcd1ToDcd2.Stroke   = ColorOff();
+            dcd2Switch.Text = "LOW";
+            dcd2Switch.Foreground = ColorOff();
+            dcd2Pin.Fill = ColorOff();
+            lineDcd1ToDcd2.Stroke = ColorOff();
 
-            rts2ButtText.Text       = "OFF";
+            rts2ButtText.Text = "OFF";
             rts2ButtText.Foreground = ColorOff();
-            rts2Pin1.Fill           = ColorOff();
+            rts2Pin1.Fill = ColorOff();
             lineRts2Pin1Pin2.Stroke = ColorOff();
 
-            dtr2ButtText.Text       = "OFF";
+            dtr2ButtText.Text = "OFF";
             dtr2ButtText.Foreground = ColorOff();
-            dtr2Pin1.Fill           = ColorOff();
+            dtr2Pin1.Fill = ColorOff();
             lineDtr2Pin1Pin2.Stroke = ColorOff();
         }
 
-    }    
+    }
     public class CoordinateGet : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
@@ -576,3 +641,4 @@ namespace WpfApp
 
 
 }
+

@@ -7,7 +7,7 @@ using System.Diagnostics;
 namespace WpfApp {
     public class Uart
     {
-        static SerialPort serialPort = null;
+        private SerialPort serialPort = null;
         public string Name = null;
         public event EventHandler ctsHigh;
         public event EventHandler ctsLow;
