@@ -197,7 +197,7 @@ namespace WpfApp
                 {
                     comboBox1.Text = selectedPort;
 
-                    uart1 = new Uart(selectedPort, Handshake.None);
+                    uart1 = new Uart(selectedPort, Handshake.None, DataDisplayBlock1);
                     uart1.UartStart();
                     uart1.ctsHigh += Uart1CtsHigh;
                     uart1.ctsLow += Uart1CtsLow;
@@ -379,7 +379,7 @@ namespace WpfApp
                 {
                     comboBox2.Text = selectedPort;
 
-                    uart2 = new Uart(selectedPort, Handshake.None);
+                    uart2 = new Uart(selectedPort, Handshake.None, DataDisplayBlock2);
                     uart2.UartStart();
                     uart2.ctsHigh += Uart2CtsHigh;
                     uart2.ctsLow += Uart2CtsLow;

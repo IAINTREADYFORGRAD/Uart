@@ -3,6 +3,8 @@ using System.IO.Ports;
 using System.Security.Cryptography;
 using System.Windows;
 using System.Diagnostics;
+using System.Windows.Threading;
+using System.Windows.Controls;
 
 namespace WpfApp {
     public class Uart
@@ -16,7 +18,7 @@ namespace WpfApp {
         public event EventHandler cdHigh;
         public event EventHandler cdLow;
 
-        public Uart(string name, Handshake handshake)
+        public Uart(string name, Handshake handshake, TextBlock outputTextBlock)
         {
             if (!name.StartsWith("COM", StringComparison.OrdinalIgnoreCase))
             {
@@ -25,7 +27,7 @@ namespace WpfApp {
             serialPort = new SerialPort();
             try
             {
-                UartInit(name, handshake);
+                UartInit(name, handshake, outputTextBlock);
             }
             catch (UnauthorizedAccessException)
             {
@@ -33,7 +35,7 @@ namespace WpfApp {
             }
         }
 
-        public void UartInit(string name, Handshake handshake)
+        public void UartInit(string name, Handshake handshake, TextBlock outputTextBlock)
         {
 
             serialPort.PortName = name;
@@ -44,7 +46,7 @@ namespace WpfApp {
             serialPort.Handshake = (Handshake)handshake;
             serialPort.ReadTimeout = 2000; // unit: milliseconds
             serialPort.WriteTimeout = 2000;
-            serialPort.DataReceived += new SerialDataReceivedEventHandler(UartRead);
+            serialPort.DataReceived += (sender, e) => UartRead(sender, e, outputTextBlock);
 
             serialPort.RtsEnable = true;
 
@@ -222,7 +224,7 @@ namespace WpfApp {
             }
         }
 
-        private void UartRead(object sender, SerialDataReceivedEventArgs e)
+        private void UartRead(object sender, SerialDataReceivedEventArgs e, TextBlock outputTextBlock)
         {
             SerialPort sp = (SerialPort)sender;
 
@@ -234,6 +236,11 @@ namespace WpfApp {
             }
 
             Debug.WriteLine(serialPort.PortName + " received: " + data);
+
+            outputTextBlock.Dispatcher.Invoke(() =>
+            {
+                outputTextBlock.Text += data + Environment.NewLine;
+            });
         }
 
         public async Task UartWrite(string msg)
