@@ -5,6 +5,7 @@ using System.Windows;
 using System.Diagnostics;
 using System.Windows.Threading;
 using System.Windows.Controls;
+using System.Windows.Media;
 
 namespace WpfApp {
     public class Uart
@@ -239,8 +240,32 @@ namespace WpfApp {
 
             outputTextBlock.Dispatcher.Invoke(() =>
             {
-                outputTextBlock.Text += data + Environment.NewLine;
+                outputTextBlock.Text += data;
+                var scrollViewer = FindVisualChild<ScrollViewer>(outputTextBlock);
+                if (scrollViewer != null)
+                {
+                    scrollViewer.ScrollToEnd();
+                }
             });
+        }
+
+        private static T FindVisualChild<T>(DependencyObject parent) where T : DependencyObject
+        {
+            for (int i = 0; i < VisualTreeHelper.GetChildrenCount(parent); i++)
+            {
+                var child = VisualTreeHelper.GetChild(parent, i);
+                if (child is T)
+                {
+                    return (T)child;
+                }
+
+                var result = FindVisualChild<T>(child);
+                if (result != null)
+                {
+                    return result;
+                }
+            }
+            return null;
         }
 
         public async Task UartWrite(string msg)

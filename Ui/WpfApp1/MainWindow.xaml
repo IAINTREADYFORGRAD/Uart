@@ -37,13 +37,17 @@
 
         <Border Grid.Row="3" Grid.Column="1" Background="#C8BFE7" CornerRadius="10">
             <StackPanel>
-                <TextBlock x:Name="DataDisplayBlock1" Background="#7092BE" Height="145" Margin="5,5,5,0" TextWrapping="Wrap" />
+                <TextBlock x:Name="DataDisplayBlock1" Background="#C8BFE7" Height="145" Margin="5,5,5,0" TextWrapping="Wrap" />
                 <Grid>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="190*"/>
+                        <ColumnDefinition Width="175*"/>
                         <ColumnDefinition Width="25*"/>
                     </Grid.ColumnDefinitions>
-                    <TextBox x:Name="UartInputBox1" Grid.Column="0" Background="#7092BE"  Height="30" BorderThickness="0" Margin="5,0,0,0"/>
+                    <Border Grid.Column="0" Background="#7092BE" CornerRadius="5" Height="30" Margin="5,0,0,0" BorderThickness="0">
+                        <ScrollViewer x:Name="UartInputScroll1" Grid.Column="0" Height="30" VerticalScrollBarVisibility="Auto">
+                            <TextBox x:Name="UartInputBox1" Background="Transparent"  Height="30" BorderThickness="0"/>
+                        </ScrollViewer>
+                    </Border>
                     <Button Click="SendButtonClick1" Grid.Column="1" Background="#C8BFE7" Height="30" BorderThickness="0" Margin="0,0,5,0" Content="▲" FontSize ="20" Foreground="#7092BE"/>
                 </Grid>
             </StackPanel>
@@ -51,13 +55,17 @@
 
         <Border Grid.Row="3" Grid.Column="3" Background="#C8BFE7" CornerRadius="10">
             <StackPanel>
-                <TextBlock x:Name="DataDisplayBlock2" Background="#7092BE" Height="145" Margin="5,5,5,0" TextWrapping="Wrap" />
+                <TextBlock x:Name="DataDisplayBlock2" Background="#C8BFE7" Height="145" Margin="5,5,5,0" TextWrapping="Wrap" />
                 <Grid>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="190*"/>
+                        <ColumnDefinition Width="175*"/>
                         <ColumnDefinition Width="25*"/>
                     </Grid.ColumnDefinitions>
-                    <TextBox x:Name="UartInputBox2" Grid.Column="0" Background="#7092BE"  Height="30" BorderThickness="0" Margin="5,0,0,0"/>
+                    <Border Grid.Column="0" Background="#7092BE" CornerRadius="5" Height="30" Margin="5,0,0,0" BorderThickness="0">
+                        <ScrollViewer x:Name="UartInputScroll2" Grid.Column="0" Height="30" VerticalScrollBarVisibility="Auto">
+                            <TextBox x:Name="UartInputBox2" Background="Transparent"  Height="30" BorderThickness="0"/>
+                        </ScrollViewer>
+                    </Border>
                     <Button Click="SendButtonClick2" Grid.Column="1" Background="#C8BFE7" Height="30" BorderThickness="0" Margin="0,0,5,0" Content="▲" FontSize ="20" Foreground="#7092BE"/>
                 </Grid>
             </StackPanel>

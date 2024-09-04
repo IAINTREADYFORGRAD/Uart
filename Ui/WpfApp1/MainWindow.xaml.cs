@@ -605,6 +605,43 @@ namespace WpfApp
             lineDtr2Pin1Pin2.Stroke = ColorOff();
         }
 
+        private async void SendButtonClick1(object sender, RoutedEventArgs e)
+        {
+            string message = UartInputBox1.Text;
+
+            if (uart1 == null)
+            {
+                return;
+            }
+
+            if (!string.IsNullOrEmpty(message))
+            {
+                await uart1.UartWrite(message);
+            }
+            else
+            {
+                Debug.WriteLine(uart1.Name + "No Message To Send");
+            }
+        }
+
+        private async void SendButtonClick2(object sender, RoutedEventArgs e)
+        {
+            string message = UartInputBox2.Text;
+
+            if (uart2 == null)
+            {
+                return;
+            }
+
+            if (!string.IsNullOrEmpty(message))
+            {
+                await uart2.UartWrite(message);
+            }
+            else
+            {
+                Debug.WriteLine(uart2.Name + "No Message To Send");
+            }
+        }
     }
     public class CoordinateGet : IValueConverter
     {
