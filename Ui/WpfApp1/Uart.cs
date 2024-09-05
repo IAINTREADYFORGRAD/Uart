@@ -241,30 +241,34 @@ namespace WpfApp {
             outputTextBlock.Dispatcher.Invoke(() =>
             {
                 outputTextBlock.Text += data;
-                var scrollViewer = FindVisualChild<ScrollViewer>(outputTextBlock);
+                var scrollViewer = FindScrollViewerParent<ScrollViewer>(outputTextBlock);
                 if (scrollViewer != null)
                 {
+                    Debug.WriteLine("scrollViewer != null");
+                    outputTextBlock.UpdateLayout();
+                    scrollViewer.UpdateLayout();
                     scrollViewer.ScrollToEnd();
+                } else
+                {
+                    Debug.WriteLine("scrollViewer == null");
                 }
             });
         }
 
-        private static T FindVisualChild<T>(DependencyObject parent) where T : DependencyObject
+        private static T FindScrollViewerParent<T>(DependencyObject child) where T : DependencyObject
         {
-            for (int i = 0; i < VisualTreeHelper.GetChildrenCount(parent); i++)
-            {
-                var child = VisualTreeHelper.GetChild(parent, i);
-                if (child is T)
-                {
-                    return (T)child;
-                }
+            DependencyObject parent = LogicalTreeHelper.GetParent(child);
 
-                var result = FindVisualChild<T>(child);
-                if (result != null)
-                {
-                    return result;
+            while (parent != null)
+            {
+                Debug.WriteLine("parent != null");
+                if (parent is T)
+                {   
+                    return (T)parent;
                 }
+                parent = LogicalTreeHelper.GetParent(parent);
             }
+            Debug.WriteLine("parent == null");
             return null;
         }
 
@@ -288,7 +292,7 @@ namespace WpfApp {
                 return false;
             }
 
-            Console.Write(serialPort.PortName + " CTS is dropped");
+            Debug.WriteLine(serialPort.PortName + " CTS is dropped");
 
             return await CtsTimeOut();
         }
@@ -305,7 +309,7 @@ namespace WpfApp {
                     {
                         while (!serialPort.CtsHolding)
                         {
-                            Console.Write(".");
+                            Debug.Write(".");
                             if (cts.Token.IsCancellationRequested)
                             {
                                 cts.Token.ThrowIfCancellationRequested();
