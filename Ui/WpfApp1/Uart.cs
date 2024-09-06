@@ -1,4 +1,5 @@
 ﻿using System.Data;
+using System.IO;
 using System.IO.Ports;
 using System.Security.Cryptography;
 using System.Windows;
@@ -225,6 +226,14 @@ namespace WpfApp {
             }
         }
 
+        private void SaveToFile (string Data)
+        {
+            string desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+            string filePath = Path.Combine(desktopPath, "NoobUart.txt");
+
+            File.AppendAllText(filePath, Data);
+        }
+
         private void UartRead(object sender, SerialDataReceivedEventArgs e, TextBlock outputTextBlock)
         {
             SerialPort sp = (SerialPort)sender;
@@ -241,12 +250,16 @@ namespace WpfApp {
             outputTextBlock.Dispatcher.Invoke(() =>
             {
                 outputTextBlock.Text += data;
+                //outputTextBlock.UpdateLayout();
+
+                SaveToFile(data);
+
                 var scrollViewer = FindScrollViewerParent<ScrollViewer>(outputTextBlock);
                 if (scrollViewer != null)
                 {
                     Debug.WriteLine("scrollViewer != null");
-                    outputTextBlock.UpdateLayout();
-                    scrollViewer.UpdateLayout();
+                    
+                    //scrollViewer.UpdateLayout();
                     scrollViewer.ScrollToEnd();
                 } else
                 {
