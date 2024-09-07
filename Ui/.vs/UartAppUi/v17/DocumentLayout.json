@@ -3,16 +3,20 @@
   "WorkspaceRootPath": "C:\\NOOBIE\\UartApp\\Ui\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{1B8B30D2-0E47-4C5E-8051-3D8494AEE25C}|WpfApp1\\WpfApp.csproj|c:\\noobie\\uartapp\\ui\\wpfapp1\\uart.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1B8B30D2-0E47-4C5E-8051-3D8494AEE25C}|WpfApp1\\WpfApp.csproj|solutionrelative:wpfapp1\\uart.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{09673A77-52BD-4A07-BE8C-2067D8A4BFDB}|UartUiApp\\UartUiApp.csproj|c:\\noobie\\uartapp\\ui\\uartuiapp\\page1.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{09673A77-52BD-4A07-BE8C-2067D8A4BFDB}|UartUiApp\\UartUiApp.csproj|solutionrelative:uartuiapp\\page1.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1B8B30D2-0E47-4C5E-8051-3D8494AEE25C}|WpfApp1\\WpfApp.csproj|c:\\noobie\\uartapp\\ui\\wpfapp1\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{1B8B30D2-0E47-4C5E-8051-3D8494AEE25C}|WpfApp1\\WpfApp.csproj|solutionrelative:wpfapp1\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+      "AbsoluteMoniker": "D:0:0:{09673A77-52BD-4A07-BE8C-2067D8A4BFDB}|UartUiApp\\UartUiApp.csproj|c:\\noobie\\uartapp\\ui\\uartuiapp\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{09673A77-52BD-4A07-BE8C-2067D8A4BFDB}|UartUiApp\\UartUiApp.csproj|solutionrelative:uartuiapp\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1B8B30D2-0E47-4C5E-8051-3D8494AEE25C}|WpfApp1\\WpfApp.csproj|c:\\noobie\\uartapp\\ui\\wpfapp1\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1B8B30D2-0E47-4C5E-8051-3D8494AEE25C}|WpfApp1\\WpfApp.csproj|solutionrelative:wpfapp1\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{09673A77-52BD-4A07-BE8C-2067D8A4BFDB}|UartUiApp\\UartUiApp.csproj|c:\\noobie\\uartapp\\ui\\uartuiapp\\page1.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{09673A77-52BD-4A07-BE8C-2067D8A4BFDB}|UartUiApp\\UartUiApp.csproj|solutionrelative:uartuiapp\\page1.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{09673A77-52BD-4A07-BE8C-2067D8A4BFDB}|UartUiApp\\UartUiApp.csproj|c:\\noobie\\uartapp\\ui\\uartuiapp\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{09673A77-52BD-4A07-BE8C-2067D8A4BFDB}|UartUiApp\\UartUiApp.csproj|solutionrelative:uartuiapp\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,7 +26,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Bookmark",
@@ -30,40 +34,52 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "MainWindow.xaml",
-              "DocumentMoniker": "C:\\NOOBIE\\UartApp\\Ui\\WpfApp1\\MainWindow.xaml",
-              "RelativeDocumentMoniker": "WpfApp1\\MainWindow.xaml",
-              "ToolTip": "C:\\NOOBIE\\UartApp\\Ui\\WpfApp1\\MainWindow.xaml",
-              "RelativeToolTip": "WpfApp1\\MainWindow.xaml",
+              "DocumentMoniker": "C:\\NOOBIE\\UartApp\\Ui\\UartUiApp\\MainWindow.xaml",
+              "RelativeDocumentMoniker": "UartUiApp\\MainWindow.xaml",
+              "ToolTip": "C:\\NOOBIE\\UartApp\\Ui\\UartUiApp\\MainWindow.xaml",
+              "RelativeToolTip": "UartUiApp\\MainWindow.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-09-06T16:26:37.619Z",
+              "WhenOpened": "2024-09-07T16:54:04.898Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Uart.cs",
-              "DocumentMoniker": "C:\\NOOBIE\\UartApp\\Ui\\WpfApp1\\Uart.cs",
-              "RelativeDocumentMoniker": "WpfApp1\\Uart.cs",
-              "ToolTip": "C:\\NOOBIE\\UartApp\\Ui\\WpfApp1\\Uart.cs",
-              "RelativeToolTip": "WpfApp1\\Uart.cs",
-              "ViewState": "AQIAAOYAAAAAAAAAAAAgwPEAAAAAAAAA",
+              "DocumentIndex": 1,
+              "Title": "MainWindow.xaml.cs",
+              "DocumentMoniker": "C:\\NOOBIE\\UartApp\\Ui\\UartUiApp\\MainWindow.xaml.cs",
+              "RelativeDocumentMoniker": "UartUiApp\\MainWindow.xaml.cs",
+              "ToolTip": "C:\\NOOBIE\\UartApp\\Ui\\UartUiApp\\MainWindow.xaml.cs",
+              "RelativeToolTip": "UartUiApp\\MainWindow.xaml.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAABAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-06T16:26:25.09Z",
+              "WhenOpened": "2024-09-07T16:39:56.217Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "MainWindow.xaml.cs",
-              "DocumentMoniker": "C:\\NOOBIE\\UartApp\\Ui\\WpfApp1\\MainWindow.xaml.cs",
-              "RelativeDocumentMoniker": "WpfApp1\\MainWindow.xaml.cs",
-              "ToolTip": "C:\\NOOBIE\\UartApp\\Ui\\WpfApp1\\MainWindow.xaml.cs",
-              "RelativeToolTip": "WpfApp1\\MainWindow.xaml.cs",
-              "ViewState": "AQIAAHMBAAAAAAAAAAAQwGsCAAANAAAA",
+              "Title": "Page1.xaml",
+              "DocumentMoniker": "C:\\NOOBIE\\UartApp\\Ui\\UartUiApp\\Page1.xaml",
+              "RelativeDocumentMoniker": "UartUiApp\\Page1.xaml",
+              "ToolTip": "C:\\NOOBIE\\UartApp\\Ui\\UartUiApp\\Page1.xaml",
+              "RelativeToolTip": "UartUiApp\\Page1.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-09-07T16:38:17.706Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Page1.xaml.cs",
+              "DocumentMoniker": "C:\\NOOBIE\\UartApp\\Ui\\UartUiApp\\Page1.xaml.cs",
+              "RelativeDocumentMoniker": "UartUiApp\\Page1.xaml.cs",
+              "ToolTip": "C:\\NOOBIE\\UartApp\\Ui\\UartUiApp\\Page1.xaml.cs",
+              "RelativeToolTip": "UartUiApp\\Page1.xaml.cs",
+              "ViewState": "AQIAAIUCAAAAAAAAAAAwwJICAABEAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-06T16:26:24.206Z",
+              "WhenOpened": "2024-09-07T16:36:40.937Z",
               "EditorCaption": ""
             }
           ]
