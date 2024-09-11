@@ -1,7 +1,8 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\UartUiApp"
   ],
-  "SelectedNode": "\\UartAppUi.sln",
+  "SelectedNode": "\\UartUiApp\\MainWindow.xaml.cs",
   "PreviewInSolutionExplorer": false
 }

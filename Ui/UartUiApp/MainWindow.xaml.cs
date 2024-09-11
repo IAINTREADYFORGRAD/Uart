@@ -13,8 +13,22 @@ namespace UartUiApp
 
         private void MainWindow_Loaded(object sender, RoutedEventArgs e)
         {
-            Page1 page1 = new Page1();
-            this.Content = page1;  
+            MainFrame.Navigate(new Page1());
+        }
+
+        private void GoToPage1_Click(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Navigate(new Page1());
+        }
+
+        private void GoToPage2_Click(object sender, RoutedEventArgs e)
+        {
+            //MainFrame.Navigate(new Page2());
+        }
+
+        private void MainFrame_Navigated(object sender, System.Windows.Navigation.NavigationEventArgs e)
+        {
+
         }
     }
 }
