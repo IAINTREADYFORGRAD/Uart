@@ -34,18 +34,33 @@
     <Grid>
 
         <StackPanel Orientation="Vertical">
-            <Button Content="Learning" Style="{StaticResource PageButton}" Click="GoToPage1_Click" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,110,0,0">
+            <Button x:Name="Button1" 
+                    Content="Learning" 
+                    Style="{StaticResource PageButton}" 
+                    Click="GoToPage1_Click" 
+                    HorizontalAlignment="Left" 
+                    VerticalAlignment="Top" 
+                    Margin="0,120,0,0">
                 <Button.RenderTransform>
                     <RotateTransform Angle="270"/>
                 </Button.RenderTransform>
             </Button>
-            <Button Content="Terminal" Style="{StaticResource PageButton}" Click="GoToPage2_Click" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,70,0,0">
+            <Button x:Name="Button2" 
+                    Content="Terminal" 
+                    Style="{StaticResource PageButton}" 
+                    Click="GoToPage2_Click" 
+                    HorizontalAlignment="Left" 
+                    VerticalAlignment="Top" 
+                    Margin="0,80,0,0">
                 <Button.RenderTransform>
                     <RotateTransform Angle="270"/>
                 </Button.RenderTransform>
             </Button>
         </StackPanel>
 
-        <Frame x:Name="MainFrame" NavigationUIVisibility="Hidden" Margin="0" Navigated="MainFrame_Navigated"/>
+        <Frame x:Name="MainFrame" 
+               NavigationUIVisibility="Hidden" 
+               Margin="0" 
+               Navigated="MainFrame_Navigated"/>
     </Grid>
 </Window>

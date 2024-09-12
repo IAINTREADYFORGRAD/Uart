@@ -1,9 +1,3 @@
-C:\NOOBIE\UartApp\Ui\UartUiApp\obj\Debug\net8.0-windows\UartUiApp.csproj.AssemblyReference.cache
-C:\NOOBIE\UartApp\Ui\UartUiApp\obj\Debug\net8.0-windows\Page1.g.cs
-C:\NOOBIE\UartApp\Ui\UartUiApp\obj\Debug\net8.0-windows\App.g.cs
-C:\NOOBIE\UartApp\Ui\UartUiApp\obj\Debug\net8.0-windows\GeneratedInternalTypeHelper.g.cs
-C:\NOOBIE\UartApp\Ui\UartUiApp\obj\Debug\net8.0-windows\UartUiApp_MarkupCompile.cache
-C:\NOOBIE\UartApp\Ui\UartUiApp\obj\Debug\net8.0-windows\UartUiApp_MarkupCompile.lref
 C:\NOOBIE\UartApp\Ui\UartUiApp\bin\Debug\net8.0-windows\UartUiApp.exe
 C:\NOOBIE\UartApp\Ui\UartUiApp\bin\Debug\net8.0-windows\UartUiApp.deps.json
 C:\NOOBIE\UartApp\Ui\UartUiApp\bin\Debug\net8.0-windows\UartUiApp.runtimeconfig.json
@@ -17,9 +11,17 @@ C:\NOOBIE\UartApp\Ui\UartUiApp\bin\Debug\net8.0-windows\runtimes\osx-arm64\nativ
 C:\NOOBIE\UartApp\Ui\UartUiApp\bin\Debug\net8.0-windows\runtimes\osx-x64\native\libSystem.IO.Ports.Native.dylib
 C:\NOOBIE\UartApp\Ui\UartUiApp\bin\Debug\net8.0-windows\runtimes\unix\lib\net8.0\System.IO.Ports.dll
 C:\NOOBIE\UartApp\Ui\UartUiApp\bin\Debug\net8.0-windows\runtimes\win\lib\net8.0\System.IO.Ports.dll
+C:\NOOBIE\UartApp\Ui\UartUiApp\obj\Debug\net8.0-windows\UartUiApp.csproj.AssemblyReference.cache
 C:\NOOBIE\UartApp\Ui\UartUiApp\obj\Debug\net8.0-windows\MainWindow.g.cs
+C:\NOOBIE\UartApp\Ui\UartUiApp\obj\Debug\net8.0-windows\Page1.g.cs
+C:\NOOBIE\UartApp\Ui\UartUiApp\obj\Debug\net8.0-windows\Page2.g.cs
+C:\NOOBIE\UartApp\Ui\UartUiApp\obj\Debug\net8.0-windows\App.g.cs
+C:\NOOBIE\UartApp\Ui\UartUiApp\obj\Debug\net8.0-windows\GeneratedInternalTypeHelper.g.cs
+C:\NOOBIE\UartApp\Ui\UartUiApp\obj\Debug\net8.0-windows\UartUiApp_MarkupCompile.cache
+C:\NOOBIE\UartApp\Ui\UartUiApp\obj\Debug\net8.0-windows\UartUiApp_MarkupCompile.lref
 C:\NOOBIE\UartApp\Ui\UartUiApp\obj\Debug\net8.0-windows\MainWindow.baml
 C:\NOOBIE\UartApp\Ui\UartUiApp\obj\Debug\net8.0-windows\Page1.baml
+C:\NOOBIE\UartApp\Ui\UartUiApp\obj\Debug\net8.0-windows\Page2.baml
 C:\NOOBIE\UartApp\Ui\UartUiApp\obj\Debug\net8.0-windows\UartUiApp.g.resources
 C:\NOOBIE\UartApp\Ui\UartUiApp\obj\Debug\net8.0-windows\UartUiApp.GeneratedMSBuildEditorConfig.editorconfig
 C:\NOOBIE\UartApp\Ui\UartUiApp\obj\Debug\net8.0-windows\UartUiApp.AssemblyInfoInputs.cache

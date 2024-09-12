@@ -37,36 +37,79 @@
 
         <Border Grid.Row="3" Grid.Column="1" Background="#C8BFE7" CornerRadius="10">
             <StackPanel>
-                <ScrollViewer x:Name="UartInputScroll1" Grid.Column="0" Height="145" VerticalScrollBarVisibility="Auto">
-                    <TextBlock x:Name="DataDisplayBlock1" Background="#C8BFE7" Margin="5,5,5,0" TextWrapping="Wrap"/>
+                <ScrollViewer x:Name="UartInputScroll1" 
+                              Grid.Column="0" 
+                              Height="145" 
+                              VerticalScrollBarVisibility="Auto">
+                    <TextBlock x:Name="DataDisplayBlock1" 
+                               Background="#C8BFE7" 
+                               Margin="5,5,5,0" 
+                               TextWrapping="Wrap"/>
                 </ScrollViewer>
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="175*"/>
                         <ColumnDefinition Width="25*"/>
                     </Grid.ColumnDefinitions>
-                    <Border Grid.Column="0" Background="#7092BE" CornerRadius="5" Height="30" Margin="5,0,0,0" BorderThickness="0">
-                        <TextBox x:Name="UartInputBox1" Background="Transparent"  Height="30" BorderThickness="0"/>
+                    <Border Grid.Column="0" 
+                            Background="#7092BE" 
+                            CornerRadius="5" 
+                            Height="30" 
+                            Margin="5,0,0,0" 
+                            BorderThickness="0">
+                        <TextBox x:Name="UartInputBox1" 
+                                 Background="Transparent"  
+                                 Height="30" 
+                                 BorderThickness="0"/>
                     </Border>
-                    <Button Click="SendButtonClick1" Grid.Column="1" Background="#C8BFE7" Height="30" BorderThickness="0" Margin="0,0,5,0" Content="▲" FontSize ="20" Foreground="#7092BE"/>
+                    <Button Click="SendButtonClick1" 
+                            Grid.Column="1" 
+                            Background="#C8BFE7" 
+                            Height="30" 
+                            BorderThickness="0" 
+                            Margin="0,0,5,0" 
+                            Content="▲" 
+                            FontSize ="20" 
+                            Foreground="#7092BE"/>
                 </Grid>
             </StackPanel>
         </Border>
 
         <Border Grid.Row="3" Grid.Column="3" Background="#C8BFE7" CornerRadius="10">
             <StackPanel>
-                <ScrollViewer x:Name="UartInputScroll2" Height="145" VerticalScrollBarVisibility="Auto">
-                    <TextBlock x:Name="DataDisplayBlock2" Background="#C8BFE7" Margin="5,5,5,0" TextWrapping="Wrap"/>
+                <ScrollViewer x:Name="UartInputScroll2" 
+                              Height="145" 
+                              VerticalScrollBarVisibility="Auto">
+                    <TextBlock x:Name="DataDisplayBlock2" 
+                               Background="#C8BFE7" 
+                               Margin="5,5,5,0" 
+                               TextWrapping="Wrap"/>
                 </ScrollViewer>
                     <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="175*"/>
                         <ColumnDefinition Width="25*"/>
                     </Grid.ColumnDefinitions>
-                    <Border Grid.Column="0" Background="#7092BE" CornerRadius="5" Height="30" Margin="5,0,0,0" BorderThickness="0">
-                        <TextBox x:Name="UartInputBox2" Background="Transparent"  Height="30" BorderThickness="0"/>
+                    <Border Grid.Column="0" 
+                            Background="#7092BE" 
+                            CornerRadius="5" 
+                            Height="30" 
+                            Margin="5,0,0,0" 
+                            BorderThickness="0">
+                        <TextBox x:Name="UartInputBox2" 
+                                 Background="Transparent"  
+                                 Height="30" 
+                                 BorderThickness="0"/>
                     </Border>
-                    <Button Click="SendButtonClick2" Grid.Column="1" Background="#C8BFE7" Height="30" BorderThickness="0" Margin="0,0,5,0" Content="▲" FontSize ="20" Foreground="#7092BE"/>
+                    <Button Click="SendButtonClick2" 
+                            Grid.Column="1" 
+                            Background="#C8BFE7" 
+                            Height="30" 
+                            BorderThickness="0" 
+                            Margin="0,0,5,0" 
+                            Content="▲" 
+                            FontSize ="20" 
+                            Foreground="#7092BE"/>
                 </Grid>
             </StackPanel>
         </Border>
@@ -87,49 +130,169 @@
                             <ColumnDefinition Width="Auto"/>
                         </Grid.ColumnDefinitions>
 
-                        <Button x:Name="rts1Butt" Grid.Column="0" Width="35" Height="20" Background="Transparent" Margin="15,0,0,250" Click="Rts1Butt_Click">
+                        <Button x:Name="rts1Butt" 
+                                Grid.Column="0" 
+                                Width="35" 
+                                Height="20" 
+                                Background="Transparent" 
+                                Margin="15,0,0,250" 
+                                Click="Rts1Butt_Click">
                             <Button.Template>
                                 <ControlTemplate TargetType="Button">
                                     <Grid>
                                         <Ellipse Fill="Transparent"/>
-                                        <ContentPresenter HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                                        <ContentPresenter HorizontalAlignment="Left" 
+                                                          VerticalAlignment="Center"/>
                                     </Grid>
                                 </ControlTemplate>
                             </Button.Template>
-                            <TextBlock x:Name="rts1ButtText" Text="OFF" Foreground="#7092BE" FontSize="15" FontWeight="Bold" FontFamily="Segoe UI Black"/>
+                            <TextBlock x:Name="rts1ButtText" 
+                                       Text="OFF" 
+                                       Foreground="#7092BE" 
+                                       FontSize="15" 
+                                       FontWeight="Bold" 
+                                       FontFamily="Segoe UI Black"/>
                         </Button>
-                        <TextBlock x:Name="rts1" Grid.Column="1" Text="RTS" FontSize ="20" FontFamily="Segoe UI Black" Foreground="#8080C0" Margin="15,12,0,0"/>
-                        <Ellipse x:Name="rts1Pin1" Grid.Column="2" Width="10" Height="10" Fill="#7092BE" Margin="20,15,0,265"/>
-                        <Ellipse x:Name="rts1Pin2" Grid.Column="3" Width="5" Height="5" Fill="#7092BE" Margin="50,15,0,265"/>
+                        <TextBlock x:Name="rts1" 
+                                   Grid.Column="1" 
+                                   Text="RTS" 
+                                   FontSize ="20" 
+                                   FontFamily="Segoe UI Black" 
+                                   Foreground="#8080C0" 
+                                   Margin="15,12,0,0"/>
+                        <Ellipse x:Name="rts1Pin1" 
+                                 Grid.Column="2" 
+                                 Width="10" 
+                                 Height="10" 
+                                 Fill="#7092BE" 
+                                 Margin="20,15,0,265"/>
+                        <Ellipse x:Name="rts1Pin2" 
+                                 Grid.Column="3" 
+                                 Width="5" 
+                                 Height="5" 
+                                 Fill="#7092BE" 
+                                 Margin="50,15,0,265"/>
 
-                        <TextBlock x:Name="cts1Switch" Grid.Column="0" Text="LOW" Foreground="#7092BE" FontSize="15" FontWeight="Bold" FontFamily="Segoe UI Black" Margin="15,48,0,0"/>
-                        <TextBlock x:Name="cts1" Grid.Column="1" Text="CTS" FontSize ="20" FontFamily="Segoe UI Black" Foreground="#8080C0" Margin="15,45,0,0"/>
-                        <Ellipse x:Name="cts1Pin1" Grid.Column="2" Width="10" Height="10" Fill="#7092BE" Margin="20,5,0,185"/>
-                        <Ellipse x:Name="cts1Pin2" Grid.Column="3" Width="5" Height="5" Fill="#7092BE" Margin="50,5,0,185"/>
+                        <TextBlock x:Name="cts1Switch" 
+                                   Grid.Column="0" 
+                                   Text="LOW" 
+                                   Foreground="#7092BE" 
+                                   FontSize="15" 
+                                   FontWeight="Bold" 
+                                   FontFamily="Segoe UI Black" 
+                                   Margin="15,48,0,0"/>
+                        <TextBlock x:Name="cts1" 
+                                   Grid.Column="1" 
+                                   Text="CTS" 
+                                   FontSize ="20" 
+                                   FontFamily="Segoe UI Black" 
+                                   Foreground="#8080C0" 
+                                   Margin="15,45,0,0"/>
+                        <Ellipse x:Name="cts1Pin1" 
+                                 Grid.Column="2" 
+                                 Width="10" 
+                                 Height="10" 
+                                 Fill="#7092BE" 
+                                 Margin="20,5,0,185"/>
+                        <Ellipse x:Name="cts1Pin2" 
+                                 Grid.Column="3" 
+                                 Width="5" 
+                                 Height="5" 
+                                 Fill="#7092BE" 
+                                 Margin="50,5,0,185"/>
 
-                        <Button x:Name="dtr1Butt" Grid.Column="0" Width="35" Height="20" Background="Transparent" Margin="15,80,0,200" Click="Dtr1Butt_Click">
+                        <Button x:Name="dtr1Butt" 
+                                Grid.Column="0" 
+                                Width="35" 
+                                Height="20" 
+                                Background="Transparent" 
+                                Margin="15,80,0,200" 
+                                Click="Dtr1Butt_Click">
                             <Button.Template>
                                 <ControlTemplate TargetType="Button">
                                     <Grid>
                                         <Ellipse Fill="Transparent"/>
-                                        <ContentPresenter HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                                        <ContentPresenter HorizontalAlignment="Left" 
+                                                          VerticalAlignment="Center"/>
                                     </Grid>
                                 </ControlTemplate>
                             </Button.Template>
-                            <TextBlock x:Name="dtr1ButtText" Text="OFF" Foreground="#7092BE" FontSize="15" FontWeight="Bold" FontFamily="Segoe UI Black"/>
+                            <TextBlock x:Name="dtr1ButtText" 
+                                       Text="OFF" 
+                                       Foreground="#7092BE" 
+                                       FontSize="15" 
+                                       FontWeight="Bold" 
+                                       FontFamily="Segoe UI Black"/>
                         </Button>
-                        <TextBlock x:Name="dtr1" Grid.Column="1" Text="DTR" FontSize ="20" FontFamily="Segoe UI Black" Foreground="#8080C0" Margin="15,78,0,0"/>
-                        <Ellipse x:Name="dtr1Pin1" Grid.Column="2" Width="10" Height="10" Fill="#7092BE" Margin="20,15,0,130"/>
-                        <Ellipse x:Name="dtr1Pin2" Grid.Column="3" Width="5" Height="5" Fill="#7092BE" Margin="50,15,0,130"/>
+                        <TextBlock x:Name="dtr1" 
+                                   Grid.Column="1" 
+                                   Text="DTR" 
+                                   FontSize ="20" 
+                                   FontFamily="Segoe UI Black" 
+                                   Foreground="#8080C0" 
+                                   Margin="15,78,0,0"/>
+                        <Ellipse x:Name="dtr1Pin1" 
+                                 Grid.Column="2" 
+                                 Width="10" 
+                                 Height="10" 
+                                 Fill="#7092BE" 
+                                 Margin="20,15,0,130"/>
+                        <Ellipse x:Name="dtr1Pin2" 
+                                 Grid.Column="3" 
+                                 Width="5" 
+                                 Height="5" 
+                                 Fill="#7092BE" 
+                                 Margin="50,15,0,130"/>
 
-                        <TextBlock x:Name="dsr1Switch" Grid.Column="0" Text="LOW" Foreground="#7092BE" FontSize="15" FontWeight="Bold" FontFamily="Segoe UI Black" Margin="15,115,0,0"/>
-                        <TextBlock x:Name="dsr1" Grid.Column="1" Text="DSR" FontSize ="20" FontFamily="Segoe UI Black" Foreground="#8080C0" Margin="15,111,0,0"/>
-                        <Ellipse x:Name="dsr1Pin1" Grid.Column="2" Width="10" Height="10" Fill="#7092BE" Margin="20,45,0,95"/>
-                        <Ellipse x:Name="dsr1Pin2" Grid.Column="3" Width="5" Height="5" Fill="#7092BE" Margin="50,45,0,95"/>
+                        <TextBlock x:Name="dsr1Switch" 
+                                   Grid.Column="0" 
+                                   Text="LOW" 
+                                   Foreground="#7092BE" 
+                                   FontSize="15" 
+                                   FontWeight="Bold" 
+                                   FontFamily="Segoe UI Black" 
+                                   Margin="15,115,0,0"/>
+                        <TextBlock x:Name="dsr1" 
+                                   Grid.Column="1" 
+                                   Text="DSR" 
+                                   FontSize ="20" 
+                                   FontFamily="Segoe UI Black" 
+                                   Foreground="#8080C0" 
+                                   Margin="15,111,0,0"/>
+                        <Ellipse x:Name="dsr1Pin1" 
+                                 Grid.Column="2" 
+                                 Width="10" 
+                                 Height="10" 
+                                 Fill="#7092BE" 
+                                 Margin="20,45,0,95"/>
+                        <Ellipse x:Name="dsr1Pin2" 
+                                 Grid.Column="3" 
+                                 Width="5" 
+                                 Height="5" 
+                                 Fill="#7092BE" 
+                                 Margin="50,45,0,95"/>
 
-                        <TextBlock x:Name="dcd1Switch" Grid.Column="0" Text="LOW" Foreground="#7092BE" FontSize="15" FontWeight="Bold" FontFamily="Segoe UI Black" Margin="15,148,0,0"/>
-                        <TextBlock x:Name="dcd1" Grid.Column="1" Text="DCD" FontSize ="20" FontFamily="Segoe UI Black" Foreground="#8080C0" Margin="15,144,0,30"/>
-                        <Ellipse x:Name="dcd1Pin" Grid.Column="2" Width="10" Height="10" Fill="#7092BE" Margin="20,45,0,30"/>
+                        <TextBlock x:Name="dcd1Switch" 
+                                   Grid.Column="0" 
+                                   Text="LOW" 
+                                   Foreground="#7092BE" 
+                                   FontSize="15" 
+                                   FontWeight="Bold" 
+                                   FontFamily="Segoe UI Black" 
+                                   Margin="15,148,0,0"/>
+                        <TextBlock x:Name="dcd1" 
+                                   Grid.Column="1" 
+                                   Text="DCD" 
+                                   FontSize ="20" 
+                                   FontFamily="Segoe UI Black" 
+                                   Foreground="#8080C0" 
+                                   Margin="15,144,0,30"/>
+                        <Ellipse x:Name="dcd1Pin" 
+                                 Grid.Column="2" 
+                                 Width="10" 
+                                 Height="10" 
+                                 Fill="#7092BE" 
+                                 Margin="20,45,0,30"/>
                     </Grid>
                 </StackPanel>
             </StackPanel>
@@ -151,50 +314,186 @@
                             <ColumnDefinition Width="Auto"/>
                         </Grid.ColumnDefinitions>
 
-                        <Button x:Name="rts2Butt" Grid.Column="3" Width="35" Height="20" Background="Transparent" Margin="0,10,15,258" Click="Rts2Butt_Click" HorizontalAlignment="Right" >
+                        <Button x:Name="rts2Butt" 
+                                Grid.Column="3" 
+                                Width="35" 
+                                Height="20" 
+                                Background="Transparent" 
+                                Margin="0,10,15,258" 
+                                Click="Rts2Butt_Click" 
+                                HorizontalAlignment="Right" >
                             <Button.Template>
                                 <ControlTemplate TargetType="Button">
                                     <Grid>
                                         <Ellipse Fill="Transparent"/>
-                                        <ContentPresenter HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                                        <ContentPresenter HorizontalAlignment="Right" 
+                                                          VerticalAlignment="Center"/>
                                     </Grid>
                                 </ControlTemplate>
                             </Button.Template>
-                            <TextBlock x:Name="rts2ButtText" Text="OFF" Foreground="#7092BE" FontSize="15" FontWeight="Bold" FontFamily="Segoe UI Black"/>
+                            <TextBlock x:Name="rts2ButtText" 
+                                       Text="OFF" 
+                                       Foreground="#7092BE" 
+                                       FontSize="15" 
+                                       FontWeight="Bold" 
+                                       FontFamily="Segoe UI Black"/>
                         </Button>
 
-                        <TextBlock x:Name="rts2" Grid.Column="2" Text="RTS" FontSize ="20" FontFamily="Segoe UI Black" Foreground="#8080C0" Margin="15,12,0,0" HorizontalAlignment="Right"/>
-                        <Ellipse x:Name="rts2Pin1" Grid.Column="1" Width="10" Height="10" Fill="#7092BE" Margin="0,15,20,265"/>
-                        <Ellipse x:Name="rts2Pin2" Grid.Column="0" Width="5" Height="5" Fill="#7092BE" Margin="0,15,50,265"/>
+                        <TextBlock x:Name="rts2" 
+                                   Grid.Column="2" 
+                                   Text="RTS" 
+                                   FontSize ="20" 
+                                   FontFamily="Segoe UI Black" 
+                                   Foreground="#8080C0" 
+                                   Margin="15,12,0,0" 
+                                   HorizontalAlignment="Right"/>
+                        <Ellipse x:Name="rts2Pin1" 
+                                 Grid.Column="1" 
+                                 Width="10" 
+                                 Height="10" 
+                                 Fill="#7092BE" 
+                                 Margin="0,15,20,265"/>
+                        <Ellipse x:Name="rts2Pin2" 
+                                 Grid.Column="0" 
+                                 Width="5" 
+                                 Height="5" 
+                                 Fill="#7092BE" 
+                                 Margin="0,15,50,265"/>
 
-                        <TextBlock x:Name="cts2Switch" Grid.Column="3" Text="LOW" Foreground="#7092BE" FontSize="15" FontWeight="Bold" FontFamily="Segoe UI Black" Margin="15,48,15,0" HorizontalAlignment="Right"/>
-                        <TextBlock x:Name="cts2" Grid.Column="2" Text="CTS" FontSize ="20" FontFamily="Segoe UI Black" Foreground="#8080C0" Margin="0,45,0,0" HorizontalAlignment="Right"/>
-                        <Ellipse x:Name="cts2Pin1" Grid.Column="1" Width="10" Height="10" Fill="#7092BE" Margin="0,5,20,185"/>
-                        <Ellipse x:Name="cts2Pin2" Grid.Column="0" Width="5" Height="5" Fill="#7092BE" Margin="0,5,50,185" HorizontalAlignment="Right"/>
+                        <TextBlock x:Name="cts2Switch" 
+                                   Grid.Column="3" 
+                                   Text="LOW" 
+                                   Foreground="#7092BE" 
+                                   FontSize="15" 
+                                   FontWeight="Bold" 
+                                   FontFamily="Segoe UI Black" 
+                                   Margin="15,48,15,0" 
+                                   HorizontalAlignment="Right"/>
+                        <TextBlock x:Name="cts2" 
+                                   Grid.Column="2" 
+                                   Text="CTS" 
+                                   FontSize ="20" 
+                                   FontFamily="Segoe UI Black" 
+                                   Foreground="#8080C0" 
+                                   Margin="0,45,0,0" 
+                                   HorizontalAlignment="Right"/>
+                        <Ellipse x:Name="cts2Pin1" 
+                                 Grid.Column="1" 
+                                 Width="10" 
+                                 Height="10" 
+                                 Fill="#7092BE" 
+                                 Margin="0,5,20,185"/>
+                        <Ellipse x:Name="cts2Pin2" 
+                                 Grid.Column="0" 
+                                 Width="5" 
+                                 Height="5" 
+                                 Fill="#7092BE" 
+                                 Margin="0,5,50,185" 
+                                 HorizontalAlignment="Right"/>
 
-                        <Button x:Name="dtr2Butt" Grid.Column="3" Width="35" Height="20" Background="Transparent" Margin="0,80,15,200" Click="Dtr2Butt_Click" HorizontalAlignment="Right">
+                        <Button x:Name="dtr2Butt" 
+                                Grid.Column="3" 
+                                Width="35" 
+                                Height="20" 
+                                Background="Transparent" 
+                                Margin="0,80,15,200" 
+                                Click="Dtr2Butt_Click" 
+                                HorizontalAlignment="Right">
                             <Button.Template>
                                 <ControlTemplate TargetType="Button">
                                     <Grid>
                                         <Ellipse Fill="Transparent"/>
-                                        <ContentPresenter HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                                        <ContentPresenter HorizontalAlignment="Right" 
+                                                          VerticalAlignment="Center"/>
                                     </Grid>
                                 </ControlTemplate>
                             </Button.Template>
-                            <TextBlock x:Name="dtr2ButtText" Text="OFF" Foreground="#7092BE" FontSize="15" FontWeight="Bold" FontFamily="Segoe UI Black"/>
+                            <TextBlock x:Name="dtr2ButtText" 
+                                       Text="OFF" 
+                                       Foreground="#7092BE" 
+                                       FontSize="15" 
+                                       FontWeight="Bold" 
+                                       FontFamily="Segoe UI Black"/>
                         </Button>
-                        <TextBlock x:Name="dtr2" Grid.Column="2" Text="DTR" FontSize ="20" FontFamily="Segoe UI Black" Foreground="#8080C0" Margin="0,78,0,0" HorizontalAlignment="Right"/>
-                        <Ellipse x:Name="dtr2Pin1" Grid.Column="1" Width="10" Height="10" Fill="#7092BE" Margin="0,15,20,130" HorizontalAlignment="Right"/>
-                        <Ellipse x:Name="dtr2Pin2" Grid.Column="0" Width="5" Height="5" Fill="#7092BE" Margin="0,15,50,130" HorizontalAlignment="Right"/>
+                        <TextBlock x:Name="dtr2" 
+                                   Grid.Column="2" 
+                                   Text="DTR" 
+                                   FontSize ="20" 
+                                   FontFamily="Segoe UI Black" 
+                                   Foreground="#8080C0" 
+                                   Margin="0,78,0,0" 
+                                   HorizontalAlignment="Right"/>
+                        <Ellipse x:Name="dtr2Pin1" 
+                                 Grid.Column="1" 
+                                 Width="10" 
+                                 Height="10" 
+                                 Fill="#7092BE" 
+                                 Margin="0,15,20,130" 
+                                 HorizontalAlignment="Right"/>
+                        <Ellipse x:Name="dtr2Pin2" 
+                                 Grid.Column="0" 
+                                 Width="5" 
+                                 Height="5" 
+                                 Fill="#7092BE" 
+                                 Margin="0,15,50,130" 
+                                 HorizontalAlignment="Right"/>
 
-                        <TextBlock x:Name="dsr2Switch" Grid.Column="3" Text="LOW" Foreground="#7092BE" FontSize="15" FontWeight="Bold" FontFamily="Segoe UI Black" Margin="0,115,15,0" HorizontalAlignment="Right"/>
-                        <TextBlock x:Name="dsr2" Grid.Column="2" Text="DSR" FontSize ="20" FontFamily="Segoe UI Black" Foreground="#8080C0" Margin="0,111,0,0" HorizontalAlignment="Right"/>
-                        <Ellipse x:Name="dsr2Pin1" Grid.Column="1" Width="10" Height="10" Fill="#7092BE" Margin="0,45,20,95" HorizontalAlignment="Right"/>
-                        <Ellipse x:Name="dsr2Pin2" Grid.Column="0" Width="5" Height="5" Fill="#7092BE" Margin="0,45,50,95" HorizontalAlignment="Right"/>
+                        <TextBlock x:Name="dsr2Switch" 
+                                   Grid.Column="3" 
+                                   Text="LOW" 
+                                   Foreground="#7092BE" 
+                                   FontSize="15" 
+                                   FontWeight="Bold"
+                                   FontFamily="Segoe UI Black" 
+                                   Margin="0,115,15,0" 
+                                   HorizontalAlignment="Right"/>
+                        <TextBlock x:Name="dsr2" 
+                                   Grid.Column="2" 
+                                   Text="DSR" 
+                                   FontSize ="20" 
+                                   FontFamily="Segoe UI Black" 
+                                   Foreground="#8080C0" 
+                                   Margin="0,111,0,0" 
+                                   HorizontalAlignment="Right"/>
+                        <Ellipse x:Name="dsr2Pin1" 
+                                 Grid.Column="1" 
+                                 Width="10" 
+                                 Height="10" 
+                                 Fill="#7092BE" 
+                                 Margin="0,45,20,95" 
+                                 HorizontalAlignment="Right"/>
+                        <Ellipse x:Name="dsr2Pin2" 
+                                 Grid.Column="0" 
+                                 Width="5" 
+                                 Height="5" 
+                                 Fill="#7092BE" 
+                                 Margin="0,45,50,95" 
+                                 HorizontalAlignment="Right"/>
 
-                        <TextBlock x:Name="dcd2Switch" Grid.Column="3" Text="LOW" Foreground="#7092BE" FontSize="15" FontWeight="Bold" FontFamily="Segoe UI Black" Margin="0,148,15,0" HorizontalAlignment="Right"/>
-                        <TextBlock x:Name="dcd2" Grid.Column="2" Text="DCD" FontSize ="20" FontFamily="Segoe UI Black" Foreground="#8080C0" Margin="0,144,0,30" HorizontalAlignment="Right"/>
-                        <Ellipse x:Name="dcd2Pin" Grid.Column="1" Width="10" Height="10" Fill="#7092BE" Margin="0,45,20,30" HorizontalAlignment="Right"/>
+                        <TextBlock x:Name="dcd2Switch" 
+                                   Grid.Column="3" 
+                                   Text="LOW" 
+                                   Foreground="#7092BE" 
+                                   FontSize="15" 
+                                   FontWeight="Bold" 
+                                   FontFamily="Segoe UI Black" 
+                                   Margin="0,148,15,0" 
+                                   HorizontalAlignment="Right"/>
+                        <TextBlock x:Name="dcd2" 
+                                   Grid.Column="2" 
+                                   Text="DCD" 
+                                   FontSize ="20" 
+                                   FontFamily="Segoe UI Black" 
+                                   Foreground="#8080C0" 
+                                   Margin="0,144,0,30" 
+                                   HorizontalAlignment="Right"/>
+                        <Ellipse x:Name="dcd2Pin" 
+                                 Grid.Column="1" 
+                                 Width="10" 
+                                 Height="10" 
+                                 Fill="#7092BE" 
+                                 Margin="0,45,20,30" 
+                                 HorizontalAlignment="Right"/>
                     </Grid>
                 </StackPanel>
             </StackPanel>
