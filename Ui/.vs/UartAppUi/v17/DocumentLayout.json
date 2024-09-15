@@ -7,16 +7,16 @@
       "RelativeMoniker": "D:0:0:{09673A77-52BD-4A07-BE8C-2067D8A4BFDB}|UartUiApp\\UartUiApp.csproj|solutionrelative:uartuiapp\\page2.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{09673A77-52BD-4A07-BE8C-2067D8A4BFDB}|UartUiApp\\UartUiApp.csproj|c:\\noobie\\uartapp\\ui\\uartuiapp\\page2.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{09673A77-52BD-4A07-BE8C-2067D8A4BFDB}|UartUiApp\\UartUiApp.csproj|solutionrelative:uartuiapp\\page2.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{09673A77-52BD-4A07-BE8C-2067D8A4BFDB}|UartUiApp\\UartUiApp.csproj|c:\\noobie\\uartapp\\ui\\uartuiapp\\page1.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{09673A77-52BD-4A07-BE8C-2067D8A4BFDB}|UartUiApp\\UartUiApp.csproj|solutionrelative:uartuiapp\\page1.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{09673A77-52BD-4A07-BE8C-2067D8A4BFDB}|UartUiApp\\UartUiApp.csproj|c:\\noobie\\uartapp\\ui\\uartuiapp\\page1.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{09673A77-52BD-4A07-BE8C-2067D8A4BFDB}|UartUiApp\\UartUiApp.csproj|solutionrelative:uartuiapp\\page1.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{09673A77-52BD-4A07-BE8C-2067D8A4BFDB}|UartUiApp\\UartUiApp.csproj|c:\\noobie\\uartapp\\ui\\uartuiapp\\page2.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{09673A77-52BD-4A07-BE8C-2067D8A4BFDB}|UartUiApp\\UartUiApp.csproj|solutionrelative:uartuiapp\\page2.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -46,7 +46,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "Page2.xaml.cs",
               "DocumentMoniker": "C:\\NOOBIE\\UartApp\\Ui\\UartUiApp\\Page2.xaml.cs",
               "RelativeDocumentMoniker": "UartUiApp\\Page2.xaml.cs",
@@ -59,7 +59,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
               "Title": "Page1.xaml",
               "DocumentMoniker": "C:\\NOOBIE\\UartApp\\Ui\\UartUiApp\\Page1.xaml",
               "RelativeDocumentMoniker": "UartUiApp\\Page1.xaml",
@@ -71,7 +71,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 2,
               "Title": "Page1.xaml.cs",
               "DocumentMoniker": "C:\\NOOBIE\\UartApp\\Ui\\UartUiApp\\Page1.xaml.cs",
               "RelativeDocumentMoniker": "UartUiApp\\Page1.xaml.cs",

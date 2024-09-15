@@ -20,18 +20,185 @@
         <Grid.ColumnDefinitions>
 
             <ColumnDefinition Width="35*"/>
-            <ColumnDefinition Width="470*"/>
+            <ColumnDefinition Width="250*"/>
+            <ColumnDefinition Width="220*"/>
             <ColumnDefinition Width="35*"/>
         </Grid.ColumnDefinitions>
 
-        <Border Grid.Row="1" Grid.Column="1" Background="#C8BFE7" CornerRadius="10">
+        <Border Grid.Row="1" Grid.Column="1" Background="#C8BFE7" CornerRadius="10,0,0,10">
             <StackPanel>
-                <ComboBox x:Name="comboBox"
-                          HorizontalAlignment="Center"
-                          Width="100"
-                          IsEditable="False"/>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock x:Name="Port" 
+                               Grid.Column="0"
+                               Text="PORT" 
+                               FontSize ="20" 
+                               FontFamily="Segoe UI Black" 
+                               Foreground="#8080C0" 
+                               Margin="30,50,0,0"/>
+                    <ComboBox x:Name="PortComboBox"
+                              Grid.Column="1"
+                              Width="100"
+                              Height="25"
+                              IsEditable="False" 
+                              Margin="86,50,0,0"/>
+                </Grid>
+
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock x:Name="BaudRate" 
+                               Grid.Column="0"
+                               Text="BAUDRATE" 
+                               FontSize ="20" 
+                               FontFamily="Segoe UI Black" 
+                               Foreground="#8080C0" 
+                               Margin="30,20,0,0"/>
+                    <ComboBox x:Name="BaudRateComboBox"
+                              Grid.Column="1"
+                              Width="100"
+                              Height="25"
+                              IsEditable="False" 
+                              Margin="30,20,0,0"/>
+                </Grid>
+
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock x:Name="LogName" 
+                               Grid.Column="0"
+                               Text="LOGNAME" 
+                               FontSize ="20" 
+                               FontFamily="Segoe UI Black" 
+                               Foreground="#8080C0" 
+                               Margin="30,20,0,0"/>
+                    <TextBox x:Name="LogNameBox" 
+                             Grid.Column="1"
+                             Width="100" 
+                             Height="25"
+                             Margin="38,20,0,0"
+                             Background="#E0E0E0"/>
+                </Grid>
             </StackPanel>
         </Border>
+
+        <Border Grid.Row="1" Grid.Column="2" Background="#C8BFE7" CornerRadius="0,10,10,0">
+            <StackPanel>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock x:Name="RTS" 
+                                Grid.Column="0"
+                                Text="RTS" 
+                                FontSize ="20" 
+                                FontFamily="Segoe UI Black" 
+                                Foreground="#8080C0" 
+                                Margin="30,30,0,0"/>
+                    <TextBlock x:Name="RtsSwitch" 
+                               Grid.Column="1"
+                               Text="ON" 
+                               FontSize ="20" 
+                               FontFamily="Segoe UI Black" 
+                               Foreground="#8080C0" 
+                               Margin="30,30,0,0"/>    
+                </Grid>
+
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock x:Name="CTS" 
+                               Grid.Column="0"
+                               Text="CTS" 
+                               FontSize ="20" 
+                               FontFamily="Segoe UI Black" 
+                               Foreground="#8080C0" 
+                               Margin="30,10,0,0"/>
+                    <TextBlock x:Name="CtsState" 
+                               Grid.Column="1"
+                               Text="HIGH" 
+                               FontSize ="20" 
+                               FontFamily="Segoe UI Black" 
+                               Foreground="#8080C0" 
+                               Margin="30,30,0,0"/>
+                </Grid>
+
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock x:Name="DTR" 
+                               Grid.Column="0"
+                               Text="DTR" 
+                               FontSize ="20" 
+                               FontFamily="Segoe UI Black" 
+                               Foreground="#8080C0" 
+                               Margin="30,10,0,0"/>
+                    <TextBlock x:Name="DtrSwitch" 
+                               Grid.Column="1"
+                               Text="ON" 
+                               FontSize ="20" 
+                               FontFamily="Segoe UI Black" 
+                               Foreground="#8080C0" 
+                               Margin="30,30,0,0"/>
+                </Grid>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock x:Name="DSR" 
+                               Grid.Column="0"
+                               Text="DSR" 
+                               FontSize ="20" 
+                               FontFamily="Segoe UI Black" 
+                               Foreground="#8080C0" 
+                               Margin="30,10,0,0"/>
+                    <TextBlock x:Name="DsrState" 
+                               Grid.Column="1"
+                               Text="HIGH" 
+                               FontSize ="20" 
+                               FontFamily="Segoe UI Black" 
+                               Foreground="#8080C0" 
+                               Margin="30,30,0,0"/>
+                </Grid>
+
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock x:Name="DCD" 
+                               Grid.Column="0"
+                               Text="DCD" 
+                               FontSize ="20" 
+                               FontFamily="Segoe UI Black" 
+                               Foreground="#8080C0" 
+                               Margin="30,10,0,0"/>
+                    <TextBlock x:Name="DcdState" 
+                               Grid.Column="1"
+                               Text="HIGH" 
+                               FontSize ="20" 
+                               FontFamily="Segoe UI Black" 
+                               Foreground="#8080C0" 
+                               Margin="30,30,0,0"/>
+                </Grid>
+            </StackPanel>
+
+
+        </Border>
+
         <Border Grid.Row="3" Grid.Column="1" Background="#C8BFE7" CornerRadius="10">
             <StackPanel>
             </StackPanel>
