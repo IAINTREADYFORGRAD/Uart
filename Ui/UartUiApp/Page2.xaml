@@ -5,6 +5,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:UartUiApp" 
+        xmlns:RJControl="clr-namespace:UartUiApp.RJControl"
         mc:Ignorable="d"
         Title="Page2" Height="500" Width="600" Background="#8080C0" HorizontalAlignment="Right">
 
@@ -93,8 +94,9 @@
             <StackPanel>
                 <Grid>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto"/>
-                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
                     </Grid.ColumnDefinitions>
                     <TextBlock x:Name="RTS" 
                                 Grid.Column="0"
@@ -106,16 +108,24 @@
                     <TextBlock x:Name="RtsSwitch" 
                                Grid.Column="1"
                                Text="ON" 
-                               FontSize ="20" 
+                               FontSize ="15" 
                                FontFamily="Segoe UI Black" 
                                Foreground="#8080C0" 
-                               Margin="30,30,0,0"/>    
+                               Margin="30,35,0,0"/>
+                    <RJControl:RJToggleButton Grid.Column="2"
+                                              Width="50" 
+                                              Height="25"
+                                              OnBackground="#E0E0E0"
+                                              OffBackground="#7092BE"
+                                              OnToggleColor="#99D9EA"
+                                              OffToggleColor="#7092BE"/>
                 </Grid>
 
                 <Grid>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto"/>
-                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
                     </Grid.ColumnDefinitions>
                     <TextBlock x:Name="CTS" 
                                Grid.Column="0"
@@ -127,16 +137,17 @@
                     <TextBlock x:Name="CtsState" 
                                Grid.Column="1"
                                Text="HIGH" 
-                               FontSize ="20" 
+                               FontSize ="15" 
                                FontFamily="Segoe UI Black" 
                                Foreground="#8080C0" 
-                               Margin="30,30,0,0"/>
+                               Margin="30,15,0,0"/>
                 </Grid>
 
                 <Grid>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto"/>
-                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
                     </Grid.ColumnDefinitions>
                     <TextBlock x:Name="DTR" 
                                Grid.Column="0"
@@ -148,15 +159,16 @@
                     <TextBlock x:Name="DtrSwitch" 
                                Grid.Column="1"
                                Text="ON" 
-                               FontSize ="20" 
+                               FontSize ="15" 
                                FontFamily="Segoe UI Black" 
                                Foreground="#8080C0" 
-                               Margin="30,30,0,0"/>
+                               Margin="30,15,0,0"/>
                 </Grid>
                 <Grid>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto"/>
-                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
                     </Grid.ColumnDefinitions>
                     <TextBlock x:Name="DSR" 
                                Grid.Column="0"
@@ -168,16 +180,17 @@
                     <TextBlock x:Name="DsrState" 
                                Grid.Column="1"
                                Text="HIGH" 
-                               FontSize ="20" 
+                               FontSize ="15" 
                                FontFamily="Segoe UI Black" 
                                Foreground="#8080C0" 
-                               Margin="30,30,0,0"/>
+                               Margin="30,15,0,0"/>
                 </Grid>
 
                 <Grid>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto"/>
-                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
                     </Grid.ColumnDefinitions>
                     <TextBlock x:Name="DCD" 
                                Grid.Column="0"
@@ -189,10 +202,10 @@
                     <TextBlock x:Name="DcdState" 
                                Grid.Column="1"
                                Text="HIGH" 
-                               FontSize ="20" 
+                               FontSize ="15" 
                                FontFamily="Segoe UI Black" 
                                Foreground="#8080C0" 
-                               Margin="30,30,0,0"/>
+                               Margin="30,15,0,0"/>
                 </Grid>
             </StackPanel>
 
