@@ -112,13 +112,7 @@
                                FontFamily="Segoe UI Black" 
                                Foreground="#8080C0" 
                                Margin="30,35,0,0"/>
-                    <RJControl:RJToggleButton Grid.Column="2"
-                                              Width="50" 
-                                              Height="25"
-                                              OnBackground="#E0E0E0"
-                                              OffBackground="#7092BE"
-                                              OnToggleColor="#99D9EA"
-                                              OffToggleColor="#7092BE"/>
+                    <RJControl:RJToggleButton Grid.Column="2" IsChecked="false"/>
                 </Grid>
 
                 <Grid>

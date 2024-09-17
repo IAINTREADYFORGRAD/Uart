@@ -31,11 +31,9 @@ namespace UartUiApp
 
         private void GoToPage2_Click(object sender, RoutedEventArgs e)
         {
-            //MainFrame.Navigate(new Page2());
+            MainFrame.Navigate(new Page2());
             Button2ShadowOn();
             Button1ShadowOff();
-
-
         }
 
         private void Button1ShadowOn()

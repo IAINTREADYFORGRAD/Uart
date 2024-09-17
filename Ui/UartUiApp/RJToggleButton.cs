@@ -1,80 +1,46 @@
-﻿using System.Windows;
+﻿using System.Diagnostics;
+using System.Windows;
 using System.Windows.Controls.Primitives;
 using System.Windows.Media;
+using System.Windows.Media.Effects;
 using System.Windows.Shapes;
 
 namespace UartUiApp.RJControl
 {
     public class RJToggleButton : ToggleButton
     {
-        public static readonly DependencyProperty OnBackgroundProperty =
-            DependencyProperty.Register(
-                nameof(OnBackground),
-                typeof(Brush),
-                typeof(RJToggleButton),
-                new PropertyMetadata(Brushes.MediumSlateBlue));
 
-        public static readonly DependencyProperty OffBackgroundProperty =
-            DependencyProperty.Register(
-                nameof(OffBackground),
-                typeof(Brush),
-                typeof(RJToggleButton),
-                new PropertyMetadata(Brushes.Gray));
 
-        public static readonly DependencyProperty OnToggleColorProperty =
-            DependencyProperty.Register(
-                nameof(OnToggleColor),
-                typeof(Brush),
-                typeof(RJToggleButton),
-                new PropertyMetadata(Brushes.WhiteSmoke));
-
-        public static readonly DependencyProperty OffToggleColorProperty =
-            DependencyProperty.Register(
-                nameof(OffToggleColor),
-                typeof(Brush),
-                typeof(RJToggleButton),
-                new PropertyMetadata(Brushes.Gainsboro));
-        public Brush OnBackground
+        //private Brush OnBackground = (Brush)new BrushConverter().ConvertFromString("#99D9EA");
+        //private Brush OffBackground = (Brush)new BrushConverter().ConvertFromString("#7092BE");
+        //private Brush ToggleColor = (Brush)new BrushConverter().ConvertFromString("#E0E0E0");
+        private Brush OnBackground = Brushes.Green;  // Example value
+        private Brush OffBackground = Brushes.Red;
+        public RJToggleButton()
         {
-            get => (Brush)GetValue(OnBackgroundProperty);
-            set => SetValue(OnBackgroundProperty, value);
+            // Set default Width and Height
+            this.Width = 60; 
+            this.Height = 30; 
         }
-
-        public Brush OffBackground
-        {
-            get => (Brush)GetValue(OffBackgroundProperty);
-            set => SetValue(OffBackgroundProperty, value);
-        }
-
-        public Brush OnToggleColor
-        {
-            get => (Brush)GetValue(OnToggleColorProperty);
-            set => SetValue(OnToggleColorProperty, value);
-        }
-
-        public Brush OffToggleColor
-        {
-            get => (Brush)GetValue(OffToggleColorProperty);
-            set => SetValue(OffToggleColorProperty, value);
-        }
-
         protected override void OnRender(DrawingContext dc)
         {
             var toggleSize = Height - 5;
+            var togglePosition = IsChecked == true ? Width - Height : 0; // Toggle moves to the right when checked
+
             dc.PushClip(new RectangleGeometry(new Rect(0, 0, Width, Height)));
             dc.DrawRoundedRectangle(
                 IsChecked == true ? OnBackground : OffBackground,
-                null, 
-                new Rect(0, 0, Width, Height), 
-                Height / 2, 
+                null,
+                new Rect(0, 0, Width, Height),
+                Height / 2,
                 Height / 2
-                );
+            );
 
             dc.DrawEllipse(
-                IsChecked == true ? OnToggleColor : OffToggleColor,
-                null, 
-                new Point(IsChecked == true ? Width - Height / 2 : Height / 2, Height / 2),
-                toggleSize / 2, 
+                ToggleColor,
+                null,
+                new Point(togglePosition + toggleSize / 2, Height / 2), // Move toggle to left or right
+                toggleSize / 2,
                 toggleSize / 2
                 );
 
