@@ -11,16 +11,15 @@ namespace UartUiApp.RJControl
     {
 
 
-        //private Brush OnBackground = (Brush)new BrushConverter().ConvertFromString("#99D9EA");
-        //private Brush OffBackground = (Brush)new BrushConverter().ConvertFromString("#7092BE");
-        //private Brush ToggleColor = (Brush)new BrushConverter().ConvertFromString("#E0E0E0");
-        private Brush OnBackground = Brushes.Green;  // Example value
-        private Brush OffBackground = Brushes.Red;
+        private Brush OnBackground = (Brush)new BrushConverter().ConvertFromString("#99D9EA");
+        private Brush OffBackground = (Brush)new BrushConverter().ConvertFromString("#7092BE");
+        private Brush ToggleColor = (Brush)new BrushConverter().ConvertFromString("#E0E0E0");
         public RJToggleButton()
         {
             // Set default Width and Height
-            this.Width = 60; 
-            this.Height = 30; 
+            this.Width = 20; 
+            this.Height = 10;
+            this.CornerRadius = 10;
         }
         protected override void OnRender(DrawingContext dc)
         {
@@ -29,20 +28,20 @@ namespace UartUiApp.RJControl
 
             dc.PushClip(new RectangleGeometry(new Rect(0, 0, Width, Height)));
             dc.DrawRoundedRectangle(
-                IsChecked == true ? OnBackground : OffBackground,
+                OffBackground,
                 null,
-                new Rect(0, 0, Width, Height),
+                new Rect(30, 30, Width, Height),
                 Height / 2,
                 Height / 2
             );
 
-            dc.DrawEllipse(
-                ToggleColor,
-                null,
-                new Point(togglePosition + toggleSize / 2, Height / 2), // Move toggle to left or right
-                toggleSize / 2,
-                toggleSize / 2
-                );
+            //dc.DrawEllipse(
+            //    ToggleColor,
+            //    null,
+            //   new Point(togglePosition + toggleSize / 2, Height / 2), // Move toggle to left or right
+            //    toggleSize / 2,
+            //    toggleSize / 2
+            //    );
 
             dc.Pop();
         }
