@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("UartUiApp")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9ab91bebd1f27f8efc5855c9ed9254f53e334cda")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f9f17c4370c776430860396b38d286dfe0e19672")]
 [assembly: System.Reflection.AssemblyProductAttribute("UartUiApp")]
 [assembly: System.Reflection.AssemblyTitleAttribute("UartUiApp")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

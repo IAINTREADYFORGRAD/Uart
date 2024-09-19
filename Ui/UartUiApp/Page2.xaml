@@ -5,10 +5,82 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:UartUiApp" 
-        xmlns:RJControl="clr-namespace:UartUiApp.RJControl"
         mc:Ignorable="d"
         Title="Page2" Height="500" Width="600" Background="#8080C0" HorizontalAlignment="Right">
 
+    <Page.Resources>
+        <Style x:Key="ToggleButtonStyle" TargetType="{x:Type ToggleButton}">
+            <Setter Property="Tag" Value="{DynamicResource {x:Static SystemParameters.HighContrastKey}}"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type ToggleButton}">
+                        <ControlTemplate.Resources>
+                            <Storyboard x:Key="OnUnchecked">
+                                <ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Margin)"
+                                                      Storyboard.TargetName="path">
+                                    <EasingThicknessKeyFrame KeyTime="0" Value="0"/>
+                                </ThicknessAnimationUsingKeyFrames>
+                            </Storyboard>
+                            <Storyboard x:Key="OnChecked">
+                                <ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Margin)"
+                                                      Storyboard.TargetName="path">
+                                    <EasingThicknessKeyFrame KeyTime="0" Value="20,0,0,0"/>
+                                </ThicknessAnimationUsingKeyFrames>
+                            </Storyboard>
+                        </ControlTemplate.Resources>
+                        <Border x:Name="toggleBorder"
+                                CornerRadius="10"
+                                Background="#99D9EA"
+                                Width="40"
+                                Height="20"
+                                BorderThickness="1">      
+                            <Grid>
+                                <Path x:Name="path" Fill="#E0E0E0">
+                                    <Path.Data>
+                                        <GeometryGroup>
+                                            <GeometryGroup.Children>
+                                                <EllipseGeometry Center="10,9" RadiusX="6" RadiusY="6"/>
+                                            </GeometryGroup.Children>
+                                        </GeometryGroup>
+                                    </Path.Data>
+                                </Path>
+                            </Grid>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <EventTrigger RoutedEvent="ToggleButton.Checked">
+                                <BeginStoryboard Storyboard="{StaticResource OnChecked}"/>
+                            </EventTrigger>
+                            <EventTrigger RoutedEvent="ToggleButton.Unchecked">
+                                <BeginStoryboard Storyboard="{StaticResource OnUnchecked}"/>
+                            </EventTrigger>
+                            <Trigger Property="IsChecked" Value="True">
+                                <Setter Property="Background" Value="#E0E0E0"/>
+                                <Setter TargetName="toggleBorder" Property="Background" Value="#99D9EA"/>
+                            </Trigger>
+                            <Trigger Property="IsChecked" Value="False">
+                                <Setter TargetName="toggleBorder" Property="Background" Value="#7092BE"/>
+                                <Setter TargetName="path" Property="Data">
+                                    <Setter.Value>
+                                        <GeometryGroup>
+                                            <GeometryGroup.Children>
+                                                <EllipseGeometry Center="10,9" RadiusX="6" RadiusY="6"/>
+                                            </GeometryGroup.Children>
+                                        </GeometryGroup>
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="Cursor" Value="Hand"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Page.Resources>
+    
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="25*"/>
@@ -85,7 +157,7 @@
                              Width="100" 
                              Height="25"
                              Margin="38,20,0,0"
-                             Background="#E0E0E0"/>
+                             Background="#E0E0E0"/>    
                 </Grid>
             </StackPanel>
         </Border>
@@ -112,7 +184,16 @@
                                FontFamily="Segoe UI Black" 
                                Foreground="#8080C0" 
                                Margin="30,35,0,0"/>
-                    <RJControl:RJToggleButton Grid.Column="2" IsChecked="false"/>
+                    <ToggleButton x:Name="RtsToggleButton"
+                                  Grid.Column="2"
+                                  IsChecked="False"
+                                  Checked="RtsToggleButton_Checked"
+                                  Unchecked="RtsToggleButton_Unchecked"
+                                  Style="{StaticResource ToggleButtonStyle}"
+                                  AutomationProperties.Name="CustomizedToggle"
+                                  AutomationProperties.AutomationId="CustomizedToggle"
+                                  Margin="0,32,0,0">         
+                    </ToggleButton>
                 </Grid>
 
                 <Grid>
@@ -135,6 +216,12 @@
                                FontFamily="Segoe UI Black" 
                                Foreground="#8080C0" 
                                Margin="30,15,0,0"/>
+                    <Ellipse x:Name="CtsPin" 
+                             Grid.Column="2" 
+                             Width="10" 
+                             Height="10" 
+                             Fill="#7092BE" 
+                             Margin="0,15,0,0"/>
                 </Grid>
 
                 <Grid>
@@ -157,6 +244,16 @@
                                FontFamily="Segoe UI Black" 
                                Foreground="#8080C0" 
                                Margin="30,15,0,0"/>
+                    <ToggleButton x:Name="DtrToggleButton"
+                                  Grid.Column="2"
+                                  IsChecked="False"
+                                  Checked="DtrToggleButton_Checked"
+                                  Unchecked="DtrToggleButton_Unchecked"
+                                  Style="{StaticResource ToggleButtonStyle}"
+                                  AutomationProperties.Name="CustomizedToggle"
+                                  AutomationProperties.AutomationId="CustomizedToggle"
+                                  Margin="0,15,0,0">
+                    </ToggleButton>
                 </Grid>
                 <Grid>
                     <Grid.ColumnDefinitions>
@@ -178,6 +275,12 @@
                                FontFamily="Segoe UI Black" 
                                Foreground="#8080C0" 
                                Margin="30,15,0,0"/>
+                    <Ellipse x:Name="DsrPin" 
+                             Grid.Column="2" 
+                             Width="10" 
+                             Height="10" 
+                             Fill="#7092BE" 
+                             Margin="0,15,0,0"/>
                 </Grid>
 
                 <Grid>
@@ -200,6 +303,12 @@
                                FontFamily="Segoe UI Black" 
                                Foreground="#8080C0" 
                                Margin="30,15,0,0"/>
+                    <Ellipse x:Name="DcdPin" 
+                             Grid.Column="2" 
+                             Width="10" 
+                             Height="10" 
+                             Fill="#7092BE" 
+                             Margin="0,15,0,0"/>
                 </Grid>
             </StackPanel>
 
