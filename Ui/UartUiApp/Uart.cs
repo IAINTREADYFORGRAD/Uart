@@ -21,7 +21,7 @@ namespace UartUiApp
         public event EventHandler cdHigh;
         public event EventHandler cdLow;
 
-        public Uart(string name, Handshake handshake, TextBlock outputTextBlock)
+        public Uart(string name, int baudRate, TextBlock outputTextBlock)
         {
             if (!name.StartsWith("COM", StringComparison.OrdinalIgnoreCase))
             {
@@ -30,7 +30,7 @@ namespace UartUiApp
             serialPort = new SerialPort();
             try
             {
-                UartInit(name, handshake, outputTextBlock);
+                UartInit(name, baudRate, outputTextBlock);
             }
             catch (UnauthorizedAccessException)
             {
@@ -38,15 +38,15 @@ namespace UartUiApp
             }
         }
 
-        public void UartInit(string name, Handshake handshake, TextBlock outputTextBlock)
+        public void UartInit(string name, int baudRate, TextBlock outputTextBlock)
         {
 
             serialPort.PortName = name;
-            serialPort.BaudRate = 9600;
+            serialPort.BaudRate = baudRate;
             serialPort.Parity = Parity.None;
             serialPort.DataBits = 8;
             serialPort.StopBits = StopBits.One;
-            serialPort.Handshake = (Handshake)handshake;
+            serialPort.Handshake = Handshake.None;
             serialPort.ReadTimeout = 2000; // unit: milliseconds
             serialPort.WriteTimeout = 2000;
             serialPort.DataReceived += (sender, e) => UartRead(sender, e, outputTextBlock);
@@ -339,6 +339,11 @@ namespace UartUiApp
                     return true; // Timeout occurred
                 }
             }
+        }
+
+        public void ChangeBaudRate (int baudRate)
+        {
+            serialPort.BaudRate = baudRate;
         }
 
     }

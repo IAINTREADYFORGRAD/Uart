@@ -12,9 +12,136 @@ namespace UartUiApp
 {
     public partial class Page2 : Page
     {
+        private Uart uart = null;
         public Page2()
         {
             InitializeComponent();
+            PortComboBox.SelectionChanged += PortSelectionChanged;
+            PortComboBox.DropDownOpened += PortDropDown;
+
+            PortComboBox.SelectionChanged += BaudRateSelectionChanged;
+            PortComboBox.DropDownOpened += BaudRateDropDown;
+        }
+
+        private void PortSelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        {
+            try
+            {
+                string selectedPort;
+
+                if (uart != null)
+                {
+                    uart.UartDestroy();
+                    Debug.WriteLine("uart " + uart.Name + " is closed");
+                }
+
+                if (e.AddedItems.Count == 0)
+                {
+                    return;
+                }
+
+                selectedPort = e.AddedItems[0] as string;
+
+                if (selectedPort != null)
+                {
+                    PortComboBox.Text = selectedPort;
+
+                    uart = new Uart(selectedPort, 115200, DataDisplayBlock);
+                    uart.UartStart();
+                    uart.ctsHigh += UartCtsHigh;
+                    uart.ctsLow += UartCtsLow;
+                    uart.dsrHigh += UartDsrHigh;
+                    uart.dsrLow += UartDsrLow;
+                    uart.cdHigh += UartDcdHigh;
+                    uart.cdLow += UartDcdLow;
+
+                    PortInit();
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("Error in ComboBoxSelectionChanged: " + ex.Message);
+            }
+        }
+
+        private void PortDropDown(object sender, EventArgs e)
+        {
+            try
+            {
+                string[] filteredPorts;
+
+                filteredPorts = SerialPort.GetPortNames().ToArray();
+           
+                PortComboBox.ItemsSource = filteredPorts;
+
+
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("Error in ComboBoxDropDown: " + ex.Message);
+            }
+        }
+
+        private void BaudRateSelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        {
+            try
+            {
+                string BaudRateStr;
+                int    BaudRate;
+
+                if (e.AddedItems.Count == 0)
+                {
+                    return;
+                }
+
+                BaudRateStr = e.AddedItems[0] as string;
+                if (BaudRateStr != null && int.TryParse(BaudRateStr, out BaudRate))
+                {
+                    uart.ChangeBaudRate(BaudRate);
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("Error in BaudRateSelectionChanged: " + ex.Message);
+            }
+        }
+
+        private void BaudRateDropDown(object sender, EventArgs e)
+        {
+            try
+            {
+                string[] BaudRate = new string[5];
+
+                BaudRate[0] = "115200";
+                BaudRate[1] = "57600";
+                BaudRate[2] = "38400";
+                BaudRate[3] = "19200";
+                BaudRate[4] = "9600";
+
+                BaudRateComboBox.ItemsSource = BaudRate;
+
+
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("Error in BaudRateDropDown: " + ex.Message);
+            }
+        }
+        private void PortInit()
+        {
+            CtsState.Text = "LOW";
+            CtsState.Foreground = ColorOff();
+            CtsPin.Fill = ColorOff();
+
+            DsrState.Text = "LOW";
+            DsrState.Foreground = ColorOff();
+            DsrPin.Fill = ColorOff();
+
+            DcdState.Text = "LOW";
+            DcdState.Foreground = ColorOff();
+            DcdPin.Fill = ColorOff();
         }
 
         private void UartCtsHigh(object sender, EventArgs e)
@@ -51,6 +178,74 @@ namespace UartUiApp
             }
         }
 
+        private void UartDsrHigh(object sender, EventArgs e)
+        {
+            try
+            {
+                Dispatcher.Invoke(() =>
+                {
+                    DsrState.Text = "HIGH";
+                    DsrState.Foreground = ColorOn();
+                    DsrPin.Fill = ColorOn();
+                });
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("Error in UartDsrHigh: " + ex.Message);
+            }
+        }
+
+        private void UartDsrLow(object sender, EventArgs e)
+        {
+            try
+            {
+                Dispatcher.Invoke(() =>
+                {
+                    DsrState.Text = "LOW";
+                    DsrState.Foreground = ColorOff();
+                    DsrPin.Fill = ColorOff();
+                });
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("Error in UartDsrLow: " + ex.Message);
+            }
+        }
+
+        private void UartDcdHigh(object sender, EventArgs e)
+        {
+            try
+            {
+                Dispatcher.Invoke(() =>
+                {
+                    DcdState.Text = "HIGH";
+                    DcdState.Foreground = ColorOn();
+                    DcdPin.Fill = ColorOn();
+                });
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("Error in UartDcdHigh: " + ex.Message);
+            }
+        }
+
+        private void UartDcdLow(object sender, EventArgs e)
+        {
+            try
+            {
+                Dispatcher.Invoke(() =>
+                {
+                    DcdState.Text = "LOW";
+                    DcdState.Foreground = ColorOff();
+                    DcdPin.Fill = ColorOff();
+                });
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("Error in UartDcdLow: " + ex.Message);
+            }
+        }
+
         private void RtsToggleButton_Checked(object sender, RoutedEventArgs e)
         {
         }
@@ -76,6 +271,18 @@ namespace UartUiApp
         {
             return new SolidColorBrush((Color)ColorConverter.ConvertFromString("#99D9EA"));
         }
+
+        private void LogNameBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            TextBox textBox = sender as TextBox;
+            if (textBox != null)
+            {
+                string inputData = textBox.Text;
+
+            }
+        }
+
+        // start, global var for baudrate, logname, and port#
     }
 
 

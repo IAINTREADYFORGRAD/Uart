@@ -194,7 +194,7 @@ namespace UartUiApp
                 {
                     comboBox1.Text = selectedPort;
 
-                    uart1 = new Uart(selectedPort, Handshake.None, DataDisplayBlock1);
+                    uart1 = new Uart(selectedPort, 115200, DataDisplayBlock1);
                     uart1.UartStart();
                     uart1.ctsHigh += Uart1CtsHigh;
                     uart1.ctsLow += Uart1CtsLow;
@@ -376,7 +376,7 @@ namespace UartUiApp
                 {
                     comboBox2.Text = selectedPort;
 
-                    uart2 = new Uart(selectedPort, Handshake.None, DataDisplayBlock2);
+                    uart2 = new Uart(selectedPort, 115200, DataDisplayBlock2);
                     uart2.UartStart();
                     uart2.ctsHigh += Uart2CtsHigh;
                     uart2.ctsLow += Uart2CtsLow;
@@ -544,7 +544,7 @@ namespace UartUiApp
 
         private void Port1Init()
         {
-            cts2Switch.Text = "LOW";
+            cts1Switch.Text = "LOW";
             cts1Switch.Foreground = ColorOff();
             cts1Pin1.Fill = ColorOff();
             lineCts1Pin1Pin2.Stroke = ColorOff();
