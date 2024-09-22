@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using System.Globalization;
 using System.IO.Ports;
+using System.Linq.Expressions;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -13,6 +14,10 @@ namespace UartUiApp
     public partial class Page2 : Page
     {
         private Uart uart = null;
+        private string portName = null;
+        private int baudRate = 115200;
+        private string logName = null;
+
         public Page2()
         {
             InitializeComponent();
@@ -45,17 +50,7 @@ namespace UartUiApp
                 if (selectedPort != null)
                 {
                     PortComboBox.Text = selectedPort;
-
-                    uart = new Uart(selectedPort, 115200, DataDisplayBlock);
-                    uart.UartStart();
-                    uart.ctsHigh += UartCtsHigh;
-                    uart.ctsLow += UartCtsLow;
-                    uart.dsrHigh += UartDsrHigh;
-                    uart.dsrLow += UartDsrLow;
-                    uart.cdHigh += UartDcdHigh;
-                    uart.cdLow += UartDcdLow;
-
-                    PortInit();
+                    portName = selectedPort;
                 }
 
             }
@@ -98,7 +93,8 @@ namespace UartUiApp
                 BaudRateStr = e.AddedItems[0] as string;
                 if (BaudRateStr != null && int.TryParse(BaudRateStr, out BaudRate))
                 {
-                    uart.ChangeBaudRate(BaudRate);
+                    BaudRateComboBox.Text = BaudRateStr;
+                    baudRate = BaudRate;
                 }
 
             }
@@ -248,18 +244,63 @@ namespace UartUiApp
 
         private void RtsToggleButton_Checked(object sender, RoutedEventArgs e)
         {
+            if (uart == null)
+            {
+                return;
+            }
+
+            uart.RtsEnable();
+
         }
 
         private void RtsToggleButton_Unchecked(object sender, RoutedEventArgs e)
         {
+            if (uart == null)
+            {
+                return;
+            }
+
+            uart.RtsDisable();
         }
 
         private void DtrToggleButton_Checked(object sender, RoutedEventArgs e)
         {
+            if (uart == null)
+            {
+                return;
+            }
+
+            uart.DtrEnable();
+
         }
 
         private void DtrToggleButton_Unchecked(object sender, RoutedEventArgs e)
         {
+            if (uart == null)
+            {
+                return;
+            }
+
+            uart.DtrDisable();
+        }
+
+        private async void SendButtonClick(object sender, RoutedEventArgs e)
+        {
+            string message = InputBox.Text;
+
+            if (uart == null)
+            {
+                return;
+            }
+
+            if (!string.IsNullOrEmpty(message))
+            {
+                await uart.UartWrite(message);
+            }
+            else
+            {
+                Debug.WriteLine(uart.Name + "No Message To Send");
+            }
         }
 
         private Brush ColorOff()
@@ -277,10 +318,33 @@ namespace UartUiApp
             TextBox textBox = sender as TextBox;
             if (textBox != null)
             {
-                string inputData = textBox.Text;
+                logName = textBox.Text;
+                textBox.Text = logName;
 
             }
         }
+
+        private void StartButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (uart != null)
+            {
+                uart.UartDestroy();
+            }
+
+
+            uart = new Uart(portName, baudRate, DataDisplayBlock, logName);
+            uart.UartStart();
+            uart.ctsHigh += UartCtsHigh;
+            uart.ctsLow += UartCtsLow;
+            uart.dsrHigh += UartDsrHigh;
+            uart.dsrLow += UartDsrLow;
+            uart.cdHigh += UartDcdHigh;
+            uart.cdLow += UartDcdLow;
+
+            PortInit();
+        }
+
+
 
         // start, global var for baudrate, logname, and port#
     }

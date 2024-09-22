@@ -93,12 +93,12 @@
         <Grid.ColumnDefinitions>
 
             <ColumnDefinition Width="35*"/>
-            <ColumnDefinition Width="250*"/>
             <ColumnDefinition Width="220*"/>
+            <ColumnDefinition Width="250*"/>
             <ColumnDefinition Width="35*"/>
         </Grid.ColumnDefinitions>
 
-        <Border Grid.Row="1" Grid.Column="1" Background="#C8BFE7" CornerRadius="10,0,0,10">
+        <Border Grid.Row="1" Grid.Column="2" Background="#C8BFE7" CornerRadius="0,10,10,0">
             <StackPanel>
                 <Grid>
                     <Grid.ColumnDefinitions>
@@ -111,13 +111,13 @@
                                FontSize ="20" 
                                FontFamily="Segoe UI Black" 
                                Foreground="#8080C0" 
-                               Margin="30,50,0,0"/>
+                               Margin="20,30,0,0"/>
                     <ComboBox x:Name="PortComboBox"
                               Grid.Column="1"
                               Width="100"
                               Height="25"
                               IsEditable="False" 
-                              Margin="86,50,0,0"/>
+                              Margin="76,30,0,0"/>
                 </Grid>
 
                 <Grid>
@@ -131,13 +131,13 @@
                                FontSize ="20" 
                                FontFamily="Segoe UI Black" 
                                Foreground="#8080C0" 
-                               Margin="30,20,0,0"/>
+                               Margin="20,20,0,0"/>
                     <ComboBox x:Name="BaudRateComboBox"
                               Grid.Column="1"
                               Width="100"
                               Height="25"
                               IsEditable="False" 
-                              Margin="30,20,0,0"/>
+                              Margin="20,20,0,0"/>
                 </Grid>
 
                 <Grid>
@@ -151,19 +151,44 @@
                                FontSize ="20" 
                                FontFamily="Segoe UI Black" 
                                Foreground="#8080C0" 
-                               Margin="30,20,0,0"/>
+                               Margin="20,20,0,0"/>
                     <TextBox x:Name="LogNameBox" 
                              Grid.Column="1"
                              Width="100" 
                              Height="25"
-                             Margin="38,20,0,0"
+                             Margin="28,20,0,0"
                              Background="#E0E0E0"
                              TextChanged ="LogNameBox_TextChanged" />    
+                </Grid>
+                <Grid>
+                    <Button x:Name="StartButton" 
+                            Width="80" 
+                            Height="30" 
+                            Background="#7092BE" 
+                            Margin="140,20,0,0" 
+                            Click="StartButton_Click">
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Border Background="#7092BE" 
+                                        CornerRadius="5" 
+                                        BorderBrush="Transparent" 
+                                        BorderThickness="1">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Button.Template>
+                        <TextBlock x:Name="StartButtonText" 
+                                   Text="START" 
+                                   Foreground="#99D9EA"
+                                   FontSize="15" 
+                                   FontWeight="Bold" 
+                                   FontFamily="Segoe UI Black"/>
+                    </Button>
                 </Grid>
             </StackPanel>
         </Border>
 
-        <Border Grid.Row="1" Grid.Column="2" Background="#C8BFE7" CornerRadius="0,10,10,0">
+        <Border Grid.Row="1" Grid.Column="1" Background="#C8BFE7" CornerRadius="10,0,0,10">
             <StackPanel>
                 <Grid>
                     <Grid.ColumnDefinitions>

@@ -194,7 +194,7 @@ namespace UartUiApp
                 {
                     comboBox1.Text = selectedPort;
 
-                    uart1 = new Uart(selectedPort, 115200, DataDisplayBlock1);
+                    uart1 = new Uart(selectedPort, 115200, DataDisplayBlock1, null);
                     uart1.UartStart();
                     uart1.ctsHigh += Uart1CtsHigh;
                     uart1.ctsLow += Uart1CtsLow;
@@ -376,7 +376,7 @@ namespace UartUiApp
                 {
                     comboBox2.Text = selectedPort;
 
-                    uart2 = new Uart(selectedPort, 115200, DataDisplayBlock2);
+                    uart2 = new Uart(selectedPort, 115200, DataDisplayBlock2, null);
                     uart2.UartStart();
                     uart2.ctsHigh += Uart2CtsHigh;
                     uart2.ctsLow += Uart2CtsLow;

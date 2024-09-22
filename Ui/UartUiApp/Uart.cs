@@ -20,8 +20,9 @@ namespace UartUiApp
         public event EventHandler dsrLow;
         public event EventHandler cdHigh;
         public event EventHandler cdLow;
+        private string logName = null;
 
-        public Uart(string name, int baudRate, TextBlock outputTextBlock)
+        public Uart(string name, int baudRate, TextBlock outputTextBlock, string log)
         {
             if (!name.StartsWith("COM", StringComparison.OrdinalIgnoreCase))
             {
@@ -31,6 +32,7 @@ namespace UartUiApp
             try
             {
                 UartInit(name, baudRate, outputTextBlock);
+                logName = log;
             }
             catch (UnauthorizedAccessException)
             {
@@ -229,8 +231,9 @@ namespace UartUiApp
 
         private void SaveToFile (string Data)
         {
+            string log = logName == null? serialPort.PortName + "NoobUart.txt":logName;
             string desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-            string filePath = Path.Combine(desktopPath, "NoobUart.txt");
+            string filePath = Path.Combine(desktopPath, log);
 
             File.AppendAllText(filePath, Data);
         }
@@ -251,7 +254,6 @@ namespace UartUiApp
             outputTextBlock.Dispatcher.Invoke(() =>
             {
                 outputTextBlock.Text += data;
-                //outputTextBlock.UpdateLayout();
 
                 SaveToFile(data);
 
@@ -260,7 +262,6 @@ namespace UartUiApp
                 {
                     Debug.WriteLine("scrollViewer != null");
                     
-                    //scrollViewer.UpdateLayout();
                     scrollViewer.ScrollToEnd();
                 } else
                 {
